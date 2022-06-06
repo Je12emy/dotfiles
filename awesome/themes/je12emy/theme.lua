@@ -12,6 +12,8 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
+theme.dir  = os.getenv("HOME") .. "/.config/awesome/themes/je12emy"
+
 -- Background colors
 local bg        = "#1F1F28"
 local bg_red    = "#cc241d"
@@ -105,6 +107,9 @@ theme.notification_icon_size = dpi(64)
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
+
+-- Load path to the new menu icon, I need to figure out how to resize it.
+theme.menu_icon = theme.dir .. "/menu_icon.png"
 
 return theme
 

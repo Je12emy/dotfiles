@@ -114,7 +114,7 @@ else
 end
 
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+mylauncher = awful.widget.launcher({ image = beautiful.menu_icon,
                                      menu = mymainmenu })
 
 -- Menubar configuration
