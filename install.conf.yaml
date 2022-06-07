@@ -10,6 +10,7 @@
     ~/.config/awesome: awesome
     ~/.config/alacritty: alacritty
     ~/.config/scripts: scripts
+    ~/.config/rofi: rofi
 
 - create:
   - ~/.config/scripts

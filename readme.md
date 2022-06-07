@@ -4,12 +4,13 @@
 
 Here's a list of the stuff I use:
 
-| Usecase               | Program   |
-|-----------------------|-----------|
-| Terminal emulator     | Alacritty |
-| Text editor           | Neovim    |
-| Tiling window manager | Awesome   |
-| Terminal multiplexer  | Tmux      |
+| Usecase                        | Program   |
+|--------------------------------|-----------|
+| Terminal emulator              | Alacritty |
+| Text editor                    | Neovim    |
+| Tiling window manager          | Awesome   |
+| Terminal multiplexer           | Tmux      |
+| Window switcher and run dialog | Rofi      |
 
 My dotfiles are managed with [dotbot](https://github.com/anishathalye/dotbot)
 
@@ -21,3 +22,4 @@ My dotfiles are managed with [dotbot](https://github.com/anishathalye/dotbot)
 - [ ] Neomutt.
 - [ ] Newsboat.
 - [ ] LF.
+- [x] Rofi.
