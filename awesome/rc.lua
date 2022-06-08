@@ -53,7 +53,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.ge
 beautiful.init(theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -353,8 +353,15 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("alacritty -e ./pulsemixer") end,
               {description = "open pulsemixer", group = "utilities"}),
+
     awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("alacritty -e lf") end,
-              {description = "open lf", group = "utilities"})
+              {description = "open lf", group = "utilities"}),
+
+    awful.key({},   "Print",     function () awful.util.spawn("flameshot screen") end,
+              {description = "take a screenshot", group = "utilities"}),
+
+    awful.key({ modkey },   "Print",     function () awful.util.spawn("flameshot gui") end,
+              {description = "open the flameshot gui", group = "utilities"})
 )
 
 clientkeys = gears.table.join(
