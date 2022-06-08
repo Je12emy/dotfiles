@@ -11,6 +11,7 @@ Here's a list of the stuff I use:
 | Tiling window manager          | Awesome   |
 | Terminal multiplexer           | Tmux      |
 | Window switcher and run dialog | Rofi      |
+| Shell                          | Zsh       |
 
 My dotfiles are managed with [dotbot](https://github.com/anishathalye/dotbot)
 
@@ -18,7 +19,7 @@ My dotfiles are managed with [dotbot](https://github.com/anishathalye/dotbot)
 
 # To Do
 
-- [ ] Migrate into ZSH maybe.
+- [x] Migrate to ZSH maybe.
 - [ ] Neomutt.
 - [ ] Newsboat.
 - [ ] LF.
