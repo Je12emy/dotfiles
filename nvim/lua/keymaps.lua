@@ -1,7 +1,8 @@
 -- General
 vim.keymap.set('i', 'jk', '<Esc>')
-vim.keymap.set("n", '<Leader>', '<Nop>')
-vim.keymap.set('n', 'S', '<cmd>%s//g<Left><Left>')
+-- I believe this is causing my keymaps which use <Leader> to not work lol
+-- vim.keymap.set("n", '<Leader>', '<Nop>') 
+vim.keymap.set('n', 'S', ':%s//g<Left><Left>')
 
 ---- Navigation Keymaps
 vim.keymap.set('n', '<c-h>', '<cmd>wincmd h<CR>')
