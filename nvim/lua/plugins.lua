@@ -25,6 +25,10 @@ require('packer').startup(function()
 
     -- UI
     use "hoob3rt/lualine.nvim"
+    use {'akinsho/bufferline.nvim', 
+         tag = "v2.*",
+         requires = 'kyazdani42/nvim-web-devicons'
+    }
 
     -- Themes
     use 'rebelot/kanagawa.nvim'
@@ -82,6 +86,7 @@ require('packer').startup(function()
 end)
 
 ---- Configurations
+require('plugins/bufferline')
 require('plugins/colorizer')
 require('plugins/comment')
 require('plugins/gitsigns')
