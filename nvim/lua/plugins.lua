@@ -24,11 +24,13 @@ require('packer').startup(function()
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- UI
-    use "hoob3rt/lualine.nvim"
-    use {'akinsho/bufferline.nvim', 
-         tag = "v2.*",
-         requires = 'kyazdani42/nvim-web-devicons'
-    }
+    -- use "hoob3rt/lualine.nvim"
+    -- use {'akinsho/bufferline.nvim', 
+    --      tag = "v2.*",
+    --      requires = 'kyazdani42/nvim-web-devicons'
+    -- }
+    -- This is a nice minimalist statusline
+    use 'strash/everybody-wants-that-line.nvim'
 
     -- Themes
     use 'rebelot/kanagawa.nvim'
@@ -86,14 +88,15 @@ require('packer').startup(function()
 end)
 
 ---- Configurations
-require('plugins/bufferline')
+-- require('plugins/bufferline')
 require('plugins/colorizer')
 require('plugins/comment')
 require('plugins/gitsigns')
 require('plugins/harpoon')
 require('plugins/kanagawa')
 require('plugins/lsp-kind')
-require('plugins/lualine')
+require("everybody-wants-that-line")
+-- require('plugins/lualine')
 require('plugins/luasnip')
 require('plugins/neoformat')
 require('plugins/nvim-cmp')
