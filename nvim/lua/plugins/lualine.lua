@@ -1,7 +1,7 @@
 local options = {
-      theme = 'base16',
-      section_separators = '',
-      component_separators = '',
+    theme = 'kanagawa',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
 }
 
 -- branch (git branch)

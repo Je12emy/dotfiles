@@ -22,11 +22,9 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 
 -- Telescope mappings
-vim.keymap.set( 'n',   '<Space>ff', ':Telescope find_files<CR>')
-vim.keymap.set( 'n',   '<Space>fb', ':Telescope buffers<CR>')
-vim.keymap.set( 'n',   '<Space>fc', ':Telescope git_commits<CR>')
-vim.keymap.set( 'n',   '<Space>fr', ':Telescope git_branches<CR>')
-vim.keymap.set( 'n',   '<Space>fm', ':Telescope marks<CR>')
-vim.keymap.set( 'n',   '<Space>fk', ':Telescope keymaps<CR>')
-vim.keymap.set( 'n',   '<Space>fz', ':Telescope current_buffer_fuzzy_find<CR>')
-vim.keymap.set( 'n',   '<Space>fg', ':Telescope live_grep<CR>')
+vim.keymap.set( 'n',   '<Leader>tf', ':Telescope find_files<CR>')
+vim.keymap.set( 'n',   '<Leader>tb', ':Telescope buffers<CR>')
+vim.keymap.set( 'n',   '<Leader>tm', ':Telescope marks<CR>')
+vim.keymap.set( 'n',   '<Leader>tk', ':Telescope keymaps<CR>')
+vim.keymap.set( 'n',   '<Leader>tz', ':Telescope current_buffer_fuzzy_find<CR>')
+vim.keymap.set( 'n',   '<Leader>tg', ':Telescope live_grep<CR>')
