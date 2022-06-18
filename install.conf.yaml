@@ -11,6 +11,7 @@
     ~/.config/alacritty: alacritty
     ~/.config/scripts: scripts
     ~/.config/rofi: rofi
+    ~/.config/wezterm: wezterm
     ~/.config/zsh: zsh
     ~/.zshenv: .zshenv
 
