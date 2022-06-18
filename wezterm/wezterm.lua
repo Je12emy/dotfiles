@@ -18,8 +18,6 @@ return {
   force_reverse_video_cursor = true,
   color_scheme = "kanagawa",
   use_dead_keys = false,
-  -- timeout_milliseconds defaults to 1000 and can be omitted
-  leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
   unix_domains = {
       {
         name = "unix",
@@ -29,5 +27,21 @@ return {
   -- `wezterm connect unix` by default, connecting to the unix
   -- domain on startup.
   -- If you prefer to connect manually, leave out this line.
-  default_gui_startup_args = {"connect", "unix"},
+  -- default_gui_startup_args = {"connect", "unix"},
+  -- timeout_milliseconds defaults to 1000 and can be omitted
+  leader = { key="a", mods="CTRL", timeout_milliseconds=1001 },
+  keys = {
+      { key = "s", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" }})},
+      { key = "v", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" }})},
+      { key = "h", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" })},
+	  { key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" })},
+	  { key = "k", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+	  { key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" })},
+      { key = "z", mods = "LEADER", action = "TogglePaneZoomState" },
+      { key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true }})},
+      { key = "q", mods = 'LEADER', action = wezterm.action({ CloseCurrentTab = { confirm=true }})},
+      { key = "}", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=-1 }},
+      { key = "{", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=1 }},
+      { key = "n", mods = "LEADER", action = wezterm.action{ SpawnTab="CurrentPaneDomain" }},
+  },
 }
