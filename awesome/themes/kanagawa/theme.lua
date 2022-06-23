@@ -12,7 +12,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.dir  = os.getenv("HOME") .. "/.config/awesome/themes/je12emy"
+theme.dir  = os.getenv("HOME") .. "/.config/awesome/themes/kanagawa"
 
 -- Background colors
 local bg        = "#181820"
