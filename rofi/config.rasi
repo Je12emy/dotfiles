@@ -2,4 +2,4 @@ configuration {
  modi: "window,drun,ssh,combi";
  combi-modi: "window,drun,ssh";
 }
-@theme "je12emy"
+@theme "kanagawa"
