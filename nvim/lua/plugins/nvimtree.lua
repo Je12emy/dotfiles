@@ -26,7 +26,7 @@ require'nvim-tree'.setup {
     custom = { ".git" }
   },
   view = {
-    width = '15%',
+    width = '20%',
     side = 'right',
     mappings = {
       custom_only = true,
