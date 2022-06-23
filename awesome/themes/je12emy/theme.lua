@@ -15,7 +15,7 @@ local theme = {}
 theme.dir  = os.getenv("HOME") .. "/.config/awesome/themes/je12emy"
 
 -- Background colors
-local bg        = "#1F1F28"
+local bg        = "#181820"
 local bg_red    = "#cc241d"
 
 -- Foreground colors

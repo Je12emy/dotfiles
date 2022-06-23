@@ -8,7 +8,7 @@
 * {
     font:   "JetBrainsMono Nerd Font 12";
 
-    bg:     #1F1F28;
+    bg:    #181820;
     fg:     #d8dee9;
     accent:     #DCD7BA;
     urgent:    #FF5D62;

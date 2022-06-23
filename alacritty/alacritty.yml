@@ -190,7 +190,7 @@ font:
 # Kanagawa Alacritty Colors
 colors:
   primary:
-    background: '0x1f1f28'
+    background: '0x181820'
     foreground: '0xdcd7ba'
 
   normal:
