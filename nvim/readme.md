@@ -7,9 +7,10 @@ A general basic neovim configuration written in Lua, it aims to keep things simp
 - [x] Update filestructure.
 - [ ] DAP configuration.
     - [ ] Go config
-    - [ ] Rust config
+    - [x] Rust config
 - [x] Find my perfect dark theme.
-- [ ] Properly configure gitsigns and fugitive.
+- [x] Properly configure gitsigns and fugitive.
 - [ ] Create a list of my keybinds.
 - [ ] Investigate about the `after` folder.
 - [ ] Make some new configurations for vimwiki.
+- [ ] Implement the Hydra plugin.
