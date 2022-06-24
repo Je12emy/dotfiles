@@ -23,7 +23,7 @@ require'nvim-tree'.setup {
   hijack_cursor = true,
   filters = {
     dotfiles = true,
-    custom = { ".git" }
+    custom = { "node_modules" }
   },
   view = {
     width = '20%',

@@ -15,12 +15,12 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.rename, { buffer = 0 })
     vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
     vim.keymap.set("n", "<Leader>ci", vim.lsp.buf.implementation, { buffer = 0 })
-    vim.keymap.set("n", "<Leader>co", vim.lsp.buf.definition, { buffer = 0 })
+    vim.keymap.set("n", "<Leader>cd", vim.lsp.buf.definition, { buffer = 0 })
     -- vim.keymap.set("n", "<leader>cf", vim.lsp.buf.formatting, { buffer = 0 })
     vim.keymap.set("n", "<Leader>cl", vim.diagnostic.setloclist, { buffer = 0 })
-    vim.keymap.set("n", "<Leader>cdo", vim.diagnostic.open_float , { buffer = 0 })
-    vim.keymap.set("n", "<Leader>cdn", vim.diagnostic.goto_prev , { buffer = 0 })
-    vim.keymap.set("n", "<Leader>cdp", vim.diagnostic.goto_next , { buffer = 0 })
+    vim.keymap.set("n", "<Leader>ce", vim.diagnostic.open_float , { buffer = 0 })
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev , { buffer = 0 })
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next , { buffer = 0 })
 end
 
 -- Enabled Language Servers
