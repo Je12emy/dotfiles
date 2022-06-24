@@ -15,7 +15,7 @@ require('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons'
     }
-    use 'airblade/vim-rooter'
+    use 'notjedi/nvim-rooter.lua'
     use 'kyazdani42/nvim-web-devicons'
 
     -- Telescope
@@ -101,6 +101,7 @@ require("everybody-wants-that-line")
 -- require('plugins/lualine')
 require('plugins/luasnip')
 require('plugins/neoformat')
+require('plugins/nvim-rooter')
 require('plugins/nvim-cmp')
 require('plugins/nvim-dap')
 require('plugins/nvimtree')
