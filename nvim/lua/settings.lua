@@ -34,3 +34,4 @@ set.laststatus = 3
 set.winbar = '%=%m %f'
 set.undodir = os.getenv("HOME") .. "/.undodir"
 set.undofile = true
+o.completeopt = 'menuone,noselect'
