@@ -21,8 +21,3 @@ require'lspconfig'.cssls.setup{
 }
 
 require'lspconfig'.tailwindcss.setup{}
-
-require'lspconfig'.rust_analyzer.setup{
-    on_attach = tools.on_attach,
-    capabilities = capabilities,
-}

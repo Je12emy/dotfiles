@@ -83,6 +83,7 @@ require('packer').startup(function()
     use 'hrsh7th/cmp-nvim-lua'
 
     -- Language Specific Plugins
+    use 'simrat39/rust-tools.nvim'
 
     -- Journaling
     use 'vimwiki/vimwiki'
@@ -103,6 +104,7 @@ require('plugins/neoformat')
 require('plugins/nvim-cmp')
 require('plugins/nvim-dap')
 require('plugins/nvimtree')
-require('plugins/undotree')
+require('plugins/rust-tools')
 require('plugins/telescope')
+require('plugins/undotree')
 require('plugins/vimwiki')
