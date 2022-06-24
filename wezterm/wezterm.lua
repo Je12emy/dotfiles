@@ -40,8 +40,8 @@ return {
       { key = "z", mods = "LEADER", action = "TogglePaneZoomState" },
       { key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true }})},
       { key = "q", mods = 'LEADER', action = wezterm.action({ CloseCurrentTab = { confirm=true }})},
-      { key = "}", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=-1 }},
-      { key = "{", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=1 }},
+      { key = "{", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=-1 }},
+      { key = "}", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=1 }},
       { key = "n", mods = "LEADER", action = wezterm.action{ SpawnTab="CurrentPaneDomain" }},
   },
 }
