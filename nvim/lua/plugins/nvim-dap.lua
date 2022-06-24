@@ -1,8 +1,11 @@
-local dap, dapui = require("dap"), require("dapui")
+local dap = require("dap")
+local dapui = require("dapui")
+
+dapui.setup()
 
 vim.keymap.set('n', '<a-d>', dapui.toggle)
 vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
-vim.keymap.set('n', '<leader>B', "lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+-- vim.keymap.set('n', '<leader>B', dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')))
 vim.keymap.set('n', '<F1>', dap.step_back)
 vim.keymap.set('n', '<F2>', dap.step_into)
 vim.keymap.set('n', '<F3>', dap.step_over)
