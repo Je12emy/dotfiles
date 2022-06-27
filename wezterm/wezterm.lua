@@ -43,5 +43,8 @@ return {
       { key = "{", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=-1 }},
       { key = "}", mods = "LEADER", action = wezterm.action{ ActivateTabRelative=1 }},
       { key = "n", mods = "LEADER", action = wezterm.action{ SpawnTab="CurrentPaneDomain" }},
+      { key = "+", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+      { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+      { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
   },
 }
