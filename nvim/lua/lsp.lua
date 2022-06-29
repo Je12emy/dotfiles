@@ -21,3 +21,14 @@ require'lspconfig'.cssls.setup{
 }
 
 require'lspconfig'.tailwindcss.setup{}
+
+local pid = vim.fn.getpid()
+-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+local omnisharp_bin = "/home/jeremy/source/omnisharp-linux-x64-net6.0/OmniSharp"
+-- on Windows
+-- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
+require'lspconfig'.omnisharp.setup{
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
+    on_attach = tools.on_attach,
+    capabilities = capabilities,
+}
