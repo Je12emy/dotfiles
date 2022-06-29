@@ -12,19 +12,20 @@ local mappings = {
     { key = "R", action = "refresh" },
     { key = "y", action = "copy_name" },
     { key = "Y", action = "copy_path" },
-    { key = "gy", action = "copy_absolute_path" }
+    { key = "gy", action = "copy_absolute_path" },
+    { key = "U", action = "toggle_custom" },
 }
 
 require'nvim-tree'.setup {
   update_cwd = true,
   diagnostics = {
     enable = true,
-    show_on_dirs = true,
+    show_on_dirs = false,
   },
   hijack_cursor = true,
   filters = {
     dotfiles = true,
-    custom = { "node_modules" }
+    custom = { "node_modules", "dist", "build", "target" }
   },
   view = {
     width = '20%',
