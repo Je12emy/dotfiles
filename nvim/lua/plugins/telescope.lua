@@ -1,5 +1,5 @@
 require('telescope').setup {
-    file_ignore_patterns = {"dist/*", "node_modules/*"},
+    file_ignore_patterns = {"dist/*", "node_modules/*","build/*", "target/*", "*.png", "*.svg"},
     shorten_path = true,
     color_devicons = true,
     extensions = {
@@ -12,9 +12,6 @@ require('telescope').setup {
         },
     },
     pickers = {
-      buffers = {
-        theme = "dropdown",
-      }
     }
 }
 -- To get fzf loaded and working with telescope, you need to call
