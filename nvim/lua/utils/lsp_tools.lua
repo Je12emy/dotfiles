@@ -12,6 +12,9 @@ function tools.on_attach(client, bufnr)
     vim.keymap.set("n", "<Leader>ce", vim.diagnostic.open_float , { buffer = 0 })
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev , { buffer = 0 })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next , { buffer = 0 })
+    vim.keymap.set("n", "<Leader>dl", vim.diagnostic.setqflist , { buffer = 0 })
+    vim.keymap.set("n", "<Leader>dh", vim.diagnostic.hide , { buffer = 0 })
+    vim.keymap.set("n", "<Leader>ds", vim.diagnostic.show , { buffer = 0 })
 end
 
 
