@@ -15,7 +15,8 @@ require('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons'
     }
-    use 'notjedi/nvim-rooter.lua'
+    -- Rooter plugins mostly cause issues for me
+    -- use 'notjedi/nvim-rooter.lua'
     use 'kyazdani42/nvim-web-devicons'
 
     -- Telescope
@@ -24,6 +25,7 @@ require('packer').startup(function()
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- UI
+    -- Nice but I want a more minimalist config so these 2 arent needed
     -- use "hoob3rt/lualine.nvim"
     -- use {'akinsho/bufferline.nvim', 
     --      tag = "v2.*",
@@ -70,7 +72,7 @@ require('packer').startup(function()
 
     -- DAP
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    use 'leoluz/nvim-dap-go'
+    -- use 'leoluz/nvim-dap-go'
 
     -- Completition + Snippets
     use 'onsails/lspkind-nvim'
@@ -89,10 +91,11 @@ require('packer').startup(function()
     use 'vimwiki/vimwiki'
 end)
 
----- Configurations
+-- Plugin Configuration
 -- require('plugins/bufferline')
 require('plugins/colorizer')
 require('plugins/comment')
+require('plugins/dap')
 require('plugins/gitsigns')
 require('plugins/harpoon')
 require('plugins/kanagawa')
@@ -101,10 +104,8 @@ require("everybody-wants-that-line")
 -- require('plugins/lualine')
 require('plugins/luasnip')
 require('plugins/neoformat')
--- Rooter plugins mostly cause issues for me
 -- require('plugins/nvim-rooter')
 require('plugins/nvim-cmp')
-require('plugins/nvim-dap')
 require('plugins/nvimtree')
 require('plugins/rust-tools')
 require('plugins/telescope')
