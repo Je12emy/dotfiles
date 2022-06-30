@@ -23,8 +23,9 @@ local cmp = require'cmp'
     },
     sources = {
       { name = "nvim_lsp" },
-      { name = "buffer" },
       { name = "luasnip" },
+      { name = "buffer" },
+      { name = 'path' },
       { name = 'nvim_lua' }
     },
     formatting = {

@@ -75,15 +75,18 @@ require('packer').startup(function()
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     -- use 'leoluz/nvim-dap-go'
 
-    -- Completition + Snippets
-    use 'onsails/lspkind-nvim'
+    -- Snippets
     use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
     use "rafamadriz/friendly-snippets"
+    -- Completition
+    use 'hrsh7th/nvim-cmp'
+    -- Completition sources
+    use 'onsails/lspkind-nvim' -- Cool symbols
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-path'
+    use 'saadparwaiz1/cmp_luasnip'
 
     -- Language Specific Plugins
     use 'simrat39/rust-tools.nvim'
