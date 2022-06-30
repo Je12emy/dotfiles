@@ -55,6 +55,7 @@ require('packer').startup(function()
     use 'ThePrimeagen/harpoon'
     use 'sbdchd/neoformat'
     use 'mbbill/undotree'
+    use 'gyim/vim-boxdraw'
 
     -- Git
     use {
