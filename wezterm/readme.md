@@ -12,7 +12,10 @@ I defined some basic vim-like keybindings.
 | j   | LEADER | Move down         |
 | k   | LEADER | Move up           |
 | l   | LEADER | Move right        |
-| h   | LEADER | Move left         |
+| H   | LEADER | Rezie left        |
+| J   | LEADER | Resize down       |
+| K   | LEADER | Resize up         |
+| L   | LEADER | Resize right      |
 | z   | LEADER | Maximize pane     |
 | q   | LEADER | Close pane        |
 | x   | LEADER | Close tab         |
