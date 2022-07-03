@@ -12,7 +12,7 @@ return {
   line_height = 1.25,
   bold_brightens_ansi_colors = false,
   hide_tab_bar_if_only_one_tab = true,
-  padding = padding,
+  window_padding = padding,
   tab_bar_at_bottom = true,
   use_fancy_tab_bar = false,
   force_reverse_video_cursor = true,
