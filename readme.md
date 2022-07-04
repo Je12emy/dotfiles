@@ -20,7 +20,7 @@ My dotfiles are managed with [dotbot](https://github.com/anishathalye/dotbot)
 # To Do
 
 - [x] Migrate to ZSH maybe.
-- [ ] Neomutt.
+- [x] Neomutt.
 - [ ] Newsboat.
 - [ ] LF.
 - [x] Rofi.
