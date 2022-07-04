@@ -14,6 +14,7 @@
     ~/.config/wezterm: wezterm
     ~/.config/zsh: zsh
     ~/.zshenv: .zshenv
+    ~/.config/mutt: mutt
 
 - create:
   - ~/.config/scripts
