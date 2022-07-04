@@ -351,6 +351,9 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
 -- Utils 
 
+    awful.key({ modkey, "Shift" },   "s",     function () awful.util.spawn("rofi-pass") end,
+              {description = "run rofi pass", group = "launcher"}),
+
     awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("alacritty -e ./pulsemixer") end,
               {description = "open pulsemixer", group = "utilities"}),
 
