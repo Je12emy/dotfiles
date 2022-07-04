@@ -53,7 +53,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.ge
 beautiful.init(theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "wezterm"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -354,10 +354,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" },   "s",     function () awful.util.spawn("rofi-pass") end,
               {description = "run rofi pass", group = "launcher"}),
 
-    awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("alacritty -e ./pulsemixer") end,
+    awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("wezterm start ./pulsemixer") end,
               {description = "open pulsemixer", group = "utilities"}),
 
-    awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("alacritty -e lf") end,
+    awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("wezterm start lf") end,
               {description = "open lf", group = "utilities"}),
 
     awful.key({},   "Print",     function () awful.util.spawn("flameshot screen") end,
