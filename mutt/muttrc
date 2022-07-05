@@ -7,8 +7,11 @@ macro index,pager i1 '<sync-mailbox><enter-command>source /home/jeremy/.config/m
 # Settings
 set status_on_top = yes
 # Theme
+color index brightyellow default "~N"
+color index_author brightred default "~N"
+color index_subject brightcyan default "~N"
+
 color sidebar_divider default default
 color status black white
 color sidebar_new green default
 color sidebar_flagged red default
-
