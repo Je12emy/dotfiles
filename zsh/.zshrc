@@ -73,6 +73,12 @@ bindkey -s '^o' 'lfcd\n'
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+if exa --version >/dev/null 2>&1; then
+  alias lsl="exa --icons --sort=name --long --header"
+  alias lsla="exa --icons --all --sort=name --long --header"
+  alias ls="exa"
+fi
+
 # Plugins
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#in-your-zshrc
 source ~/source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
