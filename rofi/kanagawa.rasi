@@ -9,7 +9,7 @@
     font:   "JetBrainsMono Nerd Font 12";
 
     bg:    #181820;
-    fg:     #d8dee9;
+    fg:     #DCD7BA;
     accent:     #DCD7BA;
     urgent:    #FF5D62;
 
