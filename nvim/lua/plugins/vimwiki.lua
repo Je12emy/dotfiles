@@ -4,6 +4,7 @@ g.vimwiki_list = {{path = '~/Nextcloud/Notes', syntax = 'markdown', ext = '.md'}
 g.vimwiki_autochdir = 1
 g.vimwiki_global_ext = 0
 
+vim.cmd('autocmd FileType vimwiki set filetype=markdown')
 -- When navigating, this will autosave
 vim.cmd('autocmd FileType markdown set autowriteall')
 -- Some settings for note taking
