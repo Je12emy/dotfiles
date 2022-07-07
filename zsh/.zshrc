@@ -3,7 +3,6 @@
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
-export TERM='screen-256color'
 
 # Enable colors and change prompt:
 autoload -U colors && colors
