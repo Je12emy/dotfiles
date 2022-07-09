@@ -357,7 +357,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("wezterm start ./pulsemixer") end,
               {description = "open pulsemixer", group = "utilities"}),
 
-    awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("wezterm start lf") end,
+    awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("wezterm start lfub.sh") end,
               {description = "open lf", group = "utilities"}),
 
     awful.key({},   "Print",     function () awful.util.spawn("flameshot screen") end,
