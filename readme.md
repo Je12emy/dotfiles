@@ -22,5 +22,5 @@ My dotfiles are managed with [dotbot](https://github.com/anishathalye/dotbot)
 - [x] Migrate to ZSH maybe.
 - [x] Neomutt.
 - [ ] Newsboat.
-- [ ] LF.
+- [x] LF.
 - [x] Rofi.
