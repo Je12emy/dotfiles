@@ -1,21 +1,16 @@
 - defaults:
     link:
+      create: true
       relink: true
 
-- clean: ['~']
+- clean: ['~', '~/.config']
 
 - link:
+    ~/.config/: 
+      path: config/*
+      glob: true
     ~/.tmux.conf: tmux.conf
-    ~/.config/nvim: nvim
-    ~/.config/awesome: awesome
-    ~/.config/alacritty: alacritty
-    ~/.config/scripts: scripts
-    ~/.config/rofi: rofi
-    ~/.config/wezterm: wezterm
-    ~/.config/zsh: zsh
     ~/.zshenv: .zshenv
-    ~/.config/mutt: mutt
-    ~/.config/lf: lf
 
 - create:
   - ~/.config/scripts
