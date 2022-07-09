@@ -602,8 +602,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart
-awful.spawn.with_shell("~/.config/scripts/monitors.sh");
-awful.spawn.with_shell("~/.config/scripts/leds.sh");
+awful.spawn.with_shell("monitors.sh");
+awful.spawn.with_shell("leds.sh");
 awful.spawn.with_shell("nitrogen --restore");
 awful.spawn.with_shell("flatpak run com.nextcloud.desktopclient.nextcloud");
 -- awful.spawn.with_shell("wmname LG3D");

@@ -9,6 +9,9 @@
     ~/.config/: 
       path: config/*
       glob: true
+    ~/.local/bin:
+      path: scripts/*.sh
+      glob: true
     ~/.tmux.conf: tmux.conf
     ~/.zshenv: .zshenv
 
