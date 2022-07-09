@@ -1,0 +1,48 @@
+# Please check: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/lf/lfrc
+
+# Basic settings
+set cleaner '~/.config/lf/cleaner'
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set period 1
+set previewer '~/.config/lf/scope'
+set scrolloff 10
+set shell sh
+set shellopts '-eu'
+
+%mkdir -p ~/.trash
+
+# cmd/functions
+cmd open ${{
+    test -L $f && f=$(readlink -f $f)
+    case $(file --mime-type $f -b) in
+        text/*) $EDITOR $fx;;
+        audio/*) mpv --audio-display=no $f ;;
+        video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+        application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]: "
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+cmd trash %set -f; mv $fx ~/.trash
+
+# Bindings
+map <delete> trash
+map <enter> shell
+map A rename # at the very end
+map B bulkrename
+map D delete
+map I push A<c-a> # at the very beginning
+map O $mimeopen --ask $f
+map X !$f
+map a push A<a-b> # after extension
+map c push A<c-u> # new rename
+map i push A<a-b><a-b><a-f> # before extension
+map o &mimeopen $f
+map x $$f

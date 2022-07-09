@@ -15,6 +15,7 @@
     ~/.config/zsh: zsh
     ~/.zshenv: .zshenv
     ~/.config/mutt: mutt
+    ~/.config/lf: lf
 
 - create:
   - ~/.config/scripts

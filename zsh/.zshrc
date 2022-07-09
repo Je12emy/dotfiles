@@ -78,6 +78,8 @@ if exa --version >/dev/null 2>&1; then
   alias ls="exa"
 fi
 
+alias lf="lfub"
+
 # Plugins
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#in-your-zshrc
 source ~/source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
