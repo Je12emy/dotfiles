@@ -73,6 +73,7 @@ require('packer').startup(function()
 
     -- DAP
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use "theHamsta/nvim-dap-virtual-text"
     -- use 'leoluz/nvim-dap-go'
 
     -- Snippets
