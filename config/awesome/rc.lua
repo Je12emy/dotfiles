@@ -363,6 +363,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" },   "r",     function () awful.util.spawn("wezterm start newsboat") end,
               {description = "open newsboat", group = "utilities"}),
 
+    awful.key({ modkey, "Shift" },   "m",     function () awful.util.spawn("wezterm start neomutt") end,
+              {description = "open neomutt", group = "utilities"}),
+
     awful.key({},   "Print",     function () awful.util.spawn("flameshot screen") end,
               {description = "take a screenshot", group = "utilities"}),
 
