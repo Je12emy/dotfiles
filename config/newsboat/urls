@@ -1,7 +1,33 @@
-# queries
+# Blogs
+"query:Blogs:unread = \"yes\" and tags # \"blog\""
+https://dailystoic.com/feed/ blog "~Daily Stoic"
+https://lukesmith.xyz/rss.xml blog "~Luke Smith"
+# CR
+"query:CR:unread = \"yes\" and tags # \"cr\""
+https://costaricamedios.cr/rss cr "~13 Noticias"
+https://delfino.cr/rss cr "~Delfino"
+# Podcasts
+"query:Podcast:unread = \"yes\" and tags # \"podcast\""
+https://rss.art19.com/the-daily-stoic podcast "~The Daily Stoic Podcast"
+# Linux
+"query:Linux:unread = \"yes\" and tags # \"linux\""
+https://itsfoss.com/feed linux "~Its FOSS"
+# Youtube
+"query:Youtube:unread = \"yes\" and tags # \"youtube\""
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA youtube "~Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcvfHa-GHSOHFAjU0-Ie57A youtube "~Adam Something"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA youtube "~Brodie Robertson"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA youtube "~Mental Outlaw"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCq4YrlwwXwF74Z3g-VDae2w youtube "~Go Lang Cafe"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA youtube "~No BoilerPlate"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw youtube "~ThePrimeagen"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA youtube "~TJ DeVries"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg youtube "~DistroTube"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkUaT0T03TJvafYkfATM2Ag youtube "~Daily Stoic"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC55-mxUj5Nj3niXFReG44OQ youtube "~Platzi"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCacX6JAo1EpmxT91r6VH53g youtube "~Evan Carmichael"
+# Reddit
 "query:Reddit:unread = \"yes\" and tags # \"reddit\""
-
-# reddit
 https://www.reddit.com/r/linux.rss reddit "~r/linux"
 https://www.reddit.com/r/golang.rss reddit "~r/golang"
 https://www.reddit.com/r/Ticos.rss reddit "~r/Ticos"
@@ -11,10 +37,3 @@ https://www.reddit.com/r/news.rss reddit "~r/news"
 https://www.reddit.com/r/Stoicism.rss reddit "~r/Stoicism"
 https://www.reddit.com/r/programming.rss reddit "~r/programming"
 https://www.reddit.com/r/space.rss reddit "~r/space"
-# CR
-"query:CR:unread = \"yes\" and tags # \"cr\""
-https://costaricamedios.cr/rss cr "~13 Noticias"
-https://delfino.cr/rss cr "~Delfino"
-# Linux
-"query:Linux:unread = \"yes\" and tags # \"linux\""
-https://itsfoss.com/feed linux "~Its FOSS"
