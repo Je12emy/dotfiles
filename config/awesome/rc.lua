@@ -360,6 +360,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("wezterm start lfub.sh") end,
               {description = "open lf", group = "utilities"}),
 
+    awful.key({ modkey, "Shift" },   "r",     function () awful.util.spawn("wezterm start newsboat") end,
+              {description = "open newsboat", group = "utilities"}),
+
     awful.key({},   "Print",     function () awful.util.spawn("flameshot screen") end,
               {description = "take a screenshot", group = "utilities"}),
 

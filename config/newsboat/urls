@@ -1,0 +1,20 @@
+# queries
+"query:Reddit:unread = \"yes\" and tags # \"reddit\""
+
+# reddit
+https://www.reddit.com/r/linux.rss reddit "~r/linux"
+https://www.reddit.com/r/golang.rss reddit "~r/golang"
+https://www.reddit.com/r/Ticos.rss reddit "~r/Ticos"
+https://www.reddit.com/r/neovim.rss reddit "~r/neovim"
+https://www.reddit.com/r/AskMen.rss reddit "~r/AskMen"
+https://www.reddit.com/r/news.rss reddit "~r/news"
+https://www.reddit.com/r/Stoicism.rss reddit "~r/Stoicism"
+https://www.reddit.com/r/programming.rss reddit "~r/programming"
+https://www.reddit.com/r/space.rss reddit "~r/space"
+# CR
+"query:CR:unread = \"yes\" and tags # \"cr\""
+https://costaricamedios.cr/rss cr "~13 Noticias"
+https://delfino.cr/rss cr "~Delfino"
+# Linux
+"query:Linux:unread = \"yes\" and tags # \"linux\""
+https://itsfoss.com/feed linux "~Its FOSS"
