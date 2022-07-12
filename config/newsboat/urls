@@ -2,6 +2,7 @@
 "query:Blogs:unread = \"yes\" and tags # \"blog\""
 https://dailystoic.com/feed/ blog "~Daily Stoic"
 https://lukesmith.xyz/rss.xml blog "~Luke Smith"
+https://vimtricks.com/feed blog "~VIM Tips"
 # Programming
 "query:Programming:unread = \"yes\" and tags # \"programming\""
 https://golangdocs.com/feed programming "~Go Docs"
