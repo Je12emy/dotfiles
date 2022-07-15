@@ -1,6 +1,6 @@
 -- General
 vim.keymap.set('i', 'jk', '<Esc>')
-vim.keymap.set('n', 'S', ':%s//g<Left><Left>')
+vim.keymap.set('n', '<Space>S', ':%s//g<Left><Left>')
 
 -- Window Managament
 ---- Navigation 
