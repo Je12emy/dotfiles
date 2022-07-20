@@ -26,6 +26,7 @@ local cmp = require'cmp'
       { name = "luasnip" },
       { name = "buffer" },
       { name = 'path' },
+      { name = 'conventionalcommits' },
       { name = 'nvim_lua' }
     },
     formatting = {
@@ -35,6 +36,7 @@ local cmp = require'cmp'
 
         -- set a name for each source
         vim_item.menu = ({
+          conventionalcommits = "[CC]",
           luasnip   = "[SNIP]",
           nvim_lsp  = "[LSP]",
           buffer    = "[BUFF]",
