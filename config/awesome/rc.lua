@@ -53,7 +53,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.ge
 beautiful.init(theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "wezterm"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -354,16 +354,16 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" },   "s",     function () awful.util.spawn("rofi-pass") end,
               {description = "run rofi pass", group = "launcher"}),
 
-    awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("wezterm start ./pulsemixer") end,
+    awful.key({ modkey, "Shift" },   "v",     function () awful.util.spawn("kitty ./pulsemixer") end,
               {description = "open pulsemixer", group = "utilities"}),
 
-    awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("wezterm start lfub.sh") end,
+    awful.key({ modkey, "Shift" },   "f",     function () awful.util.spawn("kitty lfub.sh") end,
               {description = "open lf", group = "utilities"}),
 
-    awful.key({ modkey, "Shift" },   "r",     function () awful.util.spawn("wezterm start newsboat") end,
+    awful.key({ modkey, "Shift" },   "r",     function () awful.util.spawn("kitty newsboat") end,
               {description = "open newsboat", group = "utilities"}),
 
-    awful.key({ modkey, "Shift" },   "m",     function () awful.util.spawn("wezterm start neomutt") end,
+    awful.key({ modkey, "Shift" },   "m",     function () awful.util.spawn("kitty neomutt") end,
               {description = "open neomutt", group = "utilities"}),
 
     awful.key({},   "Print",     function () awful.util.spawn("flameshot screen") end,
