@@ -6,6 +6,7 @@ https://vimtricks.com/feed blog "~VIM Tips"
 # Programming
 "query:Programming:unread = \"yes\" and tags # \"programming\""
 https://golangdocs.com/feed programming "~Go Docs"
+https://api.dev.tube/rss programming "~ DevTube"
 # CR
 "query:CR:unread = \"yes\" and tags # \"cr\""
 https://costaricamedios.cr/rss cr "~13 Noticias"
