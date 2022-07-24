@@ -52,7 +52,7 @@ require('packer').startup(function()
     use 'nvim-treesitter/playground'
     use 'nvim-lua/plenary.nvim'
     use 'norcalli/nvim-colorizer.lua'
-    use 'ThePrimeagen/harpoon'
+    -- use 'ThePrimeagen/harpoon'
     use 'sbdchd/neoformat'
     use 'mbbill/undotree'
     use 'gyim/vim-boxdraw'
@@ -68,6 +68,8 @@ require('packer').startup(function()
 
     -- LSP
     use {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
       'neovim/nvim-lspconfig', 
     }
 
@@ -91,7 +93,7 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
 
     -- Language Specific Plugins
-    use 'simrat39/rust-tools.nvim'
+    -- use 'simrat39/rust-tools.nvim'
 
     -- Journaling
     use 'vimwiki/vimwiki'
@@ -114,7 +116,7 @@ require('plugins/neoformat')
 -- require('plugins/nvim-rooter')
 require('plugins/nvim-cmp')
 require('plugins/nvimtree')
-require('plugins/rust-tools')
+-- require('plugins/rust-tools')
 require('plugins/telescope')
 require('plugins/undotree')
 require('plugins/vimwiki')
