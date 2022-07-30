@@ -30,11 +30,13 @@ set.cursorline = true
 set.wrapscan = true
 set.spelllang = {'en', 'es'}
 set.colorcolumn = '80'
+-- Global status line
 set.laststatus = 3
 set.winbar = '%=%m %f'
 set.undodir = os.getenv("HOME") .. "/.undodir"
 set.undofile = true
--- set.cmdheight=0
+-- Remove space under the statusline
+set.cmdheight = 0
 -- move cursor to next line when line ends
 o.whichwrap = "b,s,<,>,[,],h,l"
 
@@ -42,6 +44,22 @@ o.whichwrap = "b,s,<,>,[,],h,l"
 o.splitbelow = true
 o.splitright = true
 o.completeopt = 'menuone,noselect'
+
+vim.api.nvim_create_autocmd('RecordingEnter', {
+    pattern = '*',
+    callback = function() vim.opt_local.cmdheight = 1 end
+})
+
+vim.api.nvim_create_autocmd('RecordingLeave', {
+    pattern = '*',
+    callback = function()
+        local timer = vim.loop.new_timer()
+        -- NOTE: Timer is here because we need to close cmdheight AFTER
+        -- the macro is ended, not during the Leave event
+        timer:start(50, 0, vim.schedule_wrap(
+                        function() vim.opt_local.cmdheight = 0 end))
+    end
+})
 
 local file_settings = {}
 -- General purpose settings for note taking
