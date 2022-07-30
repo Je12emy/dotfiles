@@ -1,2 +1,2 @@
-local settings = require 'settings'
+local settings = require 'je12emy.settings'
 settings.notes(vim.opt)

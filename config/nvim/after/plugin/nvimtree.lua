@@ -1,3 +1,7 @@
+local ok, nvimtree = pcall(require, 'nvim-tree')
+if not ok then
+  return
+end
 -- Vim-like mappings I guess
 local mappings = {
     { key = "o", action = "edit" },
@@ -16,7 +20,7 @@ local mappings = {
     { key = "U", action = "toggle_custom" },
 }
 
-require'nvim-tree'.setup {
+nvimtree.setup {
   update_cwd = true,
   diagnostics = {
     enable = true,

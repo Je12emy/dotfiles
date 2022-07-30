@@ -1,4 +1,8 @@
-require('telescope').setup {
+local ok, telescope = pcall(require, 'telescope')
+if not ok then
+  return
+end
+telescope.setup {
     file_ignore_patterns = {"dist/*", "node_modules/*","build/*", "target/*", "*.png", "*.svg"},
     shorten_path = true,
     color_devicons = true,
@@ -17,7 +21,6 @@ require('telescope').setup {
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
-
 -- Telescope mappings
 vim.keymap.set( 'n',   '<Leader>tf', ':Telescope find_files<CR>')
 vim.keymap.set( 'n',   '<Leader>tb', ':Telescope buffers<CR>')

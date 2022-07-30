@@ -25,6 +25,5 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
--- DAP configurations
--- Is there a shorter way to do this?
-require('plugins/dap/csharp')
+-- DAP configurations, could me changed through mason.nvim
+require('je12emy.dap.csharp')

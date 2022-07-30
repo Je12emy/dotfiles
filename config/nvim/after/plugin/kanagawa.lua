@@ -1,8 +1,12 @@
+local ok, kanagawa = pcall(require, 'kanagawa')
+if not ok then
+  return
+end
 local my_colors = {
     bg = '#181820', -- I like this darker background
 }
 -- Default options:
-require('kanagawa').setup({
+kanagawa.setup({
     undercurl = true,           -- enable undercurls
     commentStyle = { italic = true },
     functionStyle = { italic = true },
@@ -18,6 +22,5 @@ require('kanagawa').setup({
     colors = my_colors,
     overrides = {},
 })
-
 -- setup must be called before loading
 vim.cmd("colorscheme kanagawa")

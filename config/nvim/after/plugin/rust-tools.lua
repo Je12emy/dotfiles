@@ -1,8 +1,10 @@
-local tools = require 'utils/lsp_tools'
-
+local ok, rust_tools = pcall(require, 'rust-tools')
+if not ok then
+  return
+end
+local tools = require 'lsp/lsp-tools'
 local capabilities = tools.get_capabilities()
-
-require('rust-tools').setup({
+rust_tools.setup({
         dap = {
             adapter = {
                 type = 'executable',

@@ -1,9 +1,8 @@
-require('plugins/lsp-kind')
 require("mason").setup()
 require("mason-lspconfig").setup()
 
 local lsp = require 'lspconfig'
-local tools = require 'utils/lsp_tools'
+local tools = require 'je12emy.lsp.lsp-tools'
 
 local capabilities = tools.get_capabilities()
 

@@ -1,3 +1,7 @@
+local ok, lualine = pcall(require, 'lualine')
+if not ok then
+  return
+end
 local options = {
     theme = 'kanagawa',
     component_separators = { left = '', right = ''},
@@ -32,7 +36,7 @@ local sections = {
     lualine_z = {'location'}
 }
 
-require('lualine').setup({
+lualine.setup({
     options = options,
     sections = sections,
 })

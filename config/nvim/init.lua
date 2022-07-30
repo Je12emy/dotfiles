@@ -1,4 +1,1 @@
-require('keymaps')
-require('settings')
-require('plugins')
-require('lsp')
+require('je12emy')

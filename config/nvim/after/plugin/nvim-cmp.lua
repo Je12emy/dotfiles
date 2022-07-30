@@ -1,8 +1,12 @@
--- luasnip setup
-local luasnip = require 'luasnip'
+local ok, luasnip = pcall(require, 'luasnip')
+if not ok then
+  return
+end
 require("luasnip/loaders/from_vscode").lazy_load()
-
-local cmp = require'cmp'
+local ok, cmp = pcall(require, 'cmp')
+if not ok then
+  return
+end
   cmp.setup({
     snippet = {
       expand = function(args)
