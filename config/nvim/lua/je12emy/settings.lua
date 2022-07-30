@@ -8,9 +8,9 @@ set.syntax = 'on'
 set.mouse = 'a'
 set.termguicolors = true
 set.errorbells = false
-set.relativenumber =  true
-set.number =  true
-set.hidden =  true
+set.relativenumber = true
+set.number = true
+set.hidden = true
 set.tabstop = 4
 set.softtabstop = 4
 bo.swapfile = false
@@ -28,7 +28,7 @@ set.laststatus = 3
 o.timeoutlen = 3000
 set.cursorline = true
 set.wrapscan = true
-set.spelllang = {'en','es'}
+set.spelllang = {'en', 'es'}
 set.colorcolumn = '80'
 set.laststatus = 3
 set.winbar = '%=%m %f'
@@ -51,7 +51,7 @@ function file_settings.notes(file)
     file.wrap = true
     file.spell = true
     file.autowriteall = true
-    file.spelllang = { 'en', 'es' }
+    file.spelllang = {'en', 'es'}
 end
 
 return file_settings

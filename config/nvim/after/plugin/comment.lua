@@ -1,7 +1,5 @@
 local ok, comment = pcall(require, 'comment')
-if not ok then
-  return
-end
+if not ok then return end
 comment.setup {
     ---Add a space b/w comment and the line
     ---@type boolean
@@ -24,7 +22,7 @@ comment.setup {
         ---line-comment keymap
         line = 'gcc',
         ---block-comment keymap
-        block = 'gbc',
+        block = 'gbc'
     },
 
     ---LHS of operator-pending mappings in NORMAL + VISUAL mode
@@ -33,7 +31,7 @@ comment.setup {
         ---line-comment keymap
         line = 'gc',
         ---block-comment keymap
-        block = 'gb',
+        block = 'gb'
     },
 
     ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
@@ -48,7 +46,7 @@ comment.setup {
         extra = true,
         ---extended mapping
         ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-        extended = false,
+        extended = false
     },
 
     ---Pre-hook, called before commenting the line
@@ -57,5 +55,5 @@ comment.setup {
 
     ---Post-hook, called after commenting is done
     ---@type fun(ctx: Ctx)
-    post_hook = nil,
+    post_hook = nil
 }

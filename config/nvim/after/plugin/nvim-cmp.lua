@@ -1,53 +1,44 @@
 local ok, luasnip = pcall(require, 'luasnip')
-if not ok then
-  return
-end
+if not ok then return end
 require("luasnip/loaders/from_vscode").lazy_load()
 local ok, cmp = pcall(require, 'cmp')
-if not ok then
-  return
-end
-  cmp.setup({
+if not ok then return end
+cmp.setup({
     snippet = {
-      expand = function(args)
-        require('luasnip').lsp_expand(args.body)
-      end,
+        expand = function(args) require('luasnip').lsp_expand(args.body) end
     },
     mapping = {
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
-      ["<C-n>"] = cmp.mapping.select_next_item(),
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.close(),
-      ['<C-y>'] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      }
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
+        ['<C-y>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true
+        }
     },
     sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = 'path' },
-      { name = 'conventionalcommits' },
-      { name = 'nvim_lua' }
+        {name = "nvim_lsp"}, {name = "luasnip"}, {name = "buffer"},
+        {name = 'path'}, {name = 'conventionalcommits'}, {name = 'nvim_lua'}
     },
     formatting = {
-      format = function(entry, vim_item)
-        -- fancy icons and a name of kind
-        vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
+        format = function(entry, vim_item)
+            -- fancy icons and a name of kind
+            vim_item.kind = require("lspkind").presets.default[vim_item.kind] ..
+                                " " .. vim_item.kind
 
-        -- set a name for each source
-        vim_item.menu = ({
-          conventionalcommits = "[CC]",
-          luasnip   = "[SNIP]",
-          nvim_lsp  = "[LSP]",
-          buffer    = "[BUFF]",
-          nvim_lua  = "[NVIM]",
-        })[entry.source.name]
+            -- set a name for each source
+            vim_item.menu = ({
+                conventionalcommits = "[CC]",
+                luasnip = "[SNIP]",
+                nvim_lsp = "[LSP]",
+                buffer = "[BUFF]",
+                nvim_lua = "[NVIM]"
+            })[entry.source.name]
 
-        return vim_item
-      end,
-    },
-  })
+            return vim_item
+        end
+    }
+})

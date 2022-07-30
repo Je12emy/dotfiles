@@ -1,1 +1,1 @@
-vim.keymap.set( 'n',   '<a-u>', ':UndotreeToggle<CR>')
+vim.keymap.set('n', '<a-u>', ':UndotreeToggle<CR>')

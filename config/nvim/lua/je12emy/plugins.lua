@@ -1,22 +1,22 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd 'packadd packer.nvim'
+    fn.system({
+        'git', 'clone', '--depth', '1',
+        'https://github.com/wbthomason/packer.nvim', install_path
+    })
+    vim.cmd 'packadd packer.nvim'
 end
 -- Plugins list
 require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- Tree Explorer, might just remove it soon
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
+    use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
     -- Telescope
     use 'nvim-lua/popup.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- UI
     use "hoob3rt/lualine.nvim"
     -- Themes
@@ -25,13 +25,12 @@ require('packer').startup(function(use)
     use 'tpope/vim-surround'
     use 'numToStr/Comment.nvim'
     use 'sheerun/vim-polyglot'
-    use {'nvim-treesitter/nvim-treesitter',
-          run=':TSUpdate',
-          config = function()
-            require'nvim-treesitter.configs'.setup {
-              highlight = { enable = true }
-            }
-          end
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
+        end
     }
     use 'nvim-treesitter/playground'
     use 'nvim-lua/plenary.nvim'
@@ -39,22 +38,16 @@ require('packer').startup(function(use)
     use 'sbdchd/neoformat'
     use 'mbbill/undotree'
     -- Git
-    use {
-      'lewis6991/gitsigns.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim'
-      },
-    }
+    use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
     use 'tpope/vim-fugitive'
     use 'sindrets/diffview.nvim'
     -- LSP
     use {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      'neovim/nvim-lspconfig'
+        "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
+        'neovim/nvim-lspconfig'
     }
     -- DAP
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
     use "theHamsta/nvim-dap-virtual-text"
     -- use 'leoluz/nvim-dap-go'
     -- Snippets
@@ -74,5 +67,10 @@ require('packer').startup(function(use)
     -- use 'simrat39/rust-tools.nvim'
     -- Journaling
     use 'vimwiki/vimwiki'
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = {"markdown"} end,
+        ft = {"markdown"}
+    })
 end)
