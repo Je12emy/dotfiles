@@ -79,6 +79,7 @@ if exa --version >/dev/null 2>&1; then
 fi
 
 alias lf="lfub.sh"
+alias vimdiff="nvim -d"
 
 # Plugins
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#in-your-zshrc
