@@ -65,12 +65,4 @@ require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     -- Language Specific Plugins
     -- use 'simrat39/rust-tools.nvim'
-    -- Journaling
-    use 'vimwiki/vimwiki'
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = {"markdown"} end,
-        ft = {"markdown"}
-    })
 end)
