@@ -6,7 +6,32 @@ export BROWSER='firefox'
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# Prompt Settings
+declare -a PROMPTS
+PROMPTS=(
+    "∮"
+    "∯"
+    "≎"
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+)
+RANDOM=$$$(date +%s)
+ignition=${PROMPTS[$RANDOM % ${#RANDOM[*]}+1]}
+PROMPT='%F{yellow}%1~%f %F{green}$ignition%f '
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+## Git Settings
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%r%f'
+zstyle ':vcs_info:*' enable git
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
