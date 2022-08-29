@@ -37,9 +37,24 @@ require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use 'sbdchd/neoformat'
     use 'mbbill/undotree'
+    use {
+        'mrshmllow/document-color.nvim',
+        config = function()
+            require("document-color").setup {
+                -- Default options
+                mode = "background" -- "background" | "foreground" | "single"
+            }
+        end
+    }
     -- Git
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-    use 'tpope/vim-fugitive'
+    use {
+        'TimUntersberger/neogit',
+        config = function()
+            local neogit = require('neogit')
+            neogit.setup {}
+        end
+    }
     use 'sindrets/diffview.nvim'
     -- LSP
     use {
