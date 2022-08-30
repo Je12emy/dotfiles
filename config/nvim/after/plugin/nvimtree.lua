@@ -16,12 +16,10 @@ nvimtree.setup {
     update_cwd = true,
     diagnostics = {enable = true, show_on_dirs = false},
     hijack_cursor = true,
-    filters = {
-        dotfiles = true,
-        custom = {"node_modules", "dist", "target"}
-    },
+    filters = {dotfiles = true, custom = {"node_modules", "dist", "target"}},
     view = {
-        width = '20%',
+        hide_root_folder = true,
+        adaptive_size = true,
         side = 'right',
         mappings = {custom_only = true, list = mappings}
     }
