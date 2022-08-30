@@ -13,16 +13,17 @@ local mappings = {
 }
 
 nvimtree.setup {
+    hijack_unnamed_buffer_when_opening = true,
     update_cwd = true,
-    diagnostics = {enable = true, show_on_dirs = false},
     hijack_cursor = true,
-    filters = {dotfiles = true, custom = {"node_modules", "dist", "target"}},
+    filters = {dotfiles = false, custom = {"node_modules", "dist", "target"}},
+    git = {enable = false},
     view = {
-        hide_root_folder = true,
         adaptive_size = true,
         side = 'right',
         mappings = {custom_only = true, list = mappings}
-    }
+    },
+    renderer = {highlight_opened_files = "all"}
 }
 
 vim.keymap.set('n', '<a-t>', ':NvimTreeToggle<CR>')

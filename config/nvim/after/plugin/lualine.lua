@@ -1,11 +1,9 @@
 local ok, lualine = pcall(require, 'lualine')
-if not ok then
-  return
-end
+if not ok then return end
 local options = {
     theme = 'kanagawa',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = {left = '', right = ''},
+    section_separators = {left = '', right = ''}
 }
 
 -- branch (git branch)

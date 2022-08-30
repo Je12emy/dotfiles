@@ -19,11 +19,6 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- UI
     use "hoob3rt/lualine.nvim"
-    use {
-        'akinsho/bufferline.nvim',
-        tag = "v2.*",
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
     use "lukas-reineke/indent-blankline.nvim"
     -- Themes
     use 'rebelot/kanagawa.nvim'
