@@ -60,52 +60,6 @@ vim.api.nvim_create_autocmd('RecordingLeave', {
                         function() vim.opt_local.cmdheight = 0 end))
     end
 })
--- Winbar (for nvim 0.8+)
--- Check https://github.com/ecosse3/nvim/blob/master/lua/autocmds.lua#L15-L45
-if vim.fn.has('nvim-0.8') == 1 then
-  vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost" }, {
-    callback = function()
-      local winbar_filetype_exclude = {
-        "help",
-        "startify",
-        "dashboard",
-        "packer",
-        "neogitstatus",
-        "NvimTree",
-        "Trouble",
-        "alpha",
-        "lir",
-        "Outline",
-        "spectre_panel",
-        "TelescopePrompt",
-        "DressingInput",
-        "DressingSelect",
-        "neotest-summary",
-      }
-
-      if (vim.api.nvim_win_get_config(0).relative ~= "") then
-        return
-      end
-
-      if vim.bo.filetype == 'toggleterm' then
-        return
-      end
-
-      if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype) then
-        vim.opt_local.winbar = nil
-        return
-      end
-
-      if vim.bo.filetype == 'GitBlame' then
-        local hl_group = "EcovimSecondary"
-        vim.opt_local.winbar = " " .. "%#" .. hl_group .. "#" .. require('icons').git .. "Blame" .. "%*"
-        return
-      end
-
-      vim.opt_local.winbar = '%=%m %t'
-    end,
-  })
-end
 
 local file_settings = {}
 -- General purpose settings for note taking
