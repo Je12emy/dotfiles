@@ -18,7 +18,7 @@ nvimtree.setup {
     hijack_cursor = true,
     filters = {
         dotfiles = true,
-        custom = {"node_modules", "dist", "build", "target"}
+        custom = {"node_modules", "dist", "target"}
     },
     view = {
         width = '20%',
