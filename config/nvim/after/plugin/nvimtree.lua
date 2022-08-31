@@ -21,7 +21,8 @@ nvimtree.setup {
     view = {
         adaptive_size = true,
         side = 'right',
-        mappings = {custom_only = true, list = mappings}
+        mappings = {custom_only = true, list = mappings},
+        hide_root_folder = true,
     },
     renderer = {highlight_opened_files = "all"}
 }
