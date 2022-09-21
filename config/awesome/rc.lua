@@ -356,8 +356,8 @@ end, {description = "open lf", group = "utilities"}),
 end, {description = "open newsboat", group = "utilities"}),
 
                               awful.key({modkey, "Shift"}, "m", function()
-    awful.util.spawn("kitty neomutt")
-end, {description = "open neomutt", group = "utilities"}),
+    awful.util.spawn("mailspring")
+end, {description = "open mailspring", group = "utilities"}),
 
                               awful.key({}, "Print", function()
     awful.util.spawn("flameshot screen")
@@ -574,7 +574,7 @@ client.connect_signal("unfocus",
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
 awful.spawn.with_shell("leds.sh");
--- awful.spawn.with_shell("nitrogen --restore");
+awful.spawn.with_shell("feh --bg-scale ~/Pictures/wallpapers/vaporwave_dark.jpg ");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
 awful.spawn.single_instance("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &");
 -- awful.spawn.with_shell("wmname LG3D");
