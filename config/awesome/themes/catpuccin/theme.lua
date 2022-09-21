@@ -17,17 +17,15 @@ theme.dir  = os.getenv("HOME") .. "/.config/awesome/themes/catpuccin"
 -- Background colors
 local bg        = "#1e1e2e"
 local bg_red    = "#f38ba8"
-
--- Foreground colors
 local fg        = "#cdd6f4"
-local fg_red    = "#fb4934"
+local blue      = "#89b4fa"
 
 theme.font          = "JetBrainsMono Nerd Font 10"
 
 theme.bg_normal     = bg
 theme.bg_focus      = bg
 theme.bg_urgent     = bg_red
-theme.bg_minimize   = fg
+theme.bg_minimize   = blue
 theme.bg_systray    = bg
 
 theme.fg_normal     = fg
@@ -36,12 +34,12 @@ theme.fg_urgent     = fg
 theme.fg_minimize   = bg
 
 theme.useless_gap   = dpi(4)
-theme.border_width  = dpi(1.4)
+theme.border_width  = dpi(1.5)
 theme.border_normal = bg
-theme.border_focus  = fg
+theme.border_focus  = blue
 theme.border_marked = bg_red
 
-theme.taglist_bg_focus = fg;
+theme.taglist_bg_focus = blue;
 theme.taglist_fg_focus = bg;
 
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
@@ -75,7 +73,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."default/background.png"
+theme.wallpaper = themes_path.."themes/vaporwave_dark.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

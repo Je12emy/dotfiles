@@ -574,7 +574,7 @@ client.connect_signal("unfocus",
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
 awful.spawn.with_shell("leds.sh");
-awful.spawn.with_shell("nitrogen --restore");
+-- awful.spawn.with_shell("nitrogen --restore");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
 awful.spawn.single_instance("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &");
 -- awful.spawn.with_shell("wmname LG3D");
