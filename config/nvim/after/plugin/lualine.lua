@@ -1,8 +1,8 @@
 local ok, lualine = pcall(require, 'lualine')
 if not ok then return end
 local options = {
-    component_separators = {left = '', right = ''},
-    section_separators = {left = '', right = ''}
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' }
 }
 
 -- branch (git branch)
@@ -25,12 +25,12 @@ local options = {
 -- +-------------------------------------------------+
 
 local sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
 }
 
 lualine.setup({
