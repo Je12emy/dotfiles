@@ -22,6 +22,8 @@ require('packer').startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
     -- Themes
     use 'rebelot/kanagawa.nvim'
+    use 'ellisonleao/gruvbox.nvim'
+    use 'catppuccin/nvim'
     -- Utils
     use 'tpope/vim-surround'
     use 'numToStr/Comment.nvim'

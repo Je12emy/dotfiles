@@ -44,6 +44,13 @@ o.whichwrap = "b,s,<,>,[,],h,l"
 o.splitbelow = true
 o.splitright = true
 o.completeopt = 'menuone,noselect'
+set.filetype = "on"
+
+-- TODO make this auto command work in ftdetect
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.astro",
+    command = "set filetype=astro"
+})
 
 vim.api.nvim_create_autocmd('RecordingEnter', {
     pattern = '*',
