@@ -20,7 +20,7 @@ local bg_red    = "#f38ba8"
 local fg        = "#cdd6f4"
 local blue      = "#89b4fa"
 
-theme.font          = "JetBrainsMono Nerd Font 10"
+theme.font          = "JetBrainsMono Nerd Font 12"
 
 theme.bg_normal     = bg
 theme.bg_focus      = bg
@@ -73,7 +73,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."themes/vaporwave_dark.jpg"
+-- theme.wallpaper = themes_path.."themes/wallpapers/vaporwave_dark.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
