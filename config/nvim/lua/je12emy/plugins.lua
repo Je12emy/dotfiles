@@ -51,14 +51,6 @@ require('packer').startup(function(use)
     }
     -- Git
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-    use {
-        'TimUntersberger/neogit',
-        config = function()
-            local neogit = require('neogit')
-            neogit.setup {}
-        end
-    }
-    use 'sindrets/diffview.nvim'
     -- LSP
     use {
         "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
