@@ -83,4 +83,5 @@ require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     -- Language Specific Plugins
     -- use 'simrat39/rust-tools.nvim'
+    use 'jose-elias-alvarez/typescript.nvim'
 end)

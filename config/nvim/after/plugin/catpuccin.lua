@@ -22,7 +22,12 @@ catpuccin.setup({
     },
     integrations = {
         -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
-        indent_blankline = {enabled = true, colored_indent_levels = false}
+        indent_blankline = {enabled = true, colored_indent_levels = true},
+        nvimtree = true,
+        telescope = true,
+        treesitter = true,
+        cmp = true,
+        gitsigns = true,
     },
     color_overrides = {},
     highlight_overrides = {}
