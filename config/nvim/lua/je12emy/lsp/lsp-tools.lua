@@ -1,10 +1,6 @@
 local tools = {}
 
 function tools.on_attach(client, bufnr)
-    if client.server_capabilities.colorProvider then
-        -- Attach document colour support
-        require("document-color").buf_attach(bufnr)
-    end
     -- Set up buffer-local keymaps (vim.api.nvim_buf_set_keymap()), etc.
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = 0})
     vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.rename, {buffer = 0})
@@ -25,7 +21,6 @@ function tools.get_capabilities(client, bufnr)
     -- nvim-cmp supports additional completion capabilities
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.colorProvider = {dynamicRegistration = true}
     return capabilities
 end
 
