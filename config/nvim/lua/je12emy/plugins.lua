@@ -11,6 +11,7 @@ end
 require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'nvim-lua/plenary.nvim'
     -- Tree Explorer, might just remove it soon
     use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
     -- Telescope
@@ -36,12 +37,11 @@ require('packer').startup(function(use)
         end
     }
     use 'nvim-treesitter/playground'
-    use 'nvim-lua/plenary.nvim'
     use 'norcalli/nvim-colorizer.lua'
     use 'sbdchd/neoformat'
     use 'mbbill/undotree'
     -- Git
-    use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
+    use {'lewis6991/gitsigns.nvim'}
     -- LSP
     use {
         "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
@@ -62,7 +62,6 @@ require('packer').startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-path'
-    use 'davidsierradz/cmp-conventionalcommits'
     use 'saadparwaiz1/cmp_luasnip'
     -- Language Specific Plugins
     -- use 'simrat39/rust-tools.nvim'
