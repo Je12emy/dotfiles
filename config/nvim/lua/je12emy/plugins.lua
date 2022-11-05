@@ -19,12 +19,12 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- UI
     use "hoob3rt/lualine.nvim"
-    use "lukas-reineke/indent-blankline.nvim"
     -- Themes
     use 'rebelot/kanagawa.nvim'
     use 'ellisonleao/gruvbox.nvim'
     use 'catppuccin/nvim'
     -- Utils
+    use 'cbochs/grapple.nvim'
     use 'tpope/vim-surround'
     use 'numToStr/Comment.nvim'
     use 'sheerun/vim-polyglot'
@@ -57,8 +57,8 @@ require('packer').startup(function(use)
         'neovim/nvim-lspconfig'
     }
     -- DAP
-    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
-    use "theHamsta/nvim-dap-virtual-text"
+    -- use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    -- use "theHamsta/nvim-dap-virtual-text"
     -- use 'leoluz/nvim-dap-go'
     -- Snippets
     use 'L3MON4D3/LuaSnip'

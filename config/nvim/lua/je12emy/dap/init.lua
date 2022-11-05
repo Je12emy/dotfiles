@@ -1,4 +1,5 @@
-local dap = require("dap")
+local ok, dap = pcall(require, 'indent_blankline')
+if not ok then return end
 local dapui = require("dapui")
 require("nvim-dap-virtual-text").setup()
 
