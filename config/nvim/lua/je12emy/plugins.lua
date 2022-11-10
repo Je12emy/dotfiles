@@ -20,6 +20,7 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     -- UI
     use 'hoob3rt/lualine.nvim'
+    use 'mkitt/tabline.vim'
     -- use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
     -- Themes
     use 'rebelot/kanagawa.nvim'
