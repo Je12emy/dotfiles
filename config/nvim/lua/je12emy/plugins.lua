@@ -53,7 +53,7 @@ require('packer').startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'saadparwaiz1/cmp_luasnip'
     -- Language Specific Plugins
-    -- use 'simrat39/rust-tools.nvim'
+    use 'simrat39/rust-tools.nvim'
     use 'jose-elias-alvarez/typescript.nvim'
     -- DAP
     -- use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
