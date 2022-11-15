@@ -5,4 +5,4 @@ g.netrw_banner = 0
 -- 3 - open files in a new tab
 -- 4 - open in previous window
 g.netrw_browse_split = 2
-vim.keymap.set('n', '<a-e>', '<cmd>Explore<CR>')
+-- vim.keymap.set('n', '<a-e>', '<cmd>Explore<CR>')
