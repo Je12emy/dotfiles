@@ -39,6 +39,8 @@ require('packer').startup(function(use)
     use 'mbbill/undotree'
     -- Git
     use 'lewis6991/gitsigns.nvim'
+    use 'kdheepak/lazygit.nvim' -- Lazygit has become quite usefull tbh
+    use {'sindrets/diffview.nvim', requires='nvim-tree/nvim-web-devicons'}
     -- LSP
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
