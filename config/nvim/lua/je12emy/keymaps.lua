@@ -4,10 +4,10 @@ vim.keymap.set('n', '<Space>S', ':%s//g<Left><Left>')
 
 -- Window Managament
 ---- Navigation 
-vim.keymap.set('n', '<c-h>', '<cmd>wincmd h<CR>')
-vim.keymap.set('n', '<c-j>', '<cmd>wincmd j<CR>')
-vim.keymap.set('n', '<c-l>', '<cmd>wincmd l<CR>')
-vim.keymap.set('n', '<c-k>', '<cmd>wincmd k<CR>')
+-- vim.keymap.set('n', '<c-h>', '<cmd>wincmd h<CR>')
+-- vim.keymap.set('n', '<c-j>', '<cmd>wincmd j<CR>')
+-- vim.keymap.set('n', '<c-l>', '<cmd>wincmd l<CR>')
+-- vim.keymap.set('n', '<c-k>', '<cmd>wincmd k<CR>')
 ---- Splits
 vim.keymap.set('n', '<Space>wv', '<C-w>v<CR>')
 vim.keymap.set('n', '<Space>ws', '<C-w>s<CR>')

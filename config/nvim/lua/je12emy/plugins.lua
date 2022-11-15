@@ -32,7 +32,7 @@ require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-context'
-    -- use 'alexghergh/nvim-tmux-navigation'
+    use 'alexghergh/nvim-tmux-navigation'
     use 'ThePrimeagen/harpoon'
     -- use 'norcalli/nvim-colorizer.lua'
     use 'sbdchd/neoformat'
