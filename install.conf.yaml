@@ -12,7 +12,6 @@
     ~/.local/bin:
       path: scripts/*.sh
       glob: true
-    ~/.tmux.conf: tmux.conf
     ~/.zshenv: .zshenv
 
 - create:
