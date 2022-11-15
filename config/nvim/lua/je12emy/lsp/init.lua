@@ -30,5 +30,3 @@ require("typescript").setup({
         on_attach = tools.on_attach
     }
 })
-
-require('rust-tools').setup({ server = { on_attach = tools.on_attach } })

@@ -1,6 +1,6 @@
 local ok, rust_tools = pcall(require, 'rust-tools')
 if not ok then return end
-local tools = require 'lsp/lsp-tools'
+local tools = require 'je12emy/lsp/lsp-tools'
 local capabilities = tools.get_capabilities()
 rust_tools.setup({
     dap = {
