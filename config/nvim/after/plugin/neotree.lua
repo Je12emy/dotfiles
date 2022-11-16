@@ -3,10 +3,10 @@ if not ok then return end
 
 neotree.setup({
     window = {
-        position = "float",
+        position = "current",
         mapping_options = {noremap = true, nowait = true}
     },
     hijack_netrw_behavior = "open_default"
 })
 
-vim.keymap.set('n', '<a-e>', '<cmd>NeoTreeFloatToggle<CR>')
+vim.keymap.set('n', '<a-e>', '<cmd>NeoTreeRevealToggle<CR>')
