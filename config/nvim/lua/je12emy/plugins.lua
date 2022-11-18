@@ -17,19 +17,19 @@ require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use 'sheerun/vim-polyglot'
     -- Telescope stuff
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     -- UI
     use 'hoob3rt/lualine.nvim'
     use 'mkitt/tabline.vim'
     use {
-      "nvim-neo-tree/neo-tree.nvim",
+        "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
-        requires = { 
-          "nvim-lua/plenary.nvim",
-          "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-          "MunifTanjim/nui.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
         }
-      }
+    }
     -- use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
     -- Themes
     use 'rebelot/kanagawa.nvim'
@@ -38,7 +38,7 @@ require('packer').startup(function(use)
     -- Utils
     use 'tpope/vim-surround'
     use 'numToStr/Comment.nvim'
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'alexghergh/nvim-tmux-navigation'
@@ -49,7 +49,7 @@ require('packer').startup(function(use)
     -- Git
     use 'lewis6991/gitsigns.nvim'
     use 'kdheepak/lazygit.nvim' -- Lazygit has become quite usefull tbh
-    use {'sindrets/diffview.nvim', requires='nvim-tree/nvim-web-devicons'}
+    use { 'sindrets/diffview.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     -- LSP
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
@@ -69,7 +69,7 @@ require('packer').startup(function(use)
     use 'simrat39/rust-tools.nvim'
     use 'jose-elias-alvarez/typescript.nvim'
     -- DAP
-    -- use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     -- use "theHamsta/nvim-dap-virtual-text"
     -- use 'leoluz/nvim-dap-go'
 end)
