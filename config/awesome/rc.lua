@@ -344,7 +344,7 @@ awful.key({modkey, "Shift"}, "s", function() awful.util.spawn("rofi-pass") end,
           {description = "run rofi pass", group = "launcher"}),
 
                               awful.key({modkey, "Shift"}, "v", function()
-    awful.util.spawn("kitty ./pulsemixer")
+    awful.util.spawn("kitty pulsemixer")
 end, {description = "open pulsemixer", group = "utilities"}),
 
                               awful.key({modkey, "Shift"}, "f", function()
@@ -573,10 +573,10 @@ client.connect_signal("unfocus",
 
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
-awful.spawn.with_shell("leds.sh");
-awful.spawn.with_shell("feh --bg-scale ~/Pictures/wallpapers/nebula.jpg");
+-- awful.spawn.with_shell("leds.sh");
+awful.spawn.with_shell("feh --bg-scale ~/Pictures/Wallpapers/death_astronaut.jpg");
 -- awful.spawn.with_shell("picom");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
-awful.spawn.single_instance("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &");
-awful.spawn.single_instance("mailsprint");
+awful.spawn.single_instance("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &");
+awful.spawn.single_instance("flatpak run com.getmailspring.Mailspring");
 -- awful.spawn.with_shell("wmname LG3D");
