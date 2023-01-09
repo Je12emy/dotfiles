@@ -1,7 +1,7 @@
 # This uses Luke Smith's configuration as a starter point
 
 export EDITOR='nvim'
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 export BROWSER='firefox'
 
 # Enable colors and change prompt:
@@ -108,4 +108,4 @@ alias vimdiff="nvim -d"
 
 # Plugins
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#in-your-zshrc
-source ~/source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
