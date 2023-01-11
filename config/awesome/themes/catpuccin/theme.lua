@@ -95,7 +95,7 @@ theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
 -- tasklist
 theme.tasklist_disable_icon = true
-theme.systray_icon_spacing = dpi(2)
+theme.systray_icon_spacing = dpi(2.5)
 
 -- tooltip
 theme.notification_width = dpi(448)
