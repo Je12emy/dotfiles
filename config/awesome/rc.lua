@@ -6,7 +6,9 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 
+-- Modules, order is important
 require("modules.error-management")
+require("modules.variables")
 local keymaps = require("modules.keymaps")
 local taglist = require("modules.taglist")
 
@@ -26,17 +28,6 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
-
--- {{{ Variable definitions
--- -- Themes define colours, icons, font and wallpapers.
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua",
-    os.getenv("HOME"), "catpuccin")
-beautiful.init(theme_path)
-
--- This is used later as the default terminal and editor to run.
-terminal = "kitty"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
 
 net_wired = net_widgets.indicator({
     interfaces = { "enp3s0" },
