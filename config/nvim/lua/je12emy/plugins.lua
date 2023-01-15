@@ -43,12 +43,13 @@ require('packer').startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'alexghergh/nvim-tmux-navigation'
     use 'ThePrimeagen/harpoon'
+    use 'github/copilot.vim'
     -- use 'norcalli/nvim-colorizer.lua'
     use 'sbdchd/neoformat'
     use 'mbbill/undotree'
     -- Git
     use 'lewis6991/gitsigns.nvim'
-    use 'kdheepak/lazygit.nvim' -- Lazygit has become quite usefull tbh
+    use 'tpope/vim-fugitive'
     use { 'sindrets/diffview.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     -- LSP
     use 'williamboman/mason.nvim'
@@ -68,6 +69,7 @@ require('packer').startup(function(use)
     -- Language Specific Plugins
     use 'simrat39/rust-tools.nvim'
     use 'jose-elias-alvarez/typescript.nvim'
+    use 'wuelnerdotexe/vim-astro'
     -- DAP
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     -- use "theHamsta/nvim-dap-virtual-text"
