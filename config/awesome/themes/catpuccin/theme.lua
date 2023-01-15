@@ -16,28 +16,28 @@ theme.dir  = os.getenv("HOME") .. "/.config/awesome/themes/catpuccin"
 
 -- Background colors
 local bg        = "#1e1e2e"
-local bg_red    = "#f38ba8"
 local fg        = "#cdd6f4"
 local blue      = "#89b4fa"
+local red    = "#f38ba8"
 
 theme.font          = "JetBrainsMono Nerd Font 12"
 
 theme.bg_normal     = bg
 theme.bg_focus      = bg
-theme.bg_urgent     = bg_red
+theme.bg_urgent     = bg
 theme.bg_minimize   = blue
 theme.bg_systray    = bg
 
 theme.fg_normal     = fg
 theme.fg_focus      = fg
-theme.fg_urgent     = fg
+theme.fg_urgent     = red
 theme.fg_minimize   = bg
 
 theme.useless_gap   = dpi(4)
 theme.border_width  = dpi(1.5)
 theme.border_normal = bg
 theme.border_focus  = blue
-theme.border_marked = bg_red
+theme.border_marked = red
 
 -- theme.taglist_bg_focus = blue;
 -- theme.taglist_fg_focus = bg;
