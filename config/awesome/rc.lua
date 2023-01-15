@@ -6,9 +6,9 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 
-require("error-management")
-local keymaps = require("keymaps")
-local taglist = require("taglist")
+require("modules.error-management")
+local keymaps = require("modules.keymaps")
+local taglist = require("modules.taglist")
 
 -- Widget and layout library
 local wibox = require("wibox")
