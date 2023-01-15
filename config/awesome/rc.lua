@@ -1,7 +1,6 @@
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
-
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -144,17 +143,84 @@ mytextclock = wibox.widget.textclock("%a %d %b, %I:%M %p")
 
 -- Create a wibox for each screen and add it
 -- Actions for pressing a button in the taglist
-local taglist_buttons = gears.table.join(
-    awful.button({}, 1, function(t) t:view_only() end),
-    awful.button({ modkey }, 1, function(t)
-        if client.focus then client.focus:move_to_tag(t) end
-    end), awful.button({}, 3, awful.tag.viewtoggle),
-    awful.button({ modkey }, 3, function(t)
-        if client.focus then client.focus:toggle_tag(t) end
-    end), awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
-    awful.button({}, 5, function(t)
-        awful.tag.viewprev(t.screen)
-    end))
+-- local taglist_buttons = gears.table.join(
+--     awful.button({}, 1, function(t) t:view_only() end),
+--     awful.button({ modkey }, 1, function(t)
+--         if client.focus then client.focus:move_to_tag(t) end
+--     end), awful.button({}, 3, awful.tag.viewtoggle),
+--     awful.button({ modkey }, 3, function(t)
+--         if client.focus then client.focus:toggle_tag(t) end
+--     end), awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
+--     awful.button({}, 5, function(t)
+--         awful.tag.viewprev(t.screen)
+--     end))
+
+local get_taglist = function(s)
+    local taglist_buttons = gears.table.join(
+        awful.button({}, 1, function(t) t:view_only() end),
+        awful.button({ modkey }, 1, function(t)
+            if client.focus then client.focus:move_to_tag(t) end
+        end), awful.button({}, 3, awful.tag.viewtoggle),
+        awful.button({ modkey }, 3, function(t)
+            if client.focus then client.focus:toggle_tag(t) end
+        end), awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
+        awful.button({}, 5, function(t)
+            awful.tag.viewprev(t.screen)
+        end))
+    -- Icons
+    local unfocus_icon = " "
+    local unfocus_color = "#a6adc8"
+
+    local empty_icon = " "
+    local empty_color = "#585b70"
+
+    local focus_icon = " "
+    local focus_color = "#89b4fa"
+
+    -- Function to update the tags
+    local update_tags = function(self, c3)
+        local tagicon = self:get_children_by_id('icon_role')[1]
+        if c3.selected then
+            tagicon.text = focus_icon
+            self.fg = focus_color
+        elseif #c3:clients() == 0 then
+            tagicon.text = empty_icon
+            self.fg = empty_color
+        else
+            tagicon.text = unfocus_icon
+            self.fg = unfocus_color
+        end
+    end
+
+    local icon_taglist = awful.widget.taglist {
+        screen = s,
+        filter = awful.widget.taglist.filter.all,
+        layout = { spacing = 0, layout = wibox.layout.fixed.horizontal },
+        widget_template = {
+            {
+                { id = 'icon_role', font = "FuraMono Nerd Font 12", widget = wibox.widget.textbox },
+                id = 'margin_role',
+                top = 0,
+                bottom = 0,
+                left = 2,
+                right = 2,
+                widget = wibox.container.margin
+            },
+            id = 'background_role',
+            widget = wibox.container.background,
+            create_callback = function(self, c3, index, objects)
+                update_tags(self, c3)
+            end,
+
+            update_callback = function(self, c3, index, objects)
+                update_tags(self, c3)
+            end
+        },
+        buttons = taglist_buttons
+    }
+
+    return icon_taglist
+end
 
 -- local tasklist_buttons = gears.table.join(
 --     awful.button({}, 1, function(c)
@@ -184,19 +250,19 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 local my_systray = wibox.widget {
-  {
     {
-      wibox.widget.systray(),
-      top    = 4,
-      bottom = 4,
-      right  = 4,
-      left   = 4,
-      widget = wibox.container.margin,
+        {
+            wibox.widget.systray(),
+            top    = 4,
+            bottom = 4,
+            right  = 4,
+            left   = 4,
+            widget = wibox.container.margin,
+        },
+        widget = wibox.container.background,
     },
-    widget = wibox.container.background,
-  },
-  left = 3,
-  widget = wibox.container.margin,
+    left = 3,
+    widget = wibox.container.margin,
 }
 
 awful.screen.connect_for_each_screen(function(s)
@@ -217,13 +283,8 @@ awful.screen.connect_for_each_screen(function(s)
         awful.button({}, 3, function() awful.layout.inc(-1) end),
         awful.button({}, 4, function() awful.layout.inc(1) end),
         awful.button({}, 5, function() awful.layout.inc(-1) end)))
-    -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
-    }
 
+    s.mytaglist = get_taglist(s)
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen = s,
@@ -612,7 +673,7 @@ client.connect_signal("unfocus",
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
 -- awful.spawn.with_shell("leds.sh");
-awful.spawn.with_shell("feh --bg-scale ~/Pictures/Wallpapers/death_astronaut.jpg");
+awful.spawn.with_shell("feh --bg-scale ~/Pictures/Wallpapers/street.jpg");
 -- awful.spawn.with_shell("picom");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
 awful.spawn.single_instance("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &");
