@@ -16,7 +16,7 @@ theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/catpuccin"
 theme.wallpaper = files.pick_wallpaper(theme.dir .. "/wallpapers")
 
 -- Background colors
-local bg   = "#1e1e2e"
+local bg   = "#11111b"
 local fg   = "#cdd6f4"
 local blue = "#89b4fa"
 local red  = "#f38ba8"
