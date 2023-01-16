@@ -5,7 +5,6 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
-
 -- Modules, order is important
 require("modules.error-management")
 require("modules.variables")
@@ -137,7 +136,7 @@ awful.screen.connect_for_each_screen(function(s)
                 layout = wibox.layout.fixed.horizontal,
                 spacing = 5,
                 wibox.widget.textbox(" "),
-                mylauncher,
+                -- mylauncher,
                 s.mytaglist,
                 s.mypromptbox,
             },
@@ -302,7 +301,6 @@ client.connect_signal("unfocus",
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
 -- awful.spawn.with_shell("leds.sh");
-awful.spawn.with_shell("feh --bg-scale ~/Pictures/Wallpapers/street.jpg");
 -- awful.spawn.with_shell("picom");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
 awful.spawn.single_instance("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &");
