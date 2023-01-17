@@ -115,7 +115,7 @@ local globalkeys = gears.table.join(awful.key({ modkey }, "s", hotkeys_popup.sho
         { description = "run rofi pass", group = "launcher" }),
 
     awful.key({ modkey, "Shift" }, "v", function()
-        awful.util.spawn("kitty pulsemixer")
+        awful.util.spawn(" kitty --name pulsemixer --class pulsemixer --title pulsemixer pulsemixer")
     end, { description = "open pulsemixer", group = "utilities" }),
 
     awful.key({ modkey, "Shift" }, "f", function()
