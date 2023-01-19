@@ -233,6 +233,8 @@ awful.rules.rules = {
         properties = { screen = 1, tag = "1" } },
     { rule = { class = "Firefox" },
         properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Fluentreader" },
+        properties = { screen = 1, tag = "7" } },
     { rule = { class = "Mailspring" },
         properties = { screen = 1, tag = "8" } },
     { rule = { class = "Spotify" },
@@ -304,8 +306,8 @@ client.connect_signal("unfocus",
 
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
-awful.spawn.single_instance("firefox &");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
 awful.spawn.single_instance("flatpak run com.getmailspring.Mailspring");
+awful.spawn.single_instance("flatpak run me.hyliu.fluentreader");
 awful.spawn.single_instance("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &");
 -- awful.spawn.with_shell("wmname LG3D");
