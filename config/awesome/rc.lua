@@ -229,7 +229,7 @@ awful.rules.rules = {
         rule_any = { type = { "normal", "dialog" } },
         properties = { titlebars_enabled = false }
     },
-    { rule = { class = "kitty" },
+    { rule = { class = "tmux" },
         properties = { screen = 1, tag = "1" } },
     { rule = { class = "firefox" },
         properties = { screen = 1, tag = "2" } },
@@ -306,6 +306,7 @@ client.connect_signal("unfocus",
 
 -- Autostart
 awful.spawn.with_shell("monitors.sh");
+awful.spawn("kitty --name tmux --class tmux --title tmux tmux");
 awful.spawn.single_instance("flatpak run com.nextcloud.desktopclient.nextcloud");
 awful.spawn.single_instance("flatpak run com.getmailspring.Mailspring");
 awful.spawn.single_instance("flatpak run me.hyliu.fluentreader");
