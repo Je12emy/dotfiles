@@ -1,2 +1,6 @@
-rm -rf config/nushell/history.txt
+rm config/nushell/history.txt
+git status
+git add config/*
+git status
+git add config/nushell/history.txt
 git status
