@@ -1,0 +1,17 @@
+cd
+cd .config/nushell/
+starship init nu | save ~/.cache/starship/init.nu
+clear
+hx .
+ls
+clear
+hx config.nu
+clear
+cd ..
+pwd
+cd dotfiles
+ls
+cd
+cd dotfiles/
+cd config/
+clear
