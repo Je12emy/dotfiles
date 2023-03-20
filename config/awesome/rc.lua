@@ -10,7 +10,6 @@ require("modules.error-management")
 require("modules.variables")
 local keymaps = require("modules.keymaps")
 local taglist = require("modules.taglist")
-require("modules.menu")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -24,6 +23,10 @@ local net_widgets = require("net_widgets")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+-- Load Debian menu entries
+local debian = require("debian.menu")
+local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 net_wired = net_widgets.indicator({
     interfaces = { "enp3s0" },
@@ -51,8 +54,37 @@ awful.layout.layouts = {
 }
 -- }}}
 
+-- {{{ Menu
+-- Create a launcher widget and a main menu
+myawesomemenu = {
+    {
+        "hotkeys",
+        function() hotkeys_popup.show_help(nil, awful.screen.focused()) end
+    }, { "manual", terminal .. " -e man awesome" },
+    { "edit config", editor_cmd .. " " .. awesome.conffile },
+    { "restart", awesome.restart }, { "quit", function() awesome.quit() end }
+}
+
+local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
+local menu_terminal = { "open terminal", terminal }
+
+if has_fdo then
+    mymainmenu = freedesktop.menu.build({
+        before = { menu_awesome },
+        after = { menu_terminal }
+    })
+else
+    mymainmenu = awful.menu({
+        items = {
+            menu_awesome, { "Debian", debian.menu.Debian_menu.Debian },
+            menu_terminal
+        }
+    })
+end
+
 mylauncher = awful.widget.launcher({
-    image = beautiful.menu_icon, menu = myawesomemenu
+    image = beautiful.menu_icon,
+    menu = mymainmenu
 })
 
 -- Menubar configuration
@@ -163,7 +195,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(awful.button({}, 3,
-    function() menu:toggle() end),
+    function() mymainmenu:toggle() end),
     awful.button({}, 4, awful.tag.viewnext),
     awful.button({}, 5, awful.tag.viewprev)))
 -- }}}
