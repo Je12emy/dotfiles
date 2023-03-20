@@ -11,5 +11,5 @@ g.netrw_banner = 0
 -- 2 - open files in a new vertical split
 -- 3 - open files in a new tab
 -- 4 - open in previous window
-g.netrw_browse_split = 2
-vim.keymap.set('n', '<a-e>', '<cmd>Explore<CR>')
+g.netrw_browse_split = 0
+vim.keymap.set('n', '<a-e>', vim.cmd.Ex)
