@@ -222,6 +222,7 @@ end))
 
 -- Set keys
 root.keys(keymaps.globalkeys)
+-- }}}
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
