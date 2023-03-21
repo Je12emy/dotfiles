@@ -5,5 +5,5 @@ This is my window manager's configuration, it's pretty standard since I'm still 
 ## To Do
 
 - [x] Change the menu icon.
-- [ ] Resize the systray and menu icons.
+- [x] Resize the systray and menu icons.
 - [ ] New widgets.
