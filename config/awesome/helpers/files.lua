@@ -6,9 +6,7 @@ local list_files = function(path)
 end
 
 local split_string = function(input_string, separator)
-    if separator == nil then
-        separator = "%s"
-    end
+    if separator == nil then separator = "%s" end
     local t = {}
     for str in string.gmatch(input_string, "([^" .. separator .. "]+)") do
         table.insert(t, str)
@@ -33,8 +31,6 @@ local pick_wallpaper = function(path, name)
     return name
 end
 
-local M = {
-    pick_wallpaper = pick_wallpaper
-}
+local M = {pick_wallpaper = pick_wallpaper}
 
 return M
