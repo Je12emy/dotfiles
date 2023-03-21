@@ -601,14 +601,8 @@ awful.rules.rules = {
         rule_any = { type = { "normal", "dialog" } },
         properties = { titlebars_enabled = false }
     },
-    { rule = { class = "tmux" },
-        properties = { screen = 1, tag = "1" } },
     { rule = { class = "firefox" },
         properties = { screen = 1, tag = "2" } },
-    { rule = { class = "fluent-reader" },
-        properties = { screen = 1, tag = "7" } },
-    { rule = { class = "Mailspring" },
-        properties = { screen = 1, tag = "8" } },
     { rule = { class = "Spotify" },
         properties = { screen = 1, tag = "9" } },
 }
