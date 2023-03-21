@@ -59,7 +59,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua",
 beautiful.init(theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "/home/jeremy/.local/kitty.app/bin/kitty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -443,20 +443,12 @@ globalkeys = gears.table.join(awful.key({ modkey }, "s", hotkeys_popup.show_help
         { description = "run rofi pass", group = "launcher" }),
 
     awful.key({ modkey, "Shift" }, "v", function()
-        awful.util.spawn("kitty pulsemixer")
+        awful.util.spawn(terminal.. " pulsemixer")
     end, { description = "open pulsemixer", group = "utilities" }),
 
     awful.key({ modkey, "Shift" }, "f", function()
         awful.util.spawn("kitty lfub.sh")
     end, { description = "open lf", group = "utilities" }),
-
-    awful.key({ modkey, "Shift" }, "r", function()
-        awful.util.spawn("kitty newsboat")
-    end, { description = "open newsboat", group = "utilities" }),
-
-    awful.key({ modkey, "Shift" }, "m", function()
-        awful.util.spawn("mailspring")
-    end, { description = "open mailspring", group = "utilities" }),
 
     awful.key({}, "Print", function()
         awful.util.spawn("flameshot screen")
