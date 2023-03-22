@@ -13,8 +13,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Network Widget
+-- Other Widgets
 local net_widgets = require("net_widgets")
+local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -322,6 +323,9 @@ awful.screen.connect_for_each_screen(function(s)
                 layout = wibox.layout.fixed.horizontal,
                 spacing = 5,
                 -- s.mytasklist,
+                volume_widget{
+                    widget_type = 'arc'
+                },
                 net_wired,
                 mykeyboardlayout,
                 my_systray,
