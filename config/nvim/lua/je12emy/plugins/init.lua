@@ -10,10 +10,6 @@ return {
     -- -- "github/copilot.vim",
     -- "sbdchd/neoformat",
     -- "mbbill/undotree",
-    -- -- Git plugins
-    -- "lewis6991/gitsigns.nvim",
-    -- "tpope/vim-fugitive",
-    -- {'sindrets/diffview.nvim', requires = 'nvim-tree/nvim-web-devicons'},
     -- -- LSP
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
