@@ -1,5 +1,4 @@
 return {
-    -- "hoob3rt/lualine.nvim", "mkitt/tabline.vim", "prichrd/netrw.nvim",
     -- -- Utilities
     -- "tpope/vim-surround",
     -- "numToStr/Comment.nvim",

@@ -10,5 +10,5 @@ vim.keymap.set('n', '<Space>ha', mark.add_file)
 vim.keymap.set('n', '<Space>hn', ui.nav_next)
 vim.keymap.set('n', '<Space>hp', ui.nav_prev)
 
-require("telescope").load_extension('harpoon')
-vim.keymap.set('n', '<Space>th', "<cmd>Telescope harpoon marks<CR>")
+-- require("telescope").load_extension('harpoon')
+-- vim.keymap.set('n', '<Space>th', "<cmd>Telescope harpoon marks<CR>")
