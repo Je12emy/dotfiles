@@ -1,83 +1,57 @@
 -- Bootstrap Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git", "clone", "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git", "--branch=stable", -- latest stable release
+        lazypath
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Plugins list
-require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-    -- Lodaash Section
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'sheerun/vim-polyglot'
-    -- Telescope stuff
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    -- UI
-    use 'hoob3rt/lualine.nvim'
-    use 'mkitt/tabline.vim'
-    use 'prichrd/netrw.nvim'
-    -- use {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v2.x",
-    --     requires = {
-    --         "nvim-lua/plenary.nvim",
-    --         "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-    --         "MunifTanjim/nui.nvim",
-    --     }
-    -- }
-    -- use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
+require("lazy").setup({
+    -- Generally required plugins
+    'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'sheerun/vim-polyglot',
+    -- Telescope for all the things
+    'nvim-telescope/telescope.nvim',
+    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'}, -- UI Plugins
+    "hoob3rt/lualine.nvim", "mkitt/tabline.vim", "prichrd/netrw.nvim",
     -- Themes
-    use 'rebelot/kanagawa.nvim'
-    use 'ellisonleao/gruvbox.nvim'
-    use 'catppuccin/nvim'
-    -- Utils
-    use 'tpope/vim-surround'
-    use 'numToStr/Comment.nvim'
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use 'nvim-treesitter/playground'
-    use 'nvim-treesitter/nvim-treesitter-context'
-    use 'alexghergh/nvim-tmux-navigation'
-    use 'ThePrimeagen/harpoon'
-    use 'github/copilot.vim'
-    -- use 'norcalli/nvim-colorizer.lua'
-    use 'sbdchd/neoformat'
-    use 'mbbill/undotree'
-    -- Git
-    use 'lewis6991/gitsigns.nvim'
-    use 'tpope/vim-fugitive'
-    use { 'sindrets/diffview.nvim', requires = 'nvim-tree/nvim-web-devicons' }
+    "catppuccin/nvim",
+    "rebelot/kanagawa.nvim",
+    "ellisonleao/gruvbox.nvim",
+    -- Utilities
+    "tpope/vim-surround",
+    "numToStr/Comment.nvim",
+    {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+    "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-context",
+    "alexghergh/nvim-tmux-navigation",
+    "ThePrimeagen/harpoon",
+    -- "github/copilot.vim",
+    "sbdchd/neoformat",
+    "mbbill/undotree",
+    -- Git plugins
+    "lewis6991/gitsigns.nvim",
+    "tpope/vim-fugitive",
+    {'sindrets/diffview.nvim', requires = 'nvim-tree/nvim-web-devicons'},
     -- LSP
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'neovim/nvim-lspconfig'
-    -- Snippets
-    use 'L3MON4D3/LuaSnip'
-    use 'rafamadriz/friendly-snippets'
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
     -- Completition
-    use 'hrsh7th/nvim-cmp' -- Completition Engine
-    use 'onsails/lspkind-nvim' -- Cool symbols
-    use 'hrsh7th/cmp-nvim-lsp' -- Sources
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-path'
-    use 'saadparwaiz1/cmp_luasnip'
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
+    -- Completition
+    "hrsh7th/nvim-cmp",
+    "onsails/lspkind-nvim", 
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-path",
+    "saadparwaiz1/cmp_luasnip",
     -- Language Specific Plugins
-    use 'simrat39/rust-tools.nvim'
-    use 'jose-elias-alvarez/typescript.nvim'
-    use 'wuelnerdotexe/vim-astro'
-    -- DAP
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    -- use "theHamsta/nvim-dap-virtual-text"
-    -- use 'leoluz/nvim-dap-go'
-end)
+    "simrat39/rust-tools.nvim",
+    "jose-elias-alvarez/typescript.nvim",
+    "wuelnerdotexe/vim-astro",
+})
