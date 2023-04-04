@@ -1,14 +1,5 @@
 return {
-    -- -- Generally required plugins
-    -- 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'sheerun/vim-polyglot',
-    -- -- Telescope for all the things
-    -- 'nvim-telescope/telescope.nvim',
-    -- {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'}, -- UI Plugins
     -- "hoob3rt/lualine.nvim", "mkitt/tabline.vim", "prichrd/netrw.nvim",
-    -- -- Themes
-    -- "catppuccin/nvim",
-    -- "rebelot/kanagawa.nvim",
-    -- "ellisonleao/gruvbox.nvim",
     -- -- Utilities
     -- "tpope/vim-surround",
     -- "numToStr/Comment.nvim",
@@ -33,7 +24,7 @@ return {
     "rafamadriz/friendly-snippets",
     -- Completition
     "hrsh7th/nvim-cmp",
-    "onsails/lspkind-nvim", 
+    "onsails/lspkind-nvim",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lua",
