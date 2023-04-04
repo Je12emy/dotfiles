@@ -1,8 +1,8 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        name = "Telescope",
         cmd = "Telescope",
+        version = false,
         config = function() require('telescope').load_extension('fzf') end,
         opts = {
             file_ignore_patterns = {
@@ -55,6 +55,5 @@ return {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         lazy = true,
-        cmd = "Telescope"
     }
 }

@@ -8,7 +8,6 @@ return {
     -- "alexghergh/nvim-tmux-navigation",
     -- "ThePrimeagen/harpoon",
     -- -- "github/copilot.vim",
-    -- "sbdchd/neoformat",
     -- "mbbill/undotree",
     -- -- LSP
     "williamboman/mason.nvim",
