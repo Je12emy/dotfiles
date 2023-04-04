@@ -11,8 +11,16 @@ return {
             pre_hook = nil,
             post_hook = nil
         }
-    }, {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-    "nvim-treesitter/playground", "nvim-treesitter/nvim-treesitter-context",
+    }, {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        config = function()
+            local treesiter = require("nvim-treesitter.configs")
+            local context = require("treesitter-context")
+            treesiter.setup {highlight = {enable = true}}
+            context.setup {}
+        end
+    }, "nvim-treesitter/playground", "nvim-treesitter/nvim-treesitter-context",
     "alexghergh/nvim-tmux-navigation", "ThePrimeagen/harpoon",
     -- "github/copilot.vim",
     {
