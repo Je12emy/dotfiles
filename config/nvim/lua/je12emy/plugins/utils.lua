@@ -4,6 +4,12 @@ return {
     "nvim-treesitter/playground", "nvim-treesitter/nvim-treesitter-context",
     "alexghergh/nvim-tmux-navigation", "ThePrimeagen/harpoon",
     -- "github/copilot.vim",
-    "sbdchd/neoformat",
-    "mbbill/undotree",
+    {
+        "sbdchd/neoformat",
+        cmd = "Neoformat",
+        lazy = true,
+        keys = {
+            {"<leader><leader>f", "<cmd>Neoformat<cr>", desc = "Format buffer"}
+        }
+    }, "mbbill/undotree"
 }
