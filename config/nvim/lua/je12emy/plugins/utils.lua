@@ -21,8 +21,7 @@ return {
             context.setup {}
         end
     }, "nvim-treesitter/playground", "nvim-treesitter/nvim-treesitter-context",
-    "alexghergh/nvim-tmux-navigation", "ThePrimeagen/harpoon",
-    -- "github/copilot.vim",
+    "alexghergh/nvim-tmux-navigation", -- "github/copilot.vim",
     {
         "sbdchd/neoformat",
         cmd = "Neoformat",
@@ -30,5 +29,9 @@ return {
         keys = {
             {"<leader><leader>f", "<cmd>Neoformat<cr>", desc = "Format buffer"}
         }
-    }, "mbbill/undotree"
+    }, {
+        "mbbill/undotree",
+        keys = {{"<a-u>", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree"}},
+        cmd = "UndoTreeToggle"
+    }
 }
