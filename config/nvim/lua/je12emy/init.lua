@@ -1,7 +1,6 @@
 require('je12emy.keymaps')
 require('je12emy.settings')
 require('je12emy.plugins')
-require('je12emy.config')
 -- Bootstrap Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
