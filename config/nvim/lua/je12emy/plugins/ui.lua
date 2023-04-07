@@ -216,7 +216,7 @@ return {
         "prichrd/netrw.nvim",
         lazy = false,
         cmd = {"Ex", "Sex"},
-        keys = {{"<a-e>, vim.cmd.Ex", desc = "Open Netrw"}},
+        keys = {{"<a-e>", vim.cmd.Ex, desc = "Open Netrw"}},
         config = function()
             require("netrw").setup {
                 use_devicons = true -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
