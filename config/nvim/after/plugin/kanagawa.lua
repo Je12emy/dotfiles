@@ -17,6 +17,5 @@ kanagawa.setup({
     transparent = false, -- do not set background color
     dimInactive = false, -- dim inactive window `:h hl-NormalNC`
     globalStatus = true, -- adjust window separators highlight for laststatus=3
-    colors = my_colors,
-    overrides = {}
+    -- colors = my_colors,
 })
