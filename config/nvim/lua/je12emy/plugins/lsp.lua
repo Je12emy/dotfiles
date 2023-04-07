@@ -22,7 +22,7 @@ return {
         },
         config = function()
             local lsp = require('lsp-zero').preset({})
-            local tools = require 'je12emy.lsp.lsp-tools'
+            local tools = require 'je12emy.utils.lsp-tools'
 
             lsp.on_attach(function(client, bufnr)
                 tools.on_attach(client, bufnr)
