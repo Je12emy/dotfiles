@@ -1,30 +1,15 @@
--- General
-vim.keymap.set('i', 'jk', '<Esc>')
-vim.keymap.set('n', '<Space>S', ':%s//g<Left><Left>')
-
--- Window Managament
----- Navigation 
--- vim.keymap.set('n', '<c-h>', '<cmd>wincmd h<CR>')
--- vim.keymap.set('n', '<c-j>', '<cmd>wincmd j<CR>')
--- vim.keymap.set('n', '<c-l>', '<cmd>wincmd l<CR>')
--- vim.keymap.set('n', '<c-k>', '<cmd>wincmd k<CR>')
----- Splits
-vim.keymap.set('n', '<Space>wv', '<C-w>v<CR>')
-vim.keymap.set('n', '<Space>ws', '<C-w>s<CR>')
-vim.keymap.set('n', '<Space>wh', ':exe "vertical resize -" .5<CR>')
-vim.keymap.set('n', '<Space>wl', ':exe "vertical resize +" .5<CR>')
-vim.keymap.set('n', '<Space>wj', ':exe "resize -" .5<CR>')
-vim.keymap.set('n', '<Space>wk', ':exe "resize +" .5<CR>')
-vim.keymap.set('n', '<Space>wr', '<C-w>=<CR>')
-
--- Buffer Management
-vim.keymap.set('n', '<a-}>', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<a-{>', '<cmd>bprev<CR>')
-vim.keymap.set('n', '<a-x>', '<cmd>bdelete<CR>')
-
--- Tab Management
-vim.keymap.set('n', '<Space>tn', '<cmd>tabnew<CR>')
-vim.keymap.set('n', '<Space>tx', '<cmd>tabclose<CR>')
-
--- Writting
-vim.keymap.set('n', '<F8>', ':setlocal spell!<CR>')
+vim.keymap.set('i', 'jk', '<Esc>', { desc = "Exit insert mode" })
+vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>', { desc = "Replace command" })
+vim.keymap.set('n', '<leader>wv', '<C-w>v<CR>', { desc = "Split window horizontal" })
+vim.keymap.set('n', '<leader>ws', '<C-w>s<CR>}', { desc = "Split window vertical" })
+vim.keymap.set('n', '<leader>wh', ':exe "vertical resize -" .5<CR>', { desc = "Decrease split vertical size by 5" })
+vim.keymap.set('n', '<leader>wl', ':exe "vertical resize +" .5<CR>', { desc = "Increase split vertical size by 5" })
+vim.keymap.set('n', '<leader>wj', ':exe "resize -" .5<CR>', { desc = "Decrease split horizontal size by 5" })
+vim.keymap.set('n', '<leader>wk', ':exe "resize +" .5<CR>', { desc = "Increase split horizontal size by 5" })
+vim.keymap.set('n', '<leader>wr', '<C-w>=<CR>', { desc = "Restore split size" })
+vim.keymap.set('n', '<a-}>', '<cmd>bnext<CR>', { desc = "Go to next buffer" })
+vim.keymap.set('n', '<a-{>', '<cmd>bprev<CR>', { desc = "Go to previous buffer" })
+vim.keymap.set('n', '<a-x>', '<cmd>bdelete<CR>', { desc = "Close buffer" })
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<CR>', { desc = "Create new tab" })
+vim.keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = "Close tab" })
+vim.keymap.set('n', '<F8>', ':setlocal spell!<CR>', { desc = "Toggle spell check" })
