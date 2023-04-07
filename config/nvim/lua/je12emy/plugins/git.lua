@@ -41,27 +41,27 @@ return {
             end
         }
     }, {
-        "tpope/vim-fugitive",
-        lazy = true,
-        cmd = "G",
-        keys = {{"<leader>gg", "<cmd>tab G<cr>"}}
-    }, {
-        'sindrets/diffview.nvim',
-        requires = 'nvim-tree/nvim-web-devicons',
-        lazy = true,
-        cmd = "DiffviewOpen",
-        keys = {
-            {"<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview"},
-            {
-                "<leader>gdr",
-                "<cmd>DiffviewRefresh<cr>",
-                desc = "Refresh Diffview"
-            },
-            {
-                "<leader>gdf",
-                "<cmd>DiffviewToggleFiles<cr>",
-                desc = "Toggle Diffview Files"
-            }
+    "tpope/vim-fugitive",
+    lazy = true,
+    cmd = "G",
+    keys = { { "<leader>gg", "<cmd>tab G<cr>" } }
+}, {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+    lazy = true,
+    cmd = "DiffviewOpen",
+    keys = {
+        { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
+        {
+            "<leader>gdr",
+            "<cmd>DiffviewRefresh<cr>",
+            desc = "Refresh Diffview"
+        },
+        {
+            "<leader>gdf",
+            "<cmd>DiffviewToggleFiles<cr>",
+            desc = "Toggle Diffview Files"
         }
     }
+}
 }
