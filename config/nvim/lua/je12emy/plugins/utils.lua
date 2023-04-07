@@ -1,27 +1,27 @@
 return {
-    "tpope/vim-surround", {
+    {
         "numToStr/Comment.nvim",
         opts = {
             padding = true,
             sticky = true,
             ignore = nil,
-            toggler = {line = 'gcc', block = 'gbc'},
-            opleader = {line = 'gc', block = 'gb'},
-            mappings = {basic = true, extra = true, extended = false},
+            toggler = { line = 'gcc', block = 'gbc' },
+            opleader = { line = 'gc', block = 'gb' },
+            mappings = { basic = true, extra = true, extended = false },
             pre_hook = nil,
             post_hook = nil
         }
     }, {
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {"nvim-treesitter/nvim-treesitter-context"},
-        build = ':TSUpdate',
-        config = function()
-            local treesiter = require("nvim-treesitter.configs")
-            local context = require("treesitter-context")
-            treesiter.setup {highlight = {enable = true}}
-            context.setup {}
-        end,
-    }, "nvim-treesitter/playground", "nvim-treesitter/nvim-treesitter-context",
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = { "nvim-treesitter/nvim-treesitter-context" },
+    build = ':TSUpdate',
+    config = function()
+        local treesiter = require("nvim-treesitter.configs")
+        local context = require("treesitter-context")
+        treesiter.setup { highlight = { enable = true } }
+        context.setup {}
+    end,
+}, "nvim-treesitter/playground", "nvim-treesitter/nvim-treesitter-context",
     {
         "alexghergh/nvim-tmux-navigation",
         lazy = true,
@@ -50,18 +50,18 @@ return {
                 desc = "Focus up"
             },
         },
-        cmd = {"NvimTmuxNavigateLeft","NvimTmuxNavigateRight", "NvimTmuxNavigateUp", "NvimTmuxNavigateDown"}
+        cmd = { "NvimTmuxNavigateLeft", "NvimTmuxNavigateRight", "NvimTmuxNavigateUp", "NvimTmuxNavigateDown" }
     }, -- "github/copilot.vim",
     {
         "sbdchd/neoformat",
         cmd = "Neoformat",
         lazy = true,
         keys = {
-            {"<leader><leader>f", "<cmd>Neoformat<cr>", desc = "Format buffer"}
+            { "<leader><leader>f", "<cmd>Neoformat<cr>", desc = "Format buffer" }
         }
     }, {
-        "mbbill/undotree",
-        keys = {{"<a-u>", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree"}},
-        cmd = "UndoTreeToggle"
-    }
+    "mbbill/undotree",
+    keys = { { "<a-u>", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
+    cmd = "UndoTreeToggle"
+}
 }
