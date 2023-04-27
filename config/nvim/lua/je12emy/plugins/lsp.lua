@@ -17,7 +17,13 @@ return {
                 }
             },
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' }
+            { 'saadparwaiz1/cmp_luasnip' },
+            {
+                'L3MON4D3/LuaSnip',
+                version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+                -- install jsregexp (optional!).
+                build = "make install_jsregexp"
+            }
 
         },
         config = function()
@@ -41,7 +47,7 @@ return {
                 mapping = {
                     ['<C-Space>'] = cmp.mapping.complete(),
                 },
-                sources = { { name = 'nvim_lsp' }, { name = 'luasnip' } },
+                sources = { { name = 'nvim_lsp' }, { name = 'luasnip', keyword_length = 2 } },
                 formatting = {
                     fields = { 'abbr', 'kind', 'menu' },
                     format = require('lspkind').cmp_format({
