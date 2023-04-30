@@ -3,7 +3,7 @@ return {
         "simrat39/rust-tools.nvim",
         lazy = true,
         ft = "rs",
-        config = function()
+        --[[ config = function()
             local tools = require 'je12emy.utils.lsp-tools'
             local capabilities = tools.get_capabilities()
             require("rust_tools").setup({
@@ -19,7 +19,7 @@ return {
                     capabilities = capabilities
                 }
             })
-        end
+        end ]]
     }, {
     "jose-elias-alvarez/typescript.nvim",
     ft = { "ts", "js", "tsx", "jsx" },
