@@ -33,7 +33,7 @@ return {
 
             lsp.on_attach(function(client, bufnr)
                 tools.on_attach(client, bufnr)
-                -- lsp.buffer_autoformat() -- This causes issues for me on TS
+                lsp.buffer_autoformat() -- This causes issues for me on TS
             end)
 
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())

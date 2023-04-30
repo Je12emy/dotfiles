@@ -53,15 +53,8 @@ return {
         cmd = { "NvimTmuxNavigateLeft", "NvimTmuxNavigateRight", "NvimTmuxNavigateUp", "NvimTmuxNavigateDown" }
     }, -- "github/copilot.vim",
     {
-        "sbdchd/neoformat",
-        cmd = "Neoformat",
-        lazy = true,
-        keys = {
-            { "<leader><leader>f", "<cmd>Neoformat<cr>", desc = "Format buffer" }
-        }
-    }, {
-    "mbbill/undotree",
-    keys = { { "<a-u>", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
-    cmd = "UndoTreeToggle"
-}
+        "mbbill/undotree",
+        keys = { { "<a-u>", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
+        cmd = "UndoTreeToggle"
+    }
 }
