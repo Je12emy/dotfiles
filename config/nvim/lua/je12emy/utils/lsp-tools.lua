@@ -15,6 +15,8 @@ function tools.on_attach(client, bufnr)
         { buffer = 0, desc = "Go to previous diagnostic" })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
         { buffer = 0, desc = "Go to next diagnostic" })
+    vim.keymap.set("n", "<leader><leader>f", vim.lsp.buf.format,
+        { buffer = 0, desc = "Format buffer" })
 end
 
 return tools
