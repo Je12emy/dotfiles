@@ -3,6 +3,8 @@ local set = vim.opt
 local bo = vim.bo
 local o = vim.o
 
+require "je12emy.utils.noobline"
+
 g.mapleader = ' '
 set.syntax = 'on'
 set.mouse = 'a'
@@ -24,14 +26,12 @@ set.incsearch = true
 set.clipboard = 'unnamed'
 set.clipboard = 'unnamedplus'
 set.hlsearch = true
-set.laststatus = 3
+set.laststatus = 3 -- Global statusline
 o.timeoutlen = 3000
 set.cursorline = true
 set.wrapscan = true
-set.spelllang = {'en', 'es'}
+set.spelllang = { 'en', 'es' }
 -- set.colorcolumn = '80'
--- Global status line
-set.laststatus = 3
 -- set.winbar = '%=%m %t'
 set.undodir = os.getenv("HOME") .. "/.undodir"
 set.undofile = true
@@ -47,7 +47,7 @@ o.completeopt = 'menuone,noselect'
 set.filetype = "on"
 
 -- TODO make this auto command work in ftdetect
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.astro",
     command = "set filetype=astro"
 })
@@ -64,7 +64,7 @@ vim.api.nvim_create_autocmd('RecordingLeave', {
         -- NOTE: Timer is here because we need to close cmdheight AFTER
         -- the macro is ended, not during the Leave event
         timer:start(50, 0, vim.schedule_wrap(
-                        function() vim.opt_local.cmdheight = 0 end))
+            function() vim.opt_local.cmdheight = 0 end))
     end
 })
 
@@ -76,7 +76,7 @@ function file_settings.notes(file)
     file.wrap = true
     file.spell = true
     file.autowriteall = true
-    file.spelllang = {'en', 'es'}
+    file.spelllang = { 'en', 'es' }
 end
 
 return file_settings
