@@ -2,6 +2,13 @@ local keymap = require "je12emy.utils.map"
 
 local M = {}
 
+-- Callback for setting up rust tools keymaps
+local function setup_rust_tools(client, bufnr)
+    local rt = require("rust-tools")
+    keymap.nmap("K", rt.hover_actions.hover_actions,
+        { buffer = 0, desc = "Show rust hover actions" })
+end
+
 -- Callback for setting all my LSP keymaps
 M.on_attach = function(client, bufnr)
     keymap.nmap("K", vim.lsp.buf.hover,
@@ -22,6 +29,10 @@ M.on_attach = function(client, bufnr)
         { buffer = 0, desc = "Format buffer" })
     keymap.imap("<c-k>", vim.lsp.buf.signature_help,
         { buffer = 0, desc = "Show completition item" })
+
+    if (client.name == "rust_analyzer") then
+        setup_rust_tools(client, bufnr)
+    end
 end
 
 return M
