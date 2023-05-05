@@ -38,6 +38,13 @@ return {
 
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
             lsp.skip_server_setup({ 'rust_analyzer' })
+            lsp.set_sign_icons({
+                error = '✘',
+                warn = '▲',
+                hint = '⚑',
+                info = '»'
+            })
+
             lsp.setup()
 
             local rust_tools = require('rust-tools')
