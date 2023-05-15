@@ -25,6 +25,8 @@ local mode_colors = {
     ["!"] = { "SHELL" },
 }
 
+local spacer = " "
+
 local function get_mode_text()
     return mode_colors[vim.fn.mode()][1]
 end
@@ -33,19 +35,19 @@ local function get_current_branch()
     -- Source for this: https://www.reddit.com/r/neovim/comments/xtynan/show_me_your_statusline_big_plus_if_you_wrote_it/
     if vim.g.loaded_fugitive then
         local branch = vim.fn.FugitiveHead()
-        if branch ~= '' then return " " .. branch .. " " end
+        if branch ~= '' then return "" .. spacer .. branch .. spacer end
     end
     return ""
 end
 
 local function get_modified_symbol()
     if (vim.bo.readonly) then
-        return " "
+        return "" .. spacer
     end
     if (vim.bo.modified) then
-        return " "
+        return "" .. spacer
     end
-    return " "
+    return "" .. spacer
 end
 
 local function get_file_name()
@@ -56,12 +58,10 @@ local function get_file_name()
     local basename = vim.fn.fnamemodify(filename, ":t")
     local filetype = vim.bo.filetype
     if require 'nvim-web-devicons'.has_loaded() then
-        return require 'nvim-web-devicons'.get_icon(filename, filetype, { default = true }) .. " " .. basename
+        return require 'nvim-web-devicons'.get_icon(filename, filetype, { default = true }) .. spacer .. basename
     end
     return basename
 end
-
-local spacer = " "
 
 function Status_line()
     return table.concat {
