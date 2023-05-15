@@ -48,6 +48,19 @@ local function get_modified_symbol()
     return " "
 end
 
+local function get_file_name()
+    local filename = vim.api.nvim_buf_get_name(0)
+    if filename == "" then
+        return "[No Name]"
+    end
+    local basename = vim.fn.fnamemodify(filename, ":t")
+    local filetype = vim.bo.filetype
+    if require 'nvim-web-devicons'.has_loaded() then
+        return require 'nvim-web-devicons'.get_icon(filename, filetype, { default = true }) .. " " .. basename
+    end
+    return basename
+end
+
 local spacer = " "
 
 function Status_line()
@@ -56,8 +69,8 @@ function Status_line()
         get_modified_symbol(),
         get_mode_text(),
         "%=",
-        get_current_branch(), --
-        "%t",
+        get_current_branch(),
+        get_file_name(),
         spacer
     }
 end
