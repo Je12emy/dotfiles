@@ -42,7 +42,7 @@ return {
         }
     }, {
     "tpope/vim-fugitive",
-    lazy = true,
+    lazy = false,
     cmd = "G",
     keys = { { "<leader>gg", "<cmd>tab G<cr>" } }
 }, {

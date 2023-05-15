@@ -29,6 +29,15 @@ local function get_mode_text()
     return mode_colors[vim.fn.mode()][1]
 end
 
+local function get_current_branch()
+    -- Source for this: https://www.reddit.com/r/neovim/comments/xtynan/show_me_your_statusline_big_plus_if_you_wrote_it/
+    if vim.g.loaded_fugitive then
+        local branch = vim.fn.FugitiveHead()
+        if branch ~= '' then return " " .. branch .. " " end
+    end
+    return ""
+end
+
 local function get_modified_symbol()
     if (vim.bo.readonly) then
         return " "
@@ -47,6 +56,7 @@ function Status_line()
         get_modified_symbol(),
         get_mode_text(),
         "%=",
+        get_current_branch(), --
         "%t",
         spacer
     }
