@@ -1,5 +1,5 @@
 return {
-    { "mkitt/tabline.vim", lazy = true }, {
+    { "mkitt/tabline.vim",           lazy = true }, {
     "prichrd/netrw.nvim",
     lazy = false,
     cmd = { "Ex", "Sex" },
@@ -16,5 +16,6 @@ return {
         -- 4 - open in previous window
         g.netrw_browse_split = 0
     end
-}
+},
+    { 'nvim-tree/nvim-web-devicons', lazy = false }
 }
