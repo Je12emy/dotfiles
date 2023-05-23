@@ -19,7 +19,12 @@ return {
         config = function()
             local treesiter = require("nvim-treesitter.configs")
             local context = require("treesitter-context")
-            treesiter.setup { highlight = { enable = true } }
+            treesiter.setup {
+                ensure_installed = { "markdown", "markdown_inline" },
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = { "markdown" },
+                } }
             context.setup {}
         end,
     },
@@ -68,8 +73,6 @@ return {
             "nvim-lua/plenary.nvim",
             "hrsh7th/nvim-cmp",
             "nvim-telescope/telescope.nvim",
-            "godlygeek/tabular",
-            "preservim/vim-markdown",
         },
         opts = {
             dir = "~/notes", -- no need to call 'vim.fn.expand' here
@@ -88,7 +91,6 @@ return {
             finder = "telescope.nvim",
         },
         config = function(_, opts)
-            vim.g.vim_markdown_folding_disabled = 1
             require("obsidian").setup(opts)
             -- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
             -- see also: 'follow_url_func' config option above.
