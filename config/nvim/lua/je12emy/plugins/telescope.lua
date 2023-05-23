@@ -12,10 +12,10 @@ return {
             color_devicons = true,
             extensions = {
                 fzf = {
-                    fuzzy = true, -- false will only do exact matching
+                    fuzzy = true,                   -- false will only do exact matching
                     override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true, -- override the file sorter
-                    case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+                    override_file_sorter = true,    -- override the file sorter
+                    case_mode = "smart_case"        -- or "ignore_case" or "respect_case"
                     -- the default case_mode is "smart_case"
                 }
             },
@@ -24,36 +24,30 @@ return {
         keys = {
             {
                 "<c-p>",
-                "<cmd>Telescope find_files<cr>",
+                "<cmd>Telescope find_files theme=dropdown previewer=false<cr>",
                 mode = "n",
                 desc = "Find files"
             },
             {
-                "<leader>fb",
-                "<cmd>Telescope buffers<cr>",
+                "<leader>tb",
+                "<cmd>Telescope buffers theme=dropdown previewer=false<cr>",
                 mode = "n",
                 desc = "Find buffers"
             }, {
-                "<leader>fs",
-                "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-                mode = "n",
-                desc = "Find string"
-            }, {
-                "<leader>fg",
-                "<cmd>Telescope live_grep<cr>",
-                mode = "n",
-                desc = "Find with grep"
-            },
-            {
-                "<leader>fk",
-                "<cmd>Telescope keymaps<cr>",
-                mode = "n",
-                desc = "Find keymaps"
-            }
+            "<leader>tf",
+            "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+            mode = "n",
+            desc = "Find string"
+        }, {
+            "<leader>tF",
+            "<cmd>Telescope live_grep<cr>",
+            mode = "n",
+            desc = "Find with grep"
+        }
         }
     }, {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        lazy = true,
-    }
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    lazy = true,
+}
 }
