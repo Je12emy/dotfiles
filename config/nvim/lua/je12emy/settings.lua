@@ -51,16 +51,3 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.astro",
     command = "set filetype=astro"
 })
-
-local file_settings = {}
--- General purpose settings for note taking
-function file_settings.notes(file)
-    file.colorcolumn = '0'
-    file.linebreak = true
-    file.wrap = true
-    file.spell = true
-    file.autowriteall = true
-    file.spelllang = { 'en', 'es' }
-end
-
-return file_settings
