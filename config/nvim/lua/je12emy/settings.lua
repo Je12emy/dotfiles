@@ -5,7 +5,6 @@ local o = vim.o
 
 require "je12emy.utils.noobline"
 
-g.mapleader = ' '
 set.syntax = 'on'
 set.mouse = 'a'
 set.termguicolors = true
