@@ -6,6 +6,6 @@ obsidian.setup {
     vault_path = "/home/jeremy/notes"
 }
 
-keymap.nmap("<Space>oo", obsidian.open_note, { desc = "Open the current note in obsidian" })
-keymap.nmap('<Space>ts', '<cmd>Telescope spell_suggest<cr>', { desc = "View spell suggestions" })
+keymap.nmap("<Leader>oo", obsidian.open_note, { desc = "Open the current note in obsidian" })
+keymap.nmap('<Leader>ts', '<cmd>Telescope spell_suggest<cr>', { desc = "View spell suggestions" })
 settings.notes(vim.opt)
