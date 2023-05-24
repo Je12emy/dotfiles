@@ -61,7 +61,7 @@ return {
 
             cmp.setup({
                 completion = { autocomplete = false },
-                mapping = { ['<C-Space>'] = cmp.mapping.complete() },
+                mapping = { ['<C-Leader>'] = cmp.mapping.complete() },
                 sources = { { name = 'nvim_lsp' }, { name = 'luasnip' }, { name = 'path' }, { name = 'buffer' } },
                 formatting = {
                     fields = { 'abbr', 'kind', 'menu' },
