@@ -18,4 +18,11 @@ M.auto_hide_status = function()
     })
 end
 
+M.set_astro_ft = function()
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = "*.astro",
+        command = "set filetype=astro"
+    })
+end
+
 return M

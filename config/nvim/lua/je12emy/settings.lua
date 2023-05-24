@@ -1,9 +1,9 @@
-local g = vim.g
 local set = vim.opt
 local bo = vim.bo
 local o = vim.o
 
 require "je12emy.utils.noobline"
+local cmd = require "je12emy.utils.autocmd"
 
 set.syntax = 'on'
 set.mouse = 'a'
@@ -45,8 +45,4 @@ o.splitright = true
 o.completeopt = 'menuone,noselect'
 set.filetype = "on"
 
--- TODO make this auto command work in ftdetect
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "*.astro",
-    command = "set filetype=astro"
-})
+cmd.auto_hide_status()
