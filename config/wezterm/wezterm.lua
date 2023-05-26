@@ -1,15 +1,15 @@
 local wezterm = require 'wezterm';
 
 local padding = {
-	left = "1cell",
-	right = "1cell",
-	top = "0.5cell",
-	bottom = "0.5cell",
+  left = "1cell",
+  right = "1cell",
+  top = "0.5cell",
+  bottom = "0.5cell",
 }
 
 return {
-  font = wezterm.font("JetBrains Mono", { weight="Medium" }),
-  harfbuzz_features = {"calt=1", "clig=1", "liga=1"},
+  font = wezterm.font("JetBrains Mono", { weight = "Medium" }),
+  harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
   line_height = 1.25,
   bold_brightens_ansi_colors = false,
   hide_tab_bar_if_only_one_tab = true,
