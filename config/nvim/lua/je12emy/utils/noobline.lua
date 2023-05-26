@@ -1,5 +1,6 @@
 -- Noobline
 -- Reference: https://nihilistkitten.me/nvim-lua-statusline/
+local tmux = require "je12emy.utils.tmux"
 
 -- Source: https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/feline.lua#L45
 local mode_colors = {
@@ -75,4 +76,29 @@ function Status_line()
     }
 end
 
+function Tab_line()
+    local tabline = '%#TabLine# '
+    local inactive_tabline_hl = '%#TabLineInactive# '
+    local tabs = vim.fn.tabpagenr('$')
+    -- Iterate over each tab page
+    for i = 1, tabs do
+        local tab_windows_count = vim.fn.tabpagewinnr(i)
+        local bufnr = vim.fn.tabpagebuflist(i)[tab_windows_count]
+        local bufname = vim.fn.bufname(bufnr)
+        print(i, tab_windows_count, bufname)
+        -- Check if this is the active tab
+        if i == vim.fn.tabpagenr() then
+            print(tabline)
+            if bufname == 00 then
+                tabline = tabline .. '[No Name]'
+            else
+                tabline = tabline .. vim.fn.fnamemodify(bufname, ':t')
+            end
+            tabline = tabline .. '%* '
+        end
+    end
+    return tabline
+end
+
 vim.o.statusline = "%!luaeval('Status_line()')"
+-- vim.o.tabline = "%!luaeval('Tab_line()')"
