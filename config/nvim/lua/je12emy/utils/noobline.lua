@@ -41,64 +41,67 @@ local function get_current_branch()
     return ""
 end
 
-local function get_modified_symbol()
-    if (vim.bo.readonly) then
+local function get_modified_symbol(bufnr)
+    if (vim.bo[bufnr].readonly) then
         return "" .. spacer
     end
-    if (vim.bo.modified) then
+    if (vim.bo[bufnr].modified) then
         return "" .. spacer
     end
     return "" .. spacer
 end
 
-local function get_file_name()
-    local filename = vim.api.nvim_buf_get_name(0)
+local function get_file_name(bufnr, show_icon)
+    local filename = vim.api.nvim_buf_get_name(bufnr)
     if filename == "" then
         return "[No Name]"
     end
     local basename = vim.fn.fnamemodify(filename, ":t")
-    local filetype = vim.bo.filetype
-    if require 'nvim-web-devicons'.has_loaded() then
-        return require 'nvim-web-devicons'.get_icon(filename, filetype, { default = true }) .. spacer .. basename
+    local filetype = vim.bo[bufnr].filetype
+    if show_icon then
+        if require 'nvim-web-devicons'.has_loaded() then
+            return require 'nvim-web-devicons'.get_icon(filename, filetype, { default = true }) .. spacer .. basename
+        end
     end
     return basename
 end
 
-function Status_line()
+function Noob_status()
     return table.concat {
         spacer,
-        get_modified_symbol(),
+        get_modified_symbol(0),
         get_mode_text(),
         "%=",
         get_current_branch(),
-        get_file_name(),
+        get_file_name(0, true),
         spacer
     }
 end
 
-function Tab_line()
-    local tabline = '%#TabLine# '
-    local inactive_tabline_hl = '%#TabLineInactive# '
-    local tabs = vim.fn.tabpagenr('$')
-    -- Iterate over each tab page
-    for i = 1, tabs do
-        local tab_windows_count = vim.fn.tabpagewinnr(i)
-        local bufnr = vim.fn.tabpagebuflist(i)[tab_windows_count]
-        local bufname = vim.fn.bufname(bufnr)
-        print(i, tab_windows_count, bufname)
-        -- Check if this is the active tab
-        if i == vim.fn.tabpagenr() then
-            print(tabline)
-            if bufname == 00 then
-                tabline = tabline .. '[No Name]'
-            else
-                tabline = tabline .. vim.fn.fnamemodify(bufname, ':t')
-            end
-            tabline = tabline .. '%* '
-        end
+-- Based on this plugin: https://github.com/mkitt/tabline.vim/blob/master/plugin/tabline.vim
+function Noob_tab()
+    local tab_count = vim.fn.tabpagenr('$')
+    local s = {}
+
+    for i = 1, tab_count do
+        local tab = i
+        local winnr = vim.fn.tabpagewinnr(tab)
+        local buflist = vim.fn.tabpagebuflist(tab)
+        local bufnr = buflist[winnr]
+
+        local tab_line = {}
+        -- table.insert(tab_line, '%' .. tab .. 'T')
+        -- table.insert(tab_line, ' ' .. i .. ':') -- Shows the tab index, it rarely use more than 3 tabs
+        table.insert(tab_line, (tab == vim.fn.tabpagenr() and '%#TabLineSel#' or '%#TabLine#'))
+        table.insert(tab_line, ' ' .. get_modified_symbol(bufnr))
+        table.insert(tab_line, get_file_name(bufnr, false))
+        table.insert(tab_line, " ")
+
+        table.insert(s, table.concat(tab_line))
     end
-    return tabline
+    table.insert(s, '%#TabLineFill#')
+    return table.concat(s)
 end
 
-vim.o.statusline = "%!luaeval('Status_line()')"
--- vim.o.tabline = "%!luaeval('Tab_line()')"
+vim.o.statusline = "%!luaeval('Noob_status()')"
+vim.o.tabline = "%!luaeval('Noob_tab()')"
