@@ -7,5 +7,5 @@ obsidian.setup {
 }
 
 keymap.nmap("<Leader>oo", obsidian.open_note, { desc = "Open the current note in obsidian" })
-keymap.nmap('<Leader>ts', '<cmd>Telescope spell_suggest<cr>', { desc = "View spell suggestions" })
+keymap.nmap('z=', '<cmd>Telescope spell_suggest<cr>', { desc = "View spell suggestions" })
 settings.notes(vim.opt)
