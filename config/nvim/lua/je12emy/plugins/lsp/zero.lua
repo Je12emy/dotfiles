@@ -11,9 +11,9 @@ return {
             {
                 'hrsh7th/nvim-cmp',
                 dependencies = {
-                    "onsails/lspkind.nvim", "rafamadriz/friendly-snippets"
+                    "onsails/lspkind.nvim", "rafamadriz/friendly-snippets",
                 }
-            }, { 'hrsh7th/cmp-nvim-lsp' }, { 'saadparwaiz1/cmp_luasnip' }, {
+            }, 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-path', {
             'L3MON4D3/LuaSnip',
             version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
             -- install jsregexp (optional!).
