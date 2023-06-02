@@ -1,0 +1,9 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# I just want some padding
+format = ' $directory$git_branch$character'
+
+[character]
+success_symbol = '[](bold green)'
+error_symbol = '[✗](bold red)'
