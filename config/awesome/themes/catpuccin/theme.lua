@@ -49,50 +49,50 @@ theme.menu_width = dpi(100)
 
 -- Define the image to load
 theme.titlebar_close_button_normal = themes_path ..
-                                         "default/titlebar/close_normal.png"
+    "default/titlebar/close_normal.png"
 theme.titlebar_close_button_focus = themes_path ..
-                                        "default/titlebar/close_focus.png"
+    "default/titlebar/close_focus.png"
 
 theme.titlebar_minimize_button_normal = themes_path ..
-                                            "default/titlebar/minimize_normal.png"
+    "default/titlebar/minimize_normal.png"
 theme.titlebar_minimize_button_focus = themes_path ..
-                                           "default/titlebar/minimize_focus.png"
+    "default/titlebar/minimize_focus.png"
 
 theme.titlebar_ontop_button_normal_inactive = themes_path ..
-                                                  "default/titlebar/ontop_normal_inactive.png"
+    "default/titlebar/ontop_normal_inactive.png"
 theme.titlebar_ontop_button_focus_inactive = themes_path ..
-                                                 "default/titlebar/ontop_focus_inactive.png"
+    "default/titlebar/ontop_focus_inactive.png"
 theme.titlebar_ontop_button_normal_active = themes_path ..
-                                                "default/titlebar/ontop_normal_active.png"
+    "default/titlebar/ontop_normal_active.png"
 theme.titlebar_ontop_button_focus_active = themes_path ..
-                                               "default/titlebar/ontop_focus_active.png"
+    "default/titlebar/ontop_focus_active.png"
 
 theme.titlebar_sticky_button_normal_inactive = themes_path ..
-                                                   "default/titlebar/sticky_normal_inactive.png"
+    "default/titlebar/sticky_normal_inactive.png"
 theme.titlebar_sticky_button_focus_inactive = themes_path ..
-                                                  "default/titlebar/sticky_focus_inactive.png"
+    "default/titlebar/sticky_focus_inactive.png"
 theme.titlebar_sticky_button_normal_active = themes_path ..
-                                                 "default/titlebar/sticky_normal_active.png"
+    "default/titlebar/sticky_normal_active.png"
 theme.titlebar_sticky_button_focus_active = themes_path ..
-                                                "default/titlebar/sticky_focus_active.png"
+    "default/titlebar/sticky_focus_active.png"
 
 theme.titlebar_floating_button_normal_inactive = themes_path ..
-                                                     "default/titlebar/floating_normal_inactive.png"
+    "default/titlebar/floating_normal_inactive.png"
 theme.titlebar_floating_button_focus_inactive = themes_path ..
-                                                    "default/titlebar/floating_focus_inactive.png"
+    "default/titlebar/floating_focus_inactive.png"
 theme.titlebar_floating_button_normal_active = themes_path ..
-                                                   "default/titlebar/floating_normal_active.png"
+    "default/titlebar/floating_normal_active.png"
 theme.titlebar_floating_button_focus_active = themes_path ..
-                                                  "default/titlebar/floating_focus_active.png"
+    "default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = themes_path ..
-                                                      "default/titlebar/maximized_normal_inactive.png"
+    "default/titlebar/maximized_normal_inactive.png"
 theme.titlebar_maximized_button_focus_inactive = themes_path ..
-                                                     "default/titlebar/maximized_focus_inactive.png"
+    "default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = themes_path ..
-                                                    "default/titlebar/maximized_normal_active.png"
+    "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = themes_path ..
-                                                   "default/titlebar/maximized_focus_active.png"
+    "default/titlebar/maximized_focus_active.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
@@ -119,10 +119,12 @@ theme.systray_icon_spacing = dpi(2.5)
 -- tooltip
 theme.notification_width = dpi(448)
 theme.notification_icon_size = dpi(64)
+theme.tooltip_bg = bg
+theme.tooltip_fg = fg
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height,
-                                               theme.bg_focus, theme.fg_focus)
+    theme.bg_focus, theme.fg_focus)
 
 -- Load path to the new menu icon, I need to figure out how to resize it.
 theme.menu_icon = theme.dir .. "/menu_icon.png"
