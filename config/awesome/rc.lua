@@ -17,6 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local net_widgets = require("net_widgets")
 local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -329,6 +330,7 @@ awful.screen.connect_for_each_screen(function(s)
                 volume_widget {
                     widget_type = 'arc'
                 },
+                syncthing_widget.status(),
                 net_wired,
                 logout_menu_widget(),
                 wibox.widget.textbox(" ")
