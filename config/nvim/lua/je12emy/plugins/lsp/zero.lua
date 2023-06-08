@@ -29,8 +29,6 @@ return {
 				-- install jsregexp (optional!).
 				build = "make install_jsregexp",
 			},
-			"jose-elias-alvarez/null-ls.nvim",
-			"jay-babu/mason-null-ls.nvim",
 		},
 		config = function()
 			local lsp = require("lsp-zero").preset({
@@ -77,22 +75,10 @@ return {
 				},
 			})
 
-			require("mason-null-ls").setup({
-				ensure_installed = { "prettier", "eslint", "stylua" },
-				automatic_installation = true,
-			})
+			require("mason-null-ls").setup()
 
 			local null_ls = require("null-ls")
-
-			null_ls.setup({
-				sources = {
-					null_ls.builtins.formatting.prettier,
-					null_ls.builtins.formatting.pint,
-					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.diagnostics.eslint,
-					null_ls.builtins.completion.spell,
-				},
-			})
+			null_ls.setup()
 
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
