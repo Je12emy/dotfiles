@@ -1,7 +1,9 @@
 return {
-	"nvim-treesitter/playground",
+	-- "nvim-treesitter/playground",
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
+		version = false,
 		dependencies = { { "nvim-treesitter/nvim-treesitter-context", lazy = false } },
 		build = ":TSUpdate",
 		config = function()
