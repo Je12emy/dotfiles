@@ -675,7 +675,7 @@ awful.rules.rules = {
 		rule_any = { type = { "normal", "dialog" } },
 		properties = { titlebars_enabled = false },
 	},
-	{ rule = { class = "firefox" }, properties = { screen = 1, tag = "2" } },
+	-- { rule = { class = "firefox" }, properties = { screen = 1, tag = "2" } },
 	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = "9" } },
 }
 -- }}}
@@ -752,5 +752,6 @@ end)
 
 -- Autostart
 awful.spawn.with_shell("monitors.sh")
-awful.spawn.single_instance("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
+awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
+awful.spawn.with_shell("xclip")
 -- awful.spawn.with_shell("wmname LG3D");
