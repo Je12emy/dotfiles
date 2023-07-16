@@ -95,7 +95,7 @@ function Noob_tab()
 		-- table.insert(tab_line, '%' .. tab .. 'T')
 		-- table.insert(tab_line, ' ' .. i .. ':') -- Shows the tab index, it rarely use more than 3 tabs
 		table.insert(tab_line, (tab == vim.fn.tabpagenr() and "%#TabLineSel#" or "%#TabLine#"))
-		table.insert(tab_line, " " .. get_modified_symbol(bufnr))
+		table.insert(tab_line, " ")
 		table.insert(tab_line, get_file_name(bufnr, false))
 		table.insert(tab_line, " ")
 
