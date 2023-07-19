@@ -17,7 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local net_widgets = require("net_widgets")
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local syncthing_widget = require("widgets.syncthing")
+-- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -154,19 +154,19 @@ mytextclock = wibox.widget.textclock("%a %d %b, %I:%M %p")
 
 -- Create a wibox for each screen and add it
 -- Actions for pressing a button in the taglist
--- local taglist_buttons = gears.table.join(
---     awful.button({}, 1, function(t) t:view_only() end),
---     awful.button({ modkey }, 1, function(t)
---         if client.focus then client.focus:move_to_tag(t) end
---     end), awful.button({}, 3, awful.tag.viewtoggle),
---     awful.button({ modkey }, 3, function(t)
---         if client.focus then client.focus:toggle_tag(t) end
---     end), awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
---     awful.button({}, 5, function(t)
---         awful.tag.viewprev(t.screen)
---     end))
+local taglist_buttons = gears.table.join(
+    awful.button({}, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+        if client.focus then client.focus:move_to_tag(t) end
+    end), awful.button({}, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+        if client.focus then client.focus:toggle_tag(t) end
+    end), awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({}, 5, function(t)
+        awful.tag.viewprev(t.screen)
+    end))
 
-local get_taglist = function(s)
+local get_icon_taglist = function(s)
 	local taglist_buttons = gears.table.join(
 		awful.button({}, 1, function(t)
 			t:view_only()
@@ -320,7 +320,11 @@ awful.screen.connect_for_each_screen(function(s)
 		end)
 	))
 
-	s.mytaglist = get_taglist(s)
+    s.mytaglist = awful.widget.taglist {
+        screen  = s,
+        filter  = awful.widget.taglist.filter.noempty,
+        buttons = taglist_buttons
+    }
 	-- Create a tasklist widget
 	s.mytasklist = awful.widget.tasklist({
 		screen = s,
@@ -354,7 +358,7 @@ awful.screen.connect_for_each_screen(function(s)
 				volume_widget({
 					widget_type = "arc",
 				}),
-				syncthing_widget.status(),
+				-- syncthing_widget.status(),
 				net_wired,
 				logout_menu_widget(),
 				wibox.widget.textbox(" "),
