@@ -17,6 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local net_widgets = require("net_widgets")
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local taglist_widget = require("widgets.taglist")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -319,12 +320,9 @@ awful.screen.connect_for_each_screen(function(s)
 			awful.layout.inc(-1)
 		end)
 	))
-
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.noempty,
-        buttons = taglist_buttons
-    }
+	
+	-- Create a taglist widget
+    s.mytaglist = taglist_widget.get_standard_taglist(s);
 	-- Create a tasklist widget
 	s.mytasklist = awful.widget.tasklist({
 		screen = s,
