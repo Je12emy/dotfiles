@@ -18,6 +18,7 @@ local net_widgets = require("net_widgets")
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local taglist_widget = require("widgets.taglist")
+local tasklist_widget = require("widgets.tasklist")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -153,115 +154,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%a %d %b, %I:%M %p")
 
--- Create a wibox for each screen and add it
--- Actions for pressing a button in the taglist
-local taglist_buttons = gears.table.join(
-    awful.button({}, 1, function(t) t:view_only() end),
-    awful.button({ modkey }, 1, function(t)
-        if client.focus then client.focus:move_to_tag(t) end
-    end), awful.button({}, 3, awful.tag.viewtoggle),
-    awful.button({ modkey }, 3, function(t)
-        if client.focus then client.focus:toggle_tag(t) end
-    end), awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
-    awful.button({}, 5, function(t)
-        awful.tag.viewprev(t.screen)
-    end))
-
-local get_icon_taglist = function(s)
-	local taglist_buttons = gears.table.join(
-		awful.button({}, 1, function(t)
-			t:view_only()
-		end),
-		awful.button({ modkey }, 1, function(t)
-			if client.focus then
-				client.focus:move_to_tag(t)
-			end
-		end),
-		awful.button({}, 3, awful.tag.viewtoggle),
-		awful.button({ modkey }, 3, function(t)
-			if client.focus then
-				client.focus:toggle_tag(t)
-			end
-		end),
-		awful.button({}, 4, function(t)
-			awful.tag.viewnext(t.screen)
-		end),
-		awful.button({}, 5, function(t)
-			awful.tag.viewprev(t.screen)
-		end)
-	)
-	-- Icons
-	local unfocus_icon = " "
-	local unfocus_color = "#a6adc8"
-
-	local empty_icon = " "
-	local empty_color = "#585b70"
-
-	local focus_icon = " "
-	local focus_color = "#89b4fa"
-
-	-- Function to update the tags
-	local update_tags = function(self, c3)
-		local tagicon = self:get_children_by_id("icon_role")[1]
-		if c3.selected then
-			tagicon.text = focus_icon
-			self.fg = focus_color
-		elseif #c3:clients() == 0 then
-			tagicon.text = empty_icon
-			self.fg = empty_color
-		else
-			tagicon.text = unfocus_icon
-			self.fg = unfocus_color
-		end
-	end
-
-	local icon_taglist = awful.widget.taglist({
-		screen = s,
-		filter = awful.widget.taglist.filter.all,
-		layout = { spacing = 0, layout = wibox.layout.fixed.horizontal },
-		widget_template = {
-			{
-				{
-					id = "icon_role",
-					font = "FuraMono Nerd Font 12",
-					widget = wibox.widget.textbox,
-				},
-				id = "margin_role",
-				top = 0,
-				bottom = 0,
-				left = 2,
-				right = 2,
-				widget = wibox.container.margin,
-			},
-			id = "background_role",
-			widget = wibox.container.background,
-			create_callback = function(self, c3, index, objects)
-				update_tags(self, c3)
-			end,
-
-			update_callback = function(self, c3, index, objects)
-				update_tags(self, c3)
-			end,
-		},
-		buttons = taglist_buttons,
-	})
-
-	return icon_taglist
-end
-
--- local tasklist_buttons = gears.table.join(
---     awful.button({}, 1, function(c)
---         if c == client.focus then
---             c.minimized = true
---         else
---             c:emit_signal("request::activate", "tasklist", { raise = true })
---         end
---     end), awful.button({}, 3, function()
---         awful.menu.client_list({ theme = { width = 250 } })
---     end), awful.button({}, 4, function() awful.client.focus.byidx(1) end),
---     awful.button({}, 5, function()
---         awful.client.focus.byidx(-1)
---     end))
 
 local function set_wallpaper(s)
 	-- Wallpaper
@@ -320,15 +212,11 @@ awful.screen.connect_for_each_screen(function(s)
 			awful.layout.inc(-1)
 		end)
 	))
-	
+
 	-- Create a taglist widget
-    s.mytaglist = taglist_widget.get_standard_taglist(s);
+    s.mytaglist = taglist_widget.get_standard_taglist(s)
 	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist({
-		screen = s,
-		filter = awful.widget.tasklist.filter.focused,
-		-- buttons = tasklist_buttons
-	})
+	s.mytasklist = tasklist_widget.constrained_tasklist(s)
 
 	-- Create the wibox
 	s.mywibox = awful.wibar({ position = "top", screen = s })
