@@ -20,6 +20,7 @@ local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout
 local taglist_widget = require("widgets.taglist")
 local tasklist_widget = require("widgets.tasklist")
 local textclock_widget = require("widgets.clock")
+local systray_widget = require("widgets.systray")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -166,22 +167,6 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
-
-local my_systray = wibox.widget({
-	{
-		{
-			wibox.widget.systray(),
-			top = 4,
-			bottom = 4,
-			right = 4,
-			left = 4,
-			widget = wibox.container.margin,
-		},
-		widget = wibox.container.background,
-	},
-	left = 3,
-	widget = wibox.container.margin,
-})
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
