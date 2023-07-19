@@ -19,6 +19,7 @@ local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local taglist_widget = require("widgets.taglist")
 local tasklist_widget = require("widgets.tasklist")
+local textclock_widget = require("widgets.clock")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -151,10 +152,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- systray:set_base_size(10)
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock("%a %d %b, %I:%M %p")
-
-
 local function set_wallpaper(s)
 	-- Wallpaper
 	if beautiful.wallpaper then
