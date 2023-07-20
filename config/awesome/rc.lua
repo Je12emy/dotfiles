@@ -21,6 +21,7 @@ local taglist_widget = require("widgets.taglist")
 local tasklist_widget = require("widgets.tasklist")
 local textclock_widget = require("widgets.clock")
 local systray_widget = require("widgets.systray")
+local topbar_widget = require("widgets.topbar")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -149,8 +150,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
--- local systray = wibox.widget.systray()
--- systray:set_base_size(10)
 
 -- {{{ Wibar
 local function set_wallpaper(s)
@@ -202,47 +201,23 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- Create the wibox
 	s.mywibox = awful.wibar({ position = "top", screen = s })
-
-	-- Add widgets to the wibox
-	s.mywibox:setup({
-		layout = wibox.layout.stack,
-		{
-			layout = wibox.layout.align.horizontal,
-			{
-				layout = wibox.layout.fixed.horizontal,
-				spacing = 5,
-				wibox.widget.textbox(" "),
-				-- mylauncher,
-				s.mytaglist,
-				s.mypromptbox,
-			},
-			nil,
-			{
-				layout = wibox.layout.fixed.horizontal,
-				spacing = 5,
-				-- s.mytasklist,
-				my_systray,
-				mykeyboardlayout,
-				volume_widget({
-					widget_type = "arc",
-				}),
-				-- syncthing_widget.status(),
-				net_wired,
-				logout_menu_widget(),
-				wibox.widget.textbox(" "),
-			},
-		},
-		{
-			-- Middle widgets
-			layout = wibox.container.place,
-			mytextclock,
-			valign = "center",
-			halign = "center",
-		},
-	})
+	s.mywibox:setup(topbar_widget.standard({
+		wibox.widget.textbox(" "),
+		s.mytaglist,
+		},s.mytasklist , {
+			 systray_widget.systray,
+			 wibox.widget.textbox(" "),
+             textclock_widget.standard,
+			 wibox.widget.textbox(" "),
+             -- mykeyboardlayout,
+			 volume_widget({
+				widget_type = "arc",
+			 }),
+			 net_wired,
+			 logout_menu_widget(),
+			 wibox.widget.textbox(" "),
+	}))
 end)
--- }}}
-
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
 	awful.button({}, 3, function()

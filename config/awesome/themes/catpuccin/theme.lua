@@ -40,8 +40,8 @@ theme.border_normal = bg
 theme.border_focus = blue
 theme.border_marked = red
 
--- theme.taglist_bg_focus = blue;
--- theme.taglist_fg_focus = bg;
+theme.taglist_bg_focus = blue;
+theme.taglist_fg_focus = bg;
 
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 theme.menu_height = dpi(15)
