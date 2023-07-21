@@ -18,8 +18,10 @@ theme.wallpaper = files.pick_wallpaper(theme.dir .. "/wallpapers")
 -- Background colors
 local bg = "#11111b"
 local fg = "#cdd6f4"
+local text = "#cdd6f4"
 local blue = "#89b4fa"
 local red = "#f38ba8"
+local base = "#181825"
 
 theme.font = "JetBrainsMono Nerd Font 12"
 
@@ -42,6 +44,8 @@ theme.border_marked = red
 
 theme.taglist_bg_focus = blue;
 theme.taglist_fg_focus = bg;
+theme.taglist_bg_urgent = red;
+theme.taglist_fg_urgent = bg;
 
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 theme.menu_height = dpi(15)
@@ -94,8 +98,14 @@ theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 
 -- tasklist
 theme.tasklist_disable_icon = true
+theme.tasklist_bg_focus = blue
+theme.tasklist_fg_focus = bg
+theme.tasklist_bg_minimize = base
+theme.tasklist_fg_minimize = text
+theme.tasklist_bg_urgent = red
+theme.tasklist_fg_urgent = text
 theme.systray_icon_spacing = dpi(2.5)
-
+theme.tasklist_plain_task_name = true
 -- tooltip
 theme.notification_width = dpi(448)
 theme.notification_icon_size = dpi(64)
