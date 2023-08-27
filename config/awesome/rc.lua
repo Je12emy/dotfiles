@@ -204,6 +204,7 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mywibox:setup(topbar_widget.standard({
 		wibox.widget.textbox(" "),
 		s.mytaglist,
+		wibox.widget.textbox(" "),
 		},s.mytasklist , {
 			 systray_widget.systray,
 			 wibox.widget.textbox(" "),

@@ -25,17 +25,17 @@ local tasklist_buttons = gears.table.join(
 
 local get_tasklist_layout = function(layout)
 	local layout_template = {
-		spacing = 10,
-		spacing_widget = {
-			{
-				forced_width = 5,
-				shape = gears.shape.circle,
-				widget = wibox.widget.separator,
-			},
-			valign = "center",
-			halign = "center",
-			widget = wibox.container.place,
-		},
+		spacing = 0,
+		-- spacing_widget = {
+		-- 	{
+		-- 		forced_width = 5,
+		-- 		shape = gears.shape.circle,
+		-- 		widget = wibox.widget.separator,
+		-- 	},
+		-- 	valign = "center",
+		-- 	halign = "center",
+		-- 	widget = wibox.container.place,
+		-- },
 		layout = layout,
 	}
 	return layout_template
@@ -44,14 +44,17 @@ end
 local tasklist_widget_template = {
 	{
 		{
-			{
-				{
-					id = "icon_role",
-					widget = wibox.widget.imagebox,
-				},
-				margins = 2,
-				widget = wibox.container.margin,
-			},
+			-- {
+			-- 	{
+			-- 		id = "icon_role",
+			-- 		widget = wibox.widget.imagebox,
+			-- 		forced_height = 26,
+			-- 		forced_width = 26,
+			-- 		resize = true
+			-- 	},
+			-- 	margins = 2,
+			-- 	widget = wibox.container.margin,
+			-- },
 			{
 				id = "text_role",
 				widget = wibox.widget.textbox,

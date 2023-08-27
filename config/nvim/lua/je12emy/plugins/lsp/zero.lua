@@ -1,6 +1,7 @@
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		enable = false,
 		branch = "v2.x",
 		dependencies = {
 			{ "simrat39/rust-tools.nvim" },
@@ -51,7 +52,7 @@ return {
 					timeout_ms = 10000,
 				},
 				servers = {
-					["null-ls"] = { "javascript", "typescript", "lua", "markdown", "php" },
+					-- ["null-ls"] = { "javascript", "typescript", "lua", "markdown", "php" },
 				},
 			})
 
@@ -75,10 +76,10 @@ return {
 				},
 			})
 
-			require("mason-null-ls").setup()
-
-			local null_ls = require("null-ls")
-			null_ls.setup()
+			-- require("mason-null-ls").setup()
+			--
+			-- local null_ls = require("null-ls")
+			-- null_ls.setup()
 
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()

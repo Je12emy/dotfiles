@@ -26,6 +26,7 @@ alias nuget="mono /usr/local/bin/nuget.exe"
 
 # Go
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/jeremy/go/bin
 
 # Plugins, I use zap: https://github.com/zap-zsh/zap/tree/master
 plug "zsh-users/zsh-autosuggestions"
