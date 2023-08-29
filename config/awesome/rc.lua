@@ -14,7 +14,6 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Other Widgets
-local net_widgets = require("net_widgets")
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local taglist_widget = require("widgets.taglist")
@@ -72,7 +71,6 @@ terminal = "/home/jeremy/.local/kitty.app/bin/kitty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
-net_wired = net_widgets.indicator({ interfaces = { "enp3s0" }, timeout = 5 })
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -214,7 +212,6 @@ awful.screen.connect_for_each_screen(function(s)
 			 volume_widget({
 				widget_type = "arc",
 			 }),
-			 net_wired,
 			 logout_menu_widget(),
 			 wibox.widget.textbox(" "),
 	}))
