@@ -53,10 +53,20 @@ local function get_modified_symbol(bufnr)
 	return "" .. spacer
 end
 
+local special_file_names = {
+	["fugitive"] = { "Fugitive" },
+	["oil"] = { "Oil" },
+}
+
 local function get_file_name(bufnr, show_icon)
 	local filename = vim.api.nvim_buf_get_name(bufnr)
-	if filename == "" then
-		return "[No Name]"
+	for key, _ in pairs(special_file_names) do
+		if filename == "" then
+			return "[No Name]"
+		end
+		if string.match(filename, key) then
+			return special_file_names[key][1]
+		end
 	end
 	local basename = vim.fn.fnamemodify(filename, ":t")
 	local filetype = vim.bo[bufnr].filetype
