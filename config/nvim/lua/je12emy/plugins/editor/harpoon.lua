@@ -15,8 +15,11 @@ return {
                 end,
                 desc = "Toggle grapple mark",
             },
-            { "<leader>tm", "<cmd>Telescope harpoon marks theme=dropdown previewer=false<cr>",
-                desc = "Open grappgle marks" },
+            {
+                "<leader>tm",
+                "<cmd>Telescope harpoon marks theme=dropdown previewer=false<cr>",
+                desc = "Open grappgle marks"
+            },
         }
     end
 }
