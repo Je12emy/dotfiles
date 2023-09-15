@@ -1,7 +1,6 @@
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		enable = false,
 		branch = "v2.x",
 		dependencies = {
 			{ "simrat39/rust-tools.nvim" },
