@@ -18,7 +18,6 @@ local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local taglist_widget = require("widgets.taglist")
 local tasklist_widget = require("widgets.tasklist")
-local textclock_widget = require("widgets.clock")
 local systray_widget = require("widgets.systray")
 local topbar_widget = require("widgets.topbar")
 -- local syncthing_widget = require("widgets.syncthing")
@@ -65,7 +64,7 @@ end
 -- -- Themes define colours, icons, font and wallpapers.
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "catpuccin")
 beautiful.init(theme_path)
-
+local textclock_widget = require("widgets.clock")
 -- This is used later as the default terminal and editor to run.
 terminal = "/home/jeremy/.local/kitty.app/bin/kitty"
 editor = os.getenv("EDITOR") or "editor"
@@ -599,4 +598,6 @@ end)
 awful.spawn.with_shell("monitors.sh")
 awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 awful.spawn.with_shell("xclip")
+awful.spawn.with_shell("flatpak run --command=pika-backup-monitor org.gnome.World.PikaBackup")
+awful.spawn.with_shell("picom")
 -- awful.spawn.with_shell("wmname LG3D");
