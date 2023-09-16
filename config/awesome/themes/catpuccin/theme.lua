@@ -23,7 +23,7 @@ local blue = "#89b4fa"
 local red = "#f38ba8"
 local base = "#181825"
 
-theme.font = "JetBrainsMono Nerd Font 12"
+theme.font = "FiraCodeNerdFont 12"
 
 theme.bg_normal = bg
 theme.bg_focus = bg
