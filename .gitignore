@@ -1,3 +1,4 @@
 config/tmux/plugins/*
 config/nushell/history.txt
 *.zcompdump
+.zsh_history
