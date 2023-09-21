@@ -28,7 +28,6 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -198,13 +197,18 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- Create the wibox
 	s.mywibox = awful.wibar({ position = "top", screen = s })
+	-- local layout_box = awful.widget.layoutbox:new(s)
+	s.mylayoutbox = awful.widget.layoutbox(s)
+	s.mylayoutbox = wibox.container.margin(s.mylayoutbox, 5, 5, 5, 5)
 	s.mywibox:setup(topbar_widget.standard({
 		wibox.widget.textbox(" "),
 		s.mytaglist,
 		wibox.widget.textbox(" "),
+		-- layout_box
 		},s.mytasklist , {
 			 systray_widget.systray,
 			 wibox.widget.textbox(" "),
+			 s.mylayoutbox,
              textclock_widget.standard,
 			 wibox.widget.textbox(" "),
              -- mykeyboardlayout,
