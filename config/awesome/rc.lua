@@ -599,5 +599,6 @@ awful.spawn.with_shell("monitors.sh")
 awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 awful.spawn.with_shell("xclip")
 awful.spawn.with_shell("flatpak run --command=pika-backup-monitor org.gnome.World.PikaBackup")
+awful.spawn.with_shell("setxkbmap latam")
 awful.spawn.with_shell("picom")
 -- awful.spawn.with_shell("wmname LG3D");
