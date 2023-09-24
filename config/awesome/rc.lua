@@ -191,7 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
 	))
 
 	-- Create a taglist widget
-    s.mytaglist = taglist_widget.get_standard_taglist(s)
+	s.mytaglist = taglist_widget.get_standard_taglist(s)
 	-- Create a tasklist widget
 	s.mytasklist = tasklist_widget.constrained_tasklist(s)
 
@@ -200,24 +200,28 @@ awful.screen.connect_for_each_screen(function(s)
 	-- local layout_box = awful.widget.layoutbox:new(s)
 	s.mylayoutbox = awful.widget.layoutbox(s)
 	s.mylayoutbox = wibox.container.margin(s.mylayoutbox, 5, 5, 5, 5)
-	s.mywibox:setup(topbar_widget.standard({
-		wibox.widget.textbox(" "),
-		s.mytaglist,
-		wibox.widget.textbox(" "),
-		-- layout_box
-		},s.mytasklist , {
-			 systray_widget.systray,
-			 wibox.widget.textbox(" "),
-			 s.mylayoutbox,
-             textclock_widget.standard,
-			 wibox.widget.textbox(" "),
-             -- mykeyboardlayout,
-			 volume_widget({
+	s.mywibox:setup(topbar_widget.standard(
+		{
+			wibox.widget.textbox(" "),
+			s.mytaglist,
+			wibox.widget.textbox(" "),
+			-- layout_box
+		},
+		s.mytasklist,
+		{
+			systray_widget.systray,
+			wibox.widget.textbox(" "),
+			s.mylayoutbox,
+			textclock_widget.standard,
+			wibox.widget.textbox(" "),
+			-- mykeyboardlayout,
+			volume_widget({
 				widget_type = "arc",
-			 }),
-			 logout_menu_widget(),
-			 wibox.widget.textbox(" "),
-	}))
+			}),
+			logout_menu_widget(),
+			wibox.widget.textbox(" "),
+		}
+	))
 end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
