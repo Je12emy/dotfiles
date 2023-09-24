@@ -331,15 +331,6 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "Tab", function()
 		awful.util.spawn("rofi -show window")
 	end, { description = "run rofi window", group = "launcher" }),
-
-	-- awful.key({ modkey }, "x", function()
-	-- 	awful.prompt.run({
-	-- 		prompt = "Run Lua code: ",
-	-- 		textbox = awful.screen.focused().mypromptbox.widget,
-	-- 		exe_callback = awful.util.eval,
-	-- 		history_path = awful.util.get_cache_dir() .. "/history_eval",
-	-- 	})
-	-- end, { description = "lua execute prompt", group = "awesome" }), -- Utils
 	awful.key({ modkey, "Shift" }, "s", function()
 		awful.util.spawn("rofi-pass.sh")
 	end, { description = "run rofi pass", group = "launcher" }),
