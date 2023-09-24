@@ -14,14 +14,9 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Other Widgets
-local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
-local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local taglist_widget = require("widgets.taglist")
 local tasklist_widget = require("widgets.tasklist")
-local systray_widget = require("widgets.systray")
-local topbar_widget = require("widgets.topbar")
-local spacer = require("widgets.spacer")
-local bar = require("widgets.bar")
+local bar = require("widgets.bar.init")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -202,7 +197,7 @@ awful.screen.connect_for_each_screen(function(s)
 	-- local layout_box = awful.widget.layoutbox:new(s)
 	s.mylayoutbox = awful.widget.layoutbox(s)
 	s.mylayoutbox = wibox.container.margin(s.mylayoutbox, 5, 5, 5, 5)
-	s.mywibox:setup(bar.standard(s.mytaglist, s.mytasklist, s.mylayoutbox))
+	s.mywibox:setup(bar.standard_bar(s.mytaglist, s.mytasklist, s.mylayoutbox))
 end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
