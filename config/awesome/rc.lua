@@ -26,7 +26,7 @@ local topbar_widget = require("widgets.topbar")
 require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
-local debian = require("debian.menu")
+-- local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -65,7 +65,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.ge
 beautiful.init(theme_path)
 local textclock_widget = require("widgets.clock")
 -- This is used later as the default terminal and editor to run.
-terminal = "/home/jeremy/.local/kitty.app/bin/kitty"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -129,7 +129,7 @@ else
 	mymainmenu = awful.menu({
 		items = {
 			menu_awesome,
-			{ "Debian", debian.menu.Debian_menu.Debian },
+			-- { "Debian", debian.menu.Debian_menu.Debian },
 			menu_terminal,
 		},
 	})
@@ -321,8 +321,8 @@ globalkeys = gears.table.join(
 		end
 	end, { description = "restore minimized", group = "client" }), -- Prompt
 	awful.key({ modkey, "Shift" }, "p", function()
-		awful.util.spawn("dmenu_run")
-	end, { description = "run dmenu", group = "launcher" }),
+		awful.util.spawn("rofi -show run")
+	end, { description = "run rofi run", group = "launcher" }),
 
 	awful.key({ modkey }, "p", function()
 		awful.util.spawn("rofi -show drun")
@@ -332,16 +332,16 @@ globalkeys = gears.table.join(
 		awful.util.spawn("rofi -show window")
 	end, { description = "run rofi window", group = "launcher" }),
 
-	awful.key({ modkey }, "x", function()
-		awful.prompt.run({
-			prompt = "Run Lua code: ",
-			textbox = awful.screen.focused().mypromptbox.widget,
-			exe_callback = awful.util.eval,
-			history_path = awful.util.get_cache_dir() .. "/history_eval",
-		})
-	end, { description = "lua execute prompt", group = "awesome" }), -- Utils
+	-- awful.key({ modkey }, "x", function()
+	-- 	awful.prompt.run({
+	-- 		prompt = "Run Lua code: ",
+	-- 		textbox = awful.screen.focused().mypromptbox.widget,
+	-- 		exe_callback = awful.util.eval,
+	-- 		history_path = awful.util.get_cache_dir() .. "/history_eval",
+	-- 	})
+	-- end, { description = "lua execute prompt", group = "awesome" }), -- Utils
 	awful.key({ modkey, "Shift" }, "s", function()
-		awful.util.spawn("rofi-pass")
+		awful.util.spawn("rofi-pass.sh")
 	end, { description = "run rofi pass", group = "launcher" }),
 
 	awful.key({ modkey, "Shift" }, "v", function()
