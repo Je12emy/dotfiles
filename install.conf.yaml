@@ -13,9 +13,11 @@
       path: scripts/*.sh
       glob: true
     ~/.zshenv: .zshenv
+    ~/Pictures/wallpapers: ./wallpapers
 
 - create:
   - ~/.config/scripts
+  - ~/Pictures/wallpapers
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
