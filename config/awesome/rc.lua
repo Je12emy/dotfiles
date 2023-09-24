@@ -159,20 +159,11 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
-
-awful.screen.connect_for_each_screen(function(s)
-	-- Wallpaper
-	set_wallpaper(s)
-
-	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-
-	-- Create a promptbox for each screen
-	s.mypromptbox = awful.widget.prompt()
-	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
-	-- We need one layoutbox per screen.
-	s.mylayoutbox = awful.widget.layoutbox(s)
-	s.mylayoutbox:buttons(gears.table.join(
+awful.screen.connect_for_each_screen(function(sreen)
+	set_wallpaper(sreen)
+	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, sreen, awful.layout.layouts[1])
+	sreen.layoutbox = awful.widget.layoutbox(sreen)
+	sreen.layoutbox:buttons(gears.table.join(
 		awful.button({}, 1, function()
 			awful.layout.inc(1)
 		end),
@@ -186,18 +177,12 @@ awful.screen.connect_for_each_screen(function(s)
 			awful.layout.inc(-1)
 		end)
 	))
-
-	-- Create a taglist widget
-	s.mytaglist = taglist_widget.get_standard_taglist(s)
-	-- Create a tasklist widget
-	s.mytasklist = tasklist_widget.constrained_tasklist(s)
-
-	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
-	-- local layout_box = awful.widget.layoutbox:new(s)
-	s.mylayoutbox = awful.widget.layoutbox(s)
-	s.mylayoutbox = wibox.container.margin(s.mylayoutbox, 5, 5, 5, 5)
-	s.mywibox:setup(bar.standard_bar(s.mytaglist, s.mytasklist, s.mylayoutbox))
+	sreen.taglist = taglist_widget.get_standard_taglist(sreen)
+	sreen.tasklist = tasklist_widget.constrained_tasklist(sreen)
+	sreen.wibox = awful.wibar({ position = "top", screen = sreen })
+	sreen.layoutbox = awful.widget.layoutbox(sreen)
+	sreen.layoutbox = wibox.container.margin(sreen.layoutbox, 5, 5, 5, 5)
+	sreen.wibox:setup(bar.standard_bar(sreen.taglist, sreen.tasklist, sreen.layoutbox))
 end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
