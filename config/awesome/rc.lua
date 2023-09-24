@@ -13,11 +13,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Other Widgets
-local taglist_widget = require("widgets.taglist")
-local tasklist_widget = require("widgets.tasklist")
-local bar = require("widgets.bar.init")
--- local syncthing_widget = require("widgets.syncthing")
+-- My Widgets
+local taglist_widget = require("modules.widgets.taglist")
+local tasklist_widget = require("modules.widgets.tasklist")
+local bar_widget = require("modules.widgets.bar.init")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -58,9 +57,8 @@ end
 
 -- {{{ Variable definitions
 -- -- Themes define colours, icons, font and wallpapers.
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "catpuccin")
+local theme_path = string.format("%s/.config/awesome/modules/themes/%s/theme.lua", os.getenv("HOME"), "catpuccin")
 beautiful.init(theme_path)
-local textclock_widget = require("widgets.clock")
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
@@ -141,9 +139,6 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
 local function set_wallpaper(s)
 	-- Wallpaper
@@ -182,7 +177,7 @@ awful.screen.connect_for_each_screen(function(sreen)
 	sreen.wibox = awful.wibar({ position = "top", screen = sreen })
 	sreen.layoutbox = awful.widget.layoutbox(sreen)
 	sreen.layoutbox = wibox.container.margin(sreen.layoutbox, 5, 5, 5, 5)
-	sreen.wibox:setup(bar.standard_bar(sreen.taglist, sreen.tasklist, sreen.layoutbox))
+	sreen.wibox:setup(bar_widget.standard_bar(sreen.taglist, sreen.tasklist, sreen.layoutbox))
 end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(

@@ -18,7 +18,9 @@ end
 
 m.normal = function()
 	return wibox.widget({
-		text = " ",
+		text = "  ",
+		align  = "center",
+		valign = "center",
 		widget = wibox.widget.textbox,
 	})
 end

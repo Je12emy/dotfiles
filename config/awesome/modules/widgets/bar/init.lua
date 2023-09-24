@@ -1,9 +1,9 @@
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local systray = require("widgets.systray")
-local spacer = require("widgets.spacer")
-local clock = require("widgets.clock")
-local bar_template = require("widgets.bar.templates")
+local systray = require("modules.widgets.systray")
+local spacer = require("modules.widgets.spacer")
+local clock = require("modules.widgets.clock")
+local bar_template = require("modules.widgets.bar.templates")
 
 local m = {}
 
