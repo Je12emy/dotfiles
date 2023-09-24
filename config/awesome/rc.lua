@@ -20,6 +20,7 @@ local taglist_widget = require("widgets.taglist")
 local tasklist_widget = require("widgets.tasklist")
 local systray_widget = require("widgets.systray")
 local topbar_widget = require("widgets.topbar")
+local spacer = require("widgets.spacer")
 -- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -202,24 +203,24 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mylayoutbox = wibox.container.margin(s.mylayoutbox, 5, 5, 5, 5)
 	s.mywibox:setup(topbar_widget.standard(
 		{
-			wibox.widget.textbox(" "),
+			spacer.normal(),
 			s.mytaglist,
-			wibox.widget.textbox(" "),
+			spacer.normal(),
 			-- layout_box
 		},
 		s.mytasklist,
 		{
 			systray_widget.systray,
-			wibox.widget.textbox(" "),
+			spacer.normal(),
 			s.mylayoutbox,
 			textclock_widget.standard,
-			wibox.widget.textbox(" "),
+			spacer.normal(),
 			-- mykeyboardlayout,
 			volume_widget({
 				widget_type = "arc",
 			}),
 			logout_menu_widget(),
-			wibox.widget.textbox(" "),
+			spacer.normal(),
 		}
 	))
 end)
