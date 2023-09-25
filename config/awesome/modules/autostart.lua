@@ -10,7 +10,7 @@ local programs = {
 }
 
 m.spawn = function()
-	for program, _ in pairs(programs) do
+	for _, program in ipairs(programs) do
 		awful.spawn.with_shell(program)
 	end
 end
