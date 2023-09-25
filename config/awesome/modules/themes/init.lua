@@ -1,6 +1,8 @@
 local files = require("modules.helpers.files")
 local xresources = require("beautiful.xresources")
+local fs = require("gears.filesystem")
 local dpi = xresources.apply_dpi
+local dbg = require("modules.helpers.debug")
 
 local font_name = "JetBrainsMonoNerdFontPropo"
 local font_size = 12
@@ -110,12 +112,21 @@ m.available_themes = {
 
 m.get_theme = function(name)
     local theme = {}
-    local themes_dir = os.getenv("HOME") .. "/.config/awesome/modules/themes"
+    local home_dir = os.getenv("HOME")
+    local themes_dir = home_dir .. "/.config/awesome/modules/themes"
+    local base_assets_dir = themes_dir .. "/base_assets/"
     local selected_theme_dir = themes_dir .. m.available_themes[name].dir
     local theme_variables = get_theme_variables(name)
+    local wallpaper_path = selected_theme_dir .. "/wallpapers"
+    local has_wallpapers = fs.dir_readable(selected_theme_dir .. "/wallpapers")
     theme.font = font
-    theme.wallpaper = files.pick_wallpaper(selected_theme_dir .. "/wallpapers")
-    init_theme(theme, theme_variables.colors, themes_dir .. "/base_assets/")
+    if not (has_wallpapers) then
+        local shared_wallpapers_dir = home_dir .. "/Pictures/wallpapers"
+        theme.wallpaper = files.pick_wallpaper(shared_wallpapers_dir)
+    else
+        theme.wallpaper = files.pick_wallpaper(wallpaper_path)
+    end
+    init_theme(theme, theme_variables.colors, base_assets_dir)
     return theme
 end
 
