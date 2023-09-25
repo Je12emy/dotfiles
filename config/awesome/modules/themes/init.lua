@@ -1,12 +1,14 @@
 local files = require("modules.helpers.files")
 local xresources = require("beautiful.xresources")
+local gears = require("gears")
 local fs = require("gears.filesystem")
 local dpi = xresources.apply_dpi
-local dbg = require("modules.helpers.debug")
+local beautiful = require("beautiful")
+local _ = require("modules.helpers.debug")
 
 local font_name = "JetBrainsMonoNerdFontPropo"
 local font_size = 12
-local font = font_name .. font_size
+local font = font_name .. " " .. font_size
 
 local function get_theme_variables(name)
     local require_path = "modules.themes." .. name
@@ -129,5 +131,19 @@ m.get_theme = function(name)
     init_theme(theme, theme_variables.colors, base_assets_dir)
     return theme
 end
+
+m.set_wallpaper = function(screen)
+	-- Wallpaper
+	if beautiful.wallpaper then
+		local wallpaper = beautiful.wallpaper
+		-- If wallpaper is a function, call it with the screen
+		if type(wallpaper) == "function" then
+			wallpaper = wallpaper(screen)
+		end
+		gears.wallpaper.maximized(wallpaper, screen, true)
+	end
+end
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+screen.connect_signal("property::geometry", m.set_wallpaper)
 
 return m
