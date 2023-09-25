@@ -23,6 +23,7 @@ local tasklist_widget = require("modules.widgets.tasklist")
 local bar_widget = require("modules.widgets.bar.init")
 local variables = require("modules.variables")
 local menu_widget = require("modules.widgets.menu.init")
+local autostart = require("modules.autostart")
 -- Load Debian menu entries
 -- local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -491,11 +492,4 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 
--- Autostart
-awful.spawn.with_shell("monitors.sh")
-awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
-awful.spawn.with_shell("xclip")
-awful.spawn.with_shell("flatpak run --command=pika-backup-monitor org.gnome.World.PikaBackup")
-awful.spawn.with_shell("setxkbmap latam")
-awful.spawn.with_shell("picom")
--- awful.spawn.with_shell("wmname LG3D");
+autostart.spawn()
