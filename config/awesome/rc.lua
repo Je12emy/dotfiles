@@ -9,14 +9,17 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+local theming = require("modules.themes.init")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- My Widgets
+local dbg = require("modules.helpers.debug")
+-- Other Widgets
 local taglist_widget = require("modules.widgets.taglist")
 local tasklist_widget = require("modules.widgets.tasklist")
 local bar_widget = require("modules.widgets.bar.init")
+-- local syncthing_widget = require("widgets.syncthing")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -55,10 +58,8 @@ do
 end
 -- }}}
 
--- {{{ Variable definitions
--- -- Themes define colours, icons, font and wallpapers.
-local theme_path = string.format("%s/.config/awesome/modules/themes/%s/theme.lua", os.getenv("HOME"), "catpuccin")
-beautiful.init(theme_path)
+local theme = theming.get_theme(theming.available_themes.catpuccin.name)
+beautiful.init(theme)
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
