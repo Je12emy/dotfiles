@@ -100,30 +100,12 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = variables.terminal -- Set the terminal for applications that require it
 
 -- Wibar
-awful.screen.connect_for_each_screen(function(sreen)
-	theming.set_wallpaper(sreen)
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, sreen, awful.layout.layouts[1])
-	sreen.layoutbox = awful.widget.layoutbox(sreen)
-	sreen.layoutbox:buttons(gears.table.join(
-		awful.button({}, 1, function()
-			awful.layout.inc(1)
-		end),
-		awful.button({}, 3, function()
-			awful.layout.inc(-1)
-		end),
-		awful.button({}, 4, function()
-			awful.layout.inc(1)
-		end),
-		awful.button({}, 5, function()
-			awful.layout.inc(-1)
-		end)
-	))
-	sreen.taglist = taglist_widget.get_standard_taglist(sreen)
-	sreen.tasklist = tasklist_widget.constrained_tasklist(sreen)
-	sreen.wibox = awful.wibar({ position = "top", screen = sreen })
-	sreen.layoutbox = awful.widget.layoutbox(sreen)
-	sreen.layoutbox = wibox.container.margin(sreen.layoutbox, 5, 5, 5, 5)
-	sreen.wibox:setup(bar_widget.standard_bar(sreen.taglist, sreen.tasklist, sreen.layoutbox))
+awful.screen.connect_for_each_screen(function(current_screen)
+	theming.set_wallpaper(current_screen)
+	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, current_screen, awful.layout.layouts[1])
+	current_screen.wibox = awful.wibar({ position = "top", screen = current_screen })
+	bar_widget.init(current_screen)
+	current_screen.wibox:setup(bar_widget.get_bar(current_screen))
 end)
 -- Mouse bindings
 root.buttons(gears.table.join(
