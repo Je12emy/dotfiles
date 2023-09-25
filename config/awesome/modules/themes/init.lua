@@ -59,9 +59,13 @@ local function init_theme(theme, colors, assets_path)
     theme.tooltip_bg = colors.bg
     theme.tooltip_fg = colors.fg
     -- Menu: https://awesomewm.org/doc/api/libraries/awful.menu.html
-    theme.menu_height = dpi(15)
-    theme.menu_width = dpi(100)
-    theme.menu_submenu_icon = assets_path .. "submenu.png"
+    theme.menu_fg_focus = colors.bg
+    theme.menu_bg_focus = colors.primary
+    theme.menu_height = dpi(20)
+    theme.menu_width = dpi(200)
+    theme.menu_border_color = colors.primary
+    theme.menu_border_width = 1.5
+    theme.menu_submenu_icon = assets_path .. "none.svg"
     -- Icon
     -- theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
     -- theme.menu_icon = assets_path .. "menu_icon.png"

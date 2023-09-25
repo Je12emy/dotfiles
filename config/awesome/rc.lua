@@ -22,6 +22,7 @@ local taglist_widget = require("modules.widgets.taglist")
 local tasklist_widget = require("modules.widgets.tasklist")
 local bar_widget = require("modules.widgets.bar.init")
 local variables = require("modules.variables")
+local menu_widget = require("modules.widgets.menu.init")
 -- Load Debian menu entries
 -- local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -78,28 +79,6 @@ awful.layout.layouts = {
 -- }}}
 
 -- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-	{
-		"hotkeys",
-		function()
-			hotkeys_popup.show_help(nil, awful.screen.focused())
-		end,
-	},
-	{ "manual",      variables.terminal .. " -e man awesome" },
-	{ "edit config", variables.editor_cmd .. " " .. awesome.conffile },
-	{ "restart",     awesome.restart },
-	{
-		"quit",
-		function()
-			awesome.quit()
-		end,
-	},
-}
-
-local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
-local menu_terminal = { "open terminal", variables.terminal }
-
 if has_fdo then
 	mymainmenu = freedesktop.menu.build({
 		before = { menu_awesome },
@@ -107,11 +86,7 @@ if has_fdo then
 	})
 else
 	mymainmenu = awful.menu({
-		items = {
-			menu_awesome,
-			-- { "Debian", debian.menu.Debian_menu.Debian },
-			menu_terminal,
-		},
+		items = menu_widget.setup(variables)
 	})
 end
 
