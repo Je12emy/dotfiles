@@ -1,9 +1,17 @@
 local naughty = require("naughty")
 
-local dump_text = function(text)
-    naughty.notify({text = text, timeout = 0, hover_timeout = 0.5, width = 500})
+local m = {}
+
+m.dump_text = function(text)
+    naughty.notify({ text = text, timeout = 0 })
 end
 
-local M = {dump_text = dump_text}
+m.debug_table = function(table)
+    local tableString = "Table contents:\n"
+    for key, value in pairs(table) do
+        tableString = tableString .. key .. ": " .. tostring(value) .. "\n"
+    end
+    naughty.notify({ text = tableString, timeout = 0 })
+end
 
-return M
+return m
