@@ -1,4 +1,4 @@
-xdg_menu = require("modules.widgets.menu.arch_menu")
+local entries = require("modules.widgets.menu.entries")
 
 local m = {}
 
@@ -35,7 +35,7 @@ end
 local function build_applications_menu()
 	return {
 		" Applications",
-		xdgmenu
+		entries
 	}
 end
 
