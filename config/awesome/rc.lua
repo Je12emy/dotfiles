@@ -16,7 +16,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 -- My modules
-local _ = require("modules.helpers.debug")
+local dbg = require("modules.helpers.debug")
 local theming = require("modules.themes.init")
 local bar_widget = require("modules.widgets.bar.init")
 local variables = require("modules.variables")
@@ -85,7 +85,7 @@ if has_fdo then
 	})
 else
 	mymainmenu = awful.menu({
-		items = menu_widget.setup(variables)
+		items = menu_widget.setup(variables),
 	})
 end
 
@@ -114,7 +114,6 @@ root.buttons(gears.table.join(
 	awful.button({}, 5, awful.tag.viewprev)
 ))
 
--- {{{ Key bindings
 globalkeys = gears.table.join(
 	awful.key({ Modkey }, "s", hotkeys_popup.show_help, {
 		description = "show help",
@@ -203,23 +202,21 @@ globalkeys = gears.table.join(
 			c:emit_signal("request::activate", "key.unminimize", { raise = true })
 		end
 	end, { description = "restore minimized", group = "client" }), -- Prompt
-	awful.key({ Modkey, "Shift" }, "p", function()
-		awful.util.spawn("rofi -show run")
-	end, { description = "run rofi run", group = "launcher" }),
-
-	awful.key({ Modkey }, "p", function()
-		awful.util.spawn("rofi -show drun")
-	end, { description = "run rofi drun", group = "launcher" }),
-
-	awful.key({ Modkey, "Shift" }, "Tab", function()
-		awful.util.spawn("rofi -show window")
-	end, { description = "run rofi window", group = "launcher" }),
-	awful.key({ Modkey, "Shift" }, "s", function()
-		awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
-	end, { description = "run rofi pass", group = "launcher" }),
-	awful.key({ Modkey, "Shift" }, "u", function()
-	awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
-	end, { description = "run rofi pass", group = "launcher" }),
+	-- awful.key({ Modkey, "Shift" }, "p", function()
+	-- 	awful.util.spawn("rofi -show run")
+	-- end, { description = "run rofi run", group = "launcher" }),
+	-- awful.key({ Modkey }, "p", function()
+	-- 	awful.util.spawn("rofi -show drun")
+	-- end, { description = "run rofi drun", group = "launcher" }),
+	-- awful.key({ Modkey, "Shift" }, "Tab", function()
+	-- 	awful.util.spawn("rofi -show window")
+	-- end, { description = "run rofi window", group = "launcher" }),
+	-- awful.key({ Modkey, "Shift" }, "s", function()
+	-- 	awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
+	-- end, { description = "run rofi pass", group = "launcher" }),
+	-- awful.key({ Modkey, "Shift" }, "u", function()
+	-- 	awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
+	-- end, { description = "run rofi pass", group = "launcher" }),
 	awful.key({ Modkey, "Shift" }, "v", function()
 		awful.util.spawn(variables.terminal .. " pulsemixer")
 	end, { description = "open pulsemixer", group = "utilities" }),
@@ -234,7 +231,27 @@ globalkeys = gears.table.join(
 
 	awful.key({ Modkey }, "Print", function()
 		awful.util.spawn("flameshot gui")
-	end, { description = "open the flameshot gui", group = "utilities" })
+	end, { description = "open the flameshot gui", group = "utilities" }),
+	awful.key({ Modkey }, "p", function()
+		awful.keygrabber.run(function(mods, key, event)
+			if event == "release" then
+				return
+			end
+			if key == " " then
+				awful.util.spawn("rofi -show drun")
+			elseif key == "Tab" then
+				awful.util.spawn("rofi -show window")
+			elseif key == "Return" then
+				awful.util.spawn("rofi -show run")
+			elseif key == "r" then
+				awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
+			elseif key == "p" then
+				awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
+			else
+				awful.keygrabber.stop()
+			end
+		end)
+	end,{ description = "Rofi launchers", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
@@ -284,7 +301,6 @@ clientkeys = gears.table.join(
 		c:raise()
 	end, { description = "(un)maximize horizontally", group = "client" })
 )
-
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
