@@ -1,6 +1,6 @@
 #! /bin/bash
 tmp_file="/tmp/pdf-search"
-search_paths="$HOME/LifeOS $HOME/Documents"
+search_paths="$HOME/LifeOS $HOME/Documents $HOME/Downloads"
 
 find $search_paths -type f -name "*.pdf" | sort | uniq >> $tmp_file
 # Check if any PDFs were found

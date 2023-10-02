@@ -18,8 +18,6 @@ require("awful.hotkeys_popup.keys")
 -- My modules
 local _ = require("modules.helpers.debug")
 local theming = require("modules.themes.init")
-local taglist_widget = require("modules.widgets.taglist")
-local tasklist_widget = require("modules.widgets.tasklist")
 local bar_widget = require("modules.widgets.bar.init")
 local variables = require("modules.variables")
 local menu_widget = require("modules.widgets.menu.init")
@@ -217,9 +215,11 @@ globalkeys = gears.table.join(
 		awful.util.spawn("rofi -show window")
 	end, { description = "run rofi window", group = "launcher" }),
 	awful.key({ Modkey, "Shift" }, "s", function()
-		awful.util.spawn("rofi-pass.sh")
+		awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
 	end, { description = "run rofi pass", group = "launcher" }),
-
+	awful.key({ Modkey, "Shift" }, "u", function()
+	awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
+	end, { description = "run rofi pass", group = "launcher" }),
 	awful.key({ Modkey, "Shift" }, "v", function()
 		awful.util.spawn(variables.terminal .. " pulsemixer")
 	end, { description = "open pulsemixer", group = "utilities" }),

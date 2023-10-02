@@ -57,7 +57,7 @@ m.get_bar = function(screen)
 		wibox.widget {
 			{
 				screen.taglist,
-				left = 20,
+				left = 5,
 				right = 0,
 				widget = wibox.container.margin,
 			},
