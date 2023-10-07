@@ -118,6 +118,9 @@ globalkeys = gears.table.join(
 	map.smap(nil, "Print", function()
 		awful.util.spawn("flameshot gui")
 	end, { description = "Open the flameshot gui", group = group.key_group.apps }),
+	map.smap(nil, "v", function()
+		awful.spawn(variables.terminal .. " " .. "pulsemixer")
+	end, { description = "Open audio mixer", group = group.key_group.apps }),
 
 	-- Finder
 	map.smap(nil, "p", function()
