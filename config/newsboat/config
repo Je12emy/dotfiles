@@ -33,8 +33,8 @@ player "mpv"
 color background          white     default
 color listnormal          default     default
 color listfocus           color232   blue        bold
-color listnormal_unread   default   default
-color listfocus_unread    color232     blue        bold
+color listnormal_unread   default   default     dim
+color listfocus_unread    color232     blue        
 color title               color232     blue        bold
 color info                yellow    blue        bold
 color hint-key            black     blue        bold
