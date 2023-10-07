@@ -1,36 +1,23 @@
-# Please check:
-# - https://youtu.be/IMmRWcvcjUw
-# - https://github.com/LukeSmithxyz/voidrice/blob/master/.config/newsboat/config
-
-# general settings
+# Settings
 auto-reload yes
 max-items 50 
-reload-time 30 # update all feeds every x minutes
+ # update all feeds every x minutes
+reload-time 30
 reload-threads 100
 prepopulate-query-feeds yes
 cleanup-on-quit yes
 # confirm-mark-feed-read no
 wrap-scroll yes
-
 # externel browser
-browser linkhandler
-macro , open-in-browser
-macro w set browser "w3m" ; open-in-browser ; set browser linkhandler
-
-# html-renderer and pager
-# pager "w3m -T text/html"
-# html-renderer "w3m"
-
+browser firefox
 # text width
 text-width 80
-
-# unbind keys
+# keys
 unbind-key ENTER
 unbind-key j
 unbind-key k
 unbind-key J
 unbind-key K
-
 # bind keys - vim style
 bind-key j down
 bind-key k up
@@ -41,36 +28,42 @@ bind-key h quit
 download-path "~/Downloads/%n"
 player "mpv"
 
-# colours
-color listnormal cyan default
-color listfocus black default 
-color listnormal_unread blue default
-color listfocus_unread red default bold
-color info black blue
-color article white default bold
+# Colors
+#     Item                fg        bg         att 
+color background          white     default
+color listnormal          default     default
+color listfocus           color232   blue        bold
+color listnormal_unread   default   default
+color listfocus_unread    color232     blue        bold
+color title               color232     blue        bold
+color info                yellow    blue        bold
+color hint-key            black     blue        bold
+color hint-keys-delimiter black     blue
+color hint-separator      black     blue        bold
+color hint-description    black     blue        
+color article             white     default
 
-# highlights
-highlight article "^(Feed|Title|Link|Date|Author):.*$" color12 color8
-highlight article "https?://[^ ]+" color4 color8 protect
-highlight feedlist ".*(0/0))" black
-highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
-highlight article "(^Link:.*|^Date:.*)" default default
-highlight article "https?://[^ ]+" green default
-highlight article "^(Title):.*$" blue default
-highlight article "\\[[0-9][0-9]*\\]" magenta default bold
-highlight article "\\[image\\ [0-9]+\\]" green default bold
-highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
-highlight article ":.*\\(link\\)$" cyan default
-highlight article ":.*\\(image\\)$" blue default
-highlight article ":.*\\(embedded flash\\)$" magenta default
-
-# styling
-highlight feedlist "[║│]" blue default bold
-highlight feedlist "╠═.*" blue default bold
-feedlist-format "%?T?║%4i %n %8u %t (%T) &╠#%-8t════════════════════════════════════════?"
+# Highlights
+# highlight article "^(Feed|Title|Link|Date|Author):.*$" color12 color8
+# highlight article "https?://[^ ]+" color4 color8 protect
+# highlight feedlist ".*(0/0))" black
+highlight article "(^Feed:.*|^Title:.*|^Author:.*)" blue default bold
+highlight article "(^Link:.*|^Date:.*)" blue default
+# highlight article "https?://[^ ]+" green default
+# highlight article "^(Title):.*$" blue default
+# highlight article "\\[[0-9][0-9]*\\]" magenta default bold
+# highlight article "\\[image\\ [0-9]+\\]" green default bold
+# highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
+highlight article ":.*\\(link\\)$" yellow default
+highlight article ":.*\\(image\\)$" green default
+# highlight article ":.*\\(embedded flash\\)$" magenta default
 
 # notify
 notify-program "/usr/bin/notify-send"
+
+# Formats Strings
+feedlist-format     "%4i %u %t"
+articlelist-format  "%4i %f %D   %?T?|%-17T|  ?%t"
 
 # kill files ignore articles marked #shorts to filter out youtube shorts
 ignore-article "*" "title =~ \"#shorts$\""
