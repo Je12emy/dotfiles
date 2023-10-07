@@ -1,13 +1,16 @@
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
--- awesome's modules
+
+-- Awesome's modules
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- widget and layout library
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -15,13 +18,10 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
--- My modules
-local dbg = require("modules.helpers.debug")
-local theming = require("modules.themes.init")
-local bar_widget = require("modules.widgets.bar.init")
+
 local variables = require("modules.variables")
 local menu_widget = require("modules.widgets.menu.init")
-local autostart = require("modules.autostart")
+
 -- Load Debian menu entries
 -- local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -29,6 +29,8 @@ local has_fdo, freedesktop = pcall(require, "freedesktop")
 -- Error handling
 require("modules.error_handling")
 
+-- Theme
+local theming = require("modules.themes.init")
 local theme = theming.get_theme(theming.available_themes.catpuccin.name)
 beautiful.init(theme)
 Modkey = variables.mod_key
@@ -58,6 +60,7 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = variables.terminal -- Set the terminal for applications that require it
 
 -- Wibar
+local bar_widget = require("modules.widgets.bar.init")
 awful.screen.connect_for_each_screen(function(current_screen)
 	theming.set_wallpaper(current_screen)
 	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, current_screen, awful.layout.layouts[1])
@@ -426,4 +429,5 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 
+local autostart = require("modules.autostart")
 autostart.spawn()
