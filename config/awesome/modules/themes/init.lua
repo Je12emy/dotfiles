@@ -37,7 +37,7 @@ local function init_theme(theme, colors, assets_path)
     theme.border_normal = colors.bg
     theme.border_focus = colors.primary
     theme.border_marked = colors.urgent
-    theme.useless_gap = dpi(1)
+    theme.useless_gap = dpi(4)
     theme.border_width = dpi(2)
     -- Tag List: https://awesomewm.org/doc/api/classes/awful.widget.taglist.html#Theme_variables
     theme.taglist_bg_focus = colors.primary

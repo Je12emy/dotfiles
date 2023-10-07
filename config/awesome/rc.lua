@@ -7,12 +7,9 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 
--- widget and layout library
+-- Widget and layout library
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-
--- Notification library
-local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
@@ -21,10 +18,6 @@ require("awful.hotkeys_popup.keys")
 
 local variables = require("modules.variables")
 local menu_widget = require("modules.widgets.menu.init")
-
--- Load Debian menu entries
--- local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- Error handling
 require("modules.error_handling")
@@ -40,20 +33,8 @@ local layouts = require("modules.layouts")
 awful.layout.layouts = layouts.enabled
 
 -- Menu
-if has_fdo then
-	mymainmenu = freedesktop.menu.build({
-		before = { menu_awesome },
-		after = { menu_terminal },
-	})
-else
-	mymainmenu = awful.menu({
-		items = menu_widget.setup(variables),
-	})
-end
-
-mylauncher = awful.widget.launcher({
-	image = beautiful.menu_icon,
-	menu = mymainmenu,
+local menu = awful.menu({
+	items = menu_widget.setup(variables),
 })
 
 -- Menubar configuration
@@ -64,25 +45,27 @@ local bar_widget = require("modules.widgets.bar.init")
 awful.screen.connect_for_each_screen(function(current_screen)
 	theming.set_wallpaper(current_screen)
 	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, current_screen, awful.layout.layouts[1])
-	current_screen.wibox = awful.wibar({ position = "top", screen = current_screen })
+	current_screen.top_bar = awful.wibar({ position = "top", screen = current_screen })
+	current_screen.bottom_bar = awful.wibar({ position = "bottom", screen = current_screen })
 	bar_widget.init(current_screen)
-	current_screen.wibox:setup(bar_widget.get_bar(current_screen))
+	current_screen.top_bar:setup(bar_widget.top_bar(current_screen))
+	current_screen.bottom_bar:setup(bar_widget.bottom_bar(current_screen))
 end)
 
 -- Mouse bindings
 root.buttons(gears.table.join(
 	awful.button({}, 3, function()
-		mymainmenu:toggle()
+		menu:toggle()
 	end),
 	awful.button({}, 4, awful.tag.viewnext),
 	awful.button({}, 5, awful.tag.viewprev)
 ))
 
+-- Keymaps
 local map = require("modules.keymaps.map")
 local group = require("modules.keymaps.groups")
 
 globalkeys = gears.table.join(
-
 	-- Awesome keybinds
 	map.smap("Control", "r", awesome.restart, {
 		description = "Reload awesome",
@@ -94,7 +77,7 @@ globalkeys = gears.table.join(
 		group = group.key_group_awesome,
 	}),
 	map.smap(nil, "w", function()
-		mymainmenu:show()
+		menu:show()
 	end, {
 		description = "Show main menu",
 		group = group.key_group_awesome,

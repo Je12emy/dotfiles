@@ -7,7 +7,7 @@ local programs = {
 	"picom",
 	"xclip",
 	"flatpak run --command=pika-backup-monitor org.gnome.World.PikaBackup",
-	"pcmanfm -d"
+	-- "pcmanfm -d"
 }
 
 m.spawn = function()

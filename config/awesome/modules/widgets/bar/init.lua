@@ -66,8 +66,8 @@ m.get_bar = function(screen)
 	}
 	local right_widgets = {
 		wibox.widget {
+			-- screen.layoutlist,
 			systray_widget.systray,
-			screen.layoutlist,
 			clock_widget.standard(),
 			volume_widget({
 				widget_type = "arc",
@@ -81,6 +81,46 @@ m.get_bar = function(screen)
 		left_widgets,
 		screen.tasklist,
 		right_widgets
+	)
+end
+
+m.top_bar = function(screen)
+	local left_widgets = {
+		wibox.widget {
+			{
+				screen.taglist,
+				left = 5,
+				right = 0,
+				widget = wibox.container.margin,
+			},
+			layout = wibox.layout.fixed.horizontal
+		}
+	}
+	local right_widgets = {
+		wibox.widget {
+			-- screen.layoutlist,
+			systray_widget.systray,
+			clock_widget.standard(),
+			volume_widget({
+				widget_type = "arc",
+			}),
+			logout_menu_widget(),
+			spacing = 5,
+			layout = wibox.layout.fixed.horizontal
+		}
+	}
+	return bar_template.standard(
+		left_widgets,
+		systray_widget.systray,
+		right_widgets
+	)
+end
+
+m.bottom_bar = function(screen)
+	return bar_template.standard(
+		{},
+		screen.tasklist,
+		{}
 	)
 end
 
