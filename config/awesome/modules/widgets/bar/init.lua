@@ -5,6 +5,7 @@ local awful = require("awful")
 -- External Widgets
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 -- My widgets
 local bar_template = require("modules.widgets.bar.templates")
 local clock_widget = require("modules.widgets.clock")
@@ -37,91 +38,94 @@ m.init = function(screen)
 	screen.taglist = taglist_widget.get_standard_taglist(screen)
 	screen.tasklist = tasklist_widget.constrained_tasklist(screen)
 
-	screen.layoutlist = wibox.widget {
-		awful.widget.layoutlist {
-			screen      = screen,
-			base_layout = wibox.layout.flex.vertical
-		},
+	screen.layoutlist = wibox.widget({
+		awful.widget.layoutlist({
+			screen = screen,
+			base_layout = wibox.layout.flex.vertical,
+		}),
 
 		left = 5,
 		right = 5,
 		top = 5,
 		bottom = 5,
 		widget = wibox.container.margin,
-	}
+	})
 end
 
 -- Setup a bar
 m.get_bar = function(screen)
 	local left_widgets = {
-		wibox.widget {
+		wibox.widget({
 			{
 				screen.taglist,
 				left = 5,
 				right = 0,
 				widget = wibox.container.margin,
 			},
-			layout = wibox.layout.fixed.horizontal
-		}
+			layout = wibox.layout.fixed.horizontal,
+		}),
 	}
 	local right_widgets = {
-		wibox.widget {
+		wibox.widget({
 			-- screen.layoutlist,
 			systray_widget.systray,
 			clock_widget.standard(),
-			volume_widget({
-				widget_type = "arc",
-			}),
+			-- volume_widget({
+			-- 	widget_type = "arc",
+			-- }),
 			logout_menu_widget(),
 			spacing = 5,
-			layout = wibox.layout.fixed.horizontal
-		}
+			layout = wibox.layout.fixed.horizontal,
+		}),
 	}
-	return bar_template.standard(
-		left_widgets,
-		screen.tasklist,
-		right_widgets
-	)
+	return bar_template.standard(left_widgets, screen.tasklist, right_widgets)
 end
 
 m.top_bar = function(screen)
 	local left_widgets = {
-		wibox.widget {
+		wibox.widget({
 			{
 				screen.taglist,
 				left = 5,
 				right = 0,
 				widget = wibox.container.margin,
 			},
-			layout = wibox.layout.fixed.horizontal
-		}
+			layout = wibox.layout.fixed.horizontal,
+		}),
 	}
 	local right_widgets = {
-		wibox.widget {
+		wibox.widget({
 			-- screen.layoutlist,
 			systray_widget.systray,
-			clock_widget.standard(),
-			volume_widget({
-				widget_type = "arc",
+			wibox.widget({
+				cpu_widget(),
+				left = 0,
+				right = 0,
+				top = 0,
+				bottom = 10,
+				widget = wibox.container.margin,
 			}),
-			logout_menu_widget(),
-			spacing = 5,
-			layout = wibox.layout.fixed.horizontal
-		}
+			volume_widget({
+				widget_type = "icon",
+			}),
+			clock_widget.standard(),
+			wibox.widget({
+				logout_menu_widget(),
+				left = 0,
+				right = 0,
+				top = 2,
+				bottom = 2,
+				widget = wibox.container.margin,
+			}),
+			spacing = 12,
+			layout = wibox.layout.fixed.horizontal,
+		}),
 	}
-	return bar_template.standard(
-		left_widgets,
-		systray_widget.systray,
-		right_widgets
-	)
+	return bar_template.standard(left_widgets, systray_widget.systray, right_widgets)
 end
 
 m.bottom_bar = function(screen)
-	return bar_template.standard(
-		{},
-		screen.tasklist,
-		{}
-	)
+	return bar_template.standard({}, screen.tasklist, {})
 end
 
 return m
