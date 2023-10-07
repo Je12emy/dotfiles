@@ -75,126 +75,67 @@ root.buttons(gears.table.join(
 	awful.button({}, 5, awful.tag.viewprev)
 ))
 
+local map = require("modules.keymaps.map")
+local group = require("modules.keymaps.groups")
+
 globalkeys = gears.table.join(
-	awful.key({ Modkey }, "s", hotkeys_popup.show_help, {
-		description = "show help",
-		group = "awesome",
+
+	-- Awesome keybinds
+	map.smap("Control", "r", awesome.restart, {
+		description = "Reload awesome",
+		group = group.key_group.awesome,
 	}),
-	awful.key({ Modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ Modkey }, "Right", awful.tag.viewnext, {
-		description = "view next",
-		group = "tag",
+	map.smap("Shift", "q", awesome.quit, { description = "Quit awesome", group = group.key_group.awesome }),
+	map.smap(nil, "s", hotkeys_popup.show_help, {
+		description = "Show help",
+		group = group.key_group_awesome,
 	}),
-	awful.key({ Modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
-	awful.key({ Modkey }, "j", function()
-		awful.client.focus.byidx(1)
-	end, { description = "focus next by index", group = "client" }),
-	awful.key({ Modkey }, "k", function()
-		awful.client.focus.byidx(-1)
-	end, { description = "focus previous by index", group = "client" }),
-	awful.key({ Modkey }, "w", function()
+	map.smap(nil, "w", function()
 		mymainmenu:show()
 	end, {
-		description = "show main menu",
-		group = "awesome",
-	}), -- Layout manipulation
-	awful.key({ Modkey, "Shift" }, "j", function()
-		awful.client.swap.byidx(1)
-	end, { description = "swap with next client by index", group = "client" }),
-	awful.key({ Modkey, "Shift" }, "k", function()
-		awful.client.swap.byidx(-1)
-	end, { description = "swap with previous client by index", group = "client" }),
-	awful.key({ Modkey, "Control" }, "j", function()
-		awful.screen.focus_relative(1)
-	end, { description = "focus the next screen", group = "screen" }),
-	awful.key({ Modkey, "Control" }, "k", function()
-		awful.screen.focus_relative(-1)
-	end, { description = "focus the previous screen", group = "screen" }),
-	awful.key({ Modkey }, "u", awful.client.urgent.jumpto, {
-		description = "jump to urgent client",
-		group = "client",
+		description = "Show main menu",
+		group = group.key_group_awesome,
 	}),
-	awful.key({ Modkey }, "Tab", function()
-		awful.client.focus.history.previous()
-		if client.focus then
-			client.focus:raise()
-		end
-	end, { description = "go back", group = "client" }), -- Standard program
-	awful.key({ Modkey }, "Return", function()
-		awful.spawn(variables.terminal)
-	end, { description = "open a terminal", group = "launcher" }),
-	awful.key({ Modkey, "Control" }, "r", awesome.restart, {
-		description = "reload awesome",
-		group = "awesome",
-	}),
-	awful.key({ Modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
-	awful.key({ Modkey }, "l", function()
-		awful.tag.incmwfact(0.05)
-	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ Modkey }, "h", function()
-		awful.tag.incmwfact(-0.05)
-	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ Modkey, "Shift" }, "h", function()
-		awful.tag.incnmaster(1, nil, true)
-	end, { description = "increase the number of master clients", group = "layout" }),
-	awful.key({ Modkey, "Shift" }, "l", function()
-		awful.tag.incnmaster(-1, nil, true)
-	end, { description = "decrease the number of master clients", group = "layout" }),
-	awful.key({ Modkey, "Control" }, "h", function()
-		awful.tag.incncol(1, nil, true)
-	end, { description = "increase the number of columns", group = "layout" }),
-	awful.key({ Modkey, "Control" }, "l", function()
-		awful.tag.incncol(-1, nil, true)
-	end, { description = "decrease the number of columns", group = "layout" }),
-	awful.key({ Modkey }, "space", function()
-		awful.layout.inc(1)
-	end, {
-		description = "select next",
-		group = "layout",
-	}),
-	awful.key({ Modkey, "Shift" }, "space", function()
-		awful.layout.inc(-1)
-	end, { description = "select previous", group = "layout" }),
 
-	awful.key({ Modkey, "Control" }, "n", function()
+	-- Client Keybinds
+	map.smap(nil, "j", function()
+		awful.client.focus.byidx(1)
+	end, { description = "Focus next by index", group = group.key_group.client }),
+	map.smap(nil, "k", function()
+		awful.client.focus.byidx(-1)
+	end, { description = "Focus previous by index", group = group.key_group.client }),
+	map.smap("Shift", "j", function()
+		awful.client.swap.byidx(1)
+	end, { description = "Swap with next client by index", group = group.key_group.client }),
+	map.smap("Shift", "k", function()
+		awful.client.swap.byidx(-1)
+	end, { description = "Swap with previous client by index", group = group.key_group.client }),
+	map.smap("Control", "n", function()
 		local c = awful.client.restore()
 		-- Focus restored client
 		if c then
 			c:emit_signal("request::activate", "key.unminimize", { raise = true })
 		end
-	end, { description = "restore minimized", group = "client" }), -- Prompt
-	-- awful.key({ Modkey, "Shift" }, "p", function()
-	-- 	awful.util.spawn("rofi -show run")
-	-- end, { description = "run rofi run", group = "launcher" }),
-	-- awful.key({ Modkey }, "p", function()
-	-- 	awful.util.spawn("rofi -show drun")
-	-- end, { description = "run rofi drun", group = "launcher" }),
-	-- awful.key({ Modkey, "Shift" }, "Tab", function()
-	-- 	awful.util.spawn("rofi -show window")
-	-- end, { description = "run rofi window", group = "launcher" }),
-	-- awful.key({ Modkey, "Shift" }, "s", function()
-	-- 	awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
-	-- end, { description = "run rofi pass", group = "launcher" }),
-	-- awful.key({ Modkey, "Shift" }, "u", function()
-	-- 	awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
-	-- end, { description = "run rofi pass", group = "launcher" }),
-	awful.key({ Modkey, "Shift" }, "v", function()
-		awful.util.spawn(variables.terminal .. " pulsemixer")
-	end, { description = "open pulsemixer", group = "utilities" }),
+	end, { description = "Restore minimized", group = group.key_group.client }),
+	map.smap(nil, "u", awful.client.urgent.jumpto, {
+		description = "Jump to urgent client",
+		group = group.key_group.client,
+	}),
 
-	awful.key({ Modkey, "Shift" }, "f", function()
-		awful.util.spawn("kitty lfub.sh")
-	end, { description = "open lf", group = "utilities" }),
-
-	awful.key({}, "Print", function()
+	-- Apps group
+	map.smap(nil, "Return", function()
+		awful.spawn(variables.terminal)
+	end, { description = "Open a terminal", group = group.key_group.apps }),
+	map.nmap(nil, "Print", function()
 		awful.util.spawn("flameshot screen")
-	end, { description = "take a screenshot", group = "utilities" }),
-
-	awful.key({ Modkey }, "Print", function()
+	end, { description = "Take a screenshot", group = group.key_group.apps }),
+	map.smap(nil, "Print", function()
 		awful.util.spawn("flameshot gui")
-	end, { description = "open the flameshot gui", group = "utilities" }),
-	awful.key({ Modkey }, "p", function()
-		awful.keygrabber.run(function(mods, key, event)
+	end, { description = "Open the flameshot gui", group = group.key_group.apps }),
+
+	-- Finder
+	map.smap(nil, "p", function()
+		awful.keygrabber.run(function(_, key, event)
 			if event == "release" then
 				return
 			end
@@ -205,103 +146,141 @@ globalkeys = gears.table.join(
 			elseif key == "Return" then
 				awful.util.spawn("rofi -show run")
 			elseif key == "r" then
-				awful.util.spawn("/home/jeremy/.local/bin/rofi-book-search.sh")
+				awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
 			elseif key == "p" then
 				awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
 			else
 				awful.keygrabber.stop()
 			end
 		end)
-	end,{ description = "Rofi launchers", group = "launcher" })
-)
-clientkeys = gears.table.join(
-	awful.key({ Modkey }, "f", function(c)
-		c.fullscreen = not c.fullscreen
-		c:raise()
-	end, { description = "toggle fullscreen", group = "client" }),
-	awful.key({ Modkey, "Shift" }, "c", function(c)
-		c:kill()
+	end, { description = "Rofi launchers", group = group.key_group.rofi }),
+
+	-- Layout
+	map.smap(nil, "l", function()
+		awful.tag.incmwfact(0.05)
+	end, { description = "Increase window width", group = group.key_group.layout }),
+	map.smap(nil, "h", function()
+		awful.tag.incmwfact(-0.05)
+	end, { description = "Decrease window width", group = group.key_group.layout }),
+	map.smap("Shift", "h", function()
+		awful.tag.incnmaster(1, nil, true)
+	end, { description = "Increase the number of master clients", group = group.key_group.layout }),
+	map.smap("Shift", "l", function()
+		awful.tag.incnmaster(-1, nil, true)
+	end, { description = "decrease the number of master clients", group = group.key_group.layout }),
+	map.smap("Control", "h", function()
+		awful.tag.incncol(1, nil, true)
+	end, { description = "Increase the number of columns", group = group.key_group.layout }),
+	map.smap("Control", "l", function()
+		awful.tag.incncol(-1, nil, true)
+	end, { description = "Decrease the number of columns", group = group.key_group.layout }),
+	map.smap(nil, "space", function()
+		awful.layout.inc(1)
 	end, {
-		description = "close",
-		group = "client",
+		description = "Select next layout",
+		group = group.key_group.layout,
 	}),
-	awful.key(
-		{ Modkey, "Control" },
-		"space",
-		awful.client.floating.toggle,
-		{ description = "toggle floating", group = "client" }
-	),
-	awful.key({ Modkey, "Control" }, "Return", function(c)
-		c:swap(awful.client.getmaster())
-	end, { description = "move to master", group = "client" }),
-	awful.key({ Modkey }, "o", function(c)
-		c:move_to_screen()
-	end, {
-		description = "move to screen",
-		group = "client",
+	map.smap("Shift", "space", function()
+		awful.layout.inc(-1)
+	end, { description = "select previous", group = group.key_group.layout }),
+
+	-- Tag group
+	map.smap("Shift", "Tab", awful.tag.viewprev, { description = "Left tag", group = group.key_group.tag }),
+	map.smap(nil, "Tab", awful.tag.viewnext, {
+		description = "Right tag",
+		group = group.key_group.tag,
 	}),
-	awful.key({ Modkey }, "t", function(c)
-		c.ontop = not c.ontop
-	end, { description = "toggle keep on top", group = "client" }),
-	awful.key({ Modkey }, "n", function(c)
-		-- The client currently has the input focus, so it cannot be
-		-- minimized, since minimized clients can't have the focus.
-		c.minimized = true
-	end, { description = "minimize", group = "client" }),
-	awful.key({ Modkey }, "m", function(c)
-		c.maximized = not c.maximized
-		c:raise()
-	end, { description = "(un)maximize", group = "client" }),
-	awful.key({ Modkey, "Control" }, "m", function(c)
-		c.maximized_vertical = not c.maximized_vertical
-		c:raise()
-	end, { description = "(un)maximize vertically", group = "client" }),
-	awful.key({ Modkey, "Shift" }, "m", function(c)
-		c.maximized_horizontal = not c.maximized_horizontal
-		c:raise()
-	end, { description = "(un)maximize horizontally", group = "client" })
+	map.smap(nil, "Escape", awful.tag.history.restore, { description = "Go back", group = group.key_group.tag }),
+	-- Screen
+	map.smap("Control", "j", function()
+		awful.screen.focus_relative(1)
+	end, { description = "Focus the next screen", group = group.key_group.screen }),
+	map.smap("Control", "k", function()
+		awful.screen.focus_relative(-1)
+	end, { description = "Focus the previous screen", group = group.key_group.screen })
 )
+
 -- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
 	globalkeys = gears.table.join(
 		globalkeys, -- View tag only.
-		awful.key({ Modkey }, "#" .. i + 9, function()
+		map.smap(nil, "#" .. i + 9, function()
 			local screen = awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then
 				tag:view_only()
 			end
-		end, { description = "view tag #" .. i, group = "tag" }),
+		end, { description = "View tag #" .. i, group = group.key_group.tag }),
 		-- Toggle tag display.
-		awful.key({ Modkey, "Control" }, "#" .. i + 9, function()
+		map.smap("Control", "#" .. i + 9, function()
 			local screen = awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then
 				awful.tag.viewtoggle(tag)
 			end
-		end, { description = "toggle tag #" .. i, group = "tag" }),
+		end, { description = "Toggle tag #" .. i, group = group.key_group.tag }),
 		-- Move client to tag.
-		awful.key({ Modkey, "Shift" }, "#" .. i + 9, function()
+		map.smap("Shift", "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
 					client.focus:move_to_tag(tag)
 				end
 			end
-		end, { description = "move focused client to tag #" .. i, group = "tag" }),
+		end, { description = "Move focused client to tag #" .. i, group = group.key_group.tag }),
 		-- Toggle tag on focused client.
-		awful.key({ Modkey, "Control", "Shift" }, "#" .. i + 9, function()
+		map.smap({ "Control", "Shift" }, "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
 					client.focus:toggle_tag(tag)
 				end
 			end
-		end, { description = "toggle focused client on tag #" .. i, group = "tag" })
+		end, { description = "toggle focused client on tag #" .. i, group = group.key_group.tag })
 	)
 end
+
+clientkeys = gears.table.join(
+	map.smap(nil, "f", function(c)
+		c.fullscreen = not c.fullscreen
+		c:raise()
+	end, { description = "Toggle fullscreen", group = group.key_group.client }),
+	map.smap("Shift", "c", function(c)
+		c:kill()
+	end, { description = "Close", group = group.key_group.client }),
+	map.smap(
+		"Control",
+		"space",
+		awful.client.floating.toggle,
+		{ description = "Toggle floating", group = group.key_group.client }
+	),
+	map.smap("Control", "Return", function(c)
+		c:swap(awful.client.getmaster())
+	end, { description = "Move to master", group = group.key_group.client }),
+	map.smap(nil, "o", function(c)
+		c:move_to_screen()
+	end, { description = "Move to screen", group = group.key_group.client }),
+	map.smap(nil, "t", function(c)
+		c.ontop = not c.ontop
+	end, { description = "Toggle keep on top", group = group.key_group.client }),
+	map.smap(nil, "n", function(c)
+		-- The client currently has the input focus, so it cannot be
+		-- minimized, since minimized clients can't have the focus.
+		c.minimized = true
+	end, { description = "Minimize", group = group.key_group.client }),
+	map.smap(nil, "m", function(c)
+		c.maximized = not c.maximized
+		c:raise()
+	end, { description = "(Un)maximize", group = group.key_group.client }),
+	map.smap("Control", "m", function(c)
+		c.maximized_vertical = not c.maximized_vertical
+		c:raise()
+	end, { description = "(Un)maximize vertically", group = group.key_group.client }),
+	map.smap("Shift", "m", function(c)
+		c.maximized_horizontal = not c.maximized_horizontal
+		c:raise()
+	end, { description = "(Un)maximize horizontally", group = group.key_group.client })
+)
 
 clientbuttons = gears.table.join(
 	awful.button({}, 1, function(c)
@@ -319,9 +298,8 @@ clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
 
--- {{{ Rules
+-- Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
 	-- All clients will match this rule.
@@ -378,9 +356,8 @@ awful.rules.rules = {
 	-- { rule = { class = "firefox" }, properties = { screen = 1, tag = "2" } },
 	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = "9" } },
 }
--- }}}
 
--- {{{ Signals
+-- Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
 	-- Set the windows at the slave,
@@ -448,6 +425,5 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
--- }}}
 
 autostart.spawn()
