@@ -16,7 +16,7 @@
     ~/Pictures/wallpapers: ./wallpapers
 
 - create:
-  - ~/.config/scripts
+  - ~/.local/bin
   - ~/Pictures/wallpapers
 
 - shell:

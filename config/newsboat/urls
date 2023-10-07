@@ -2,6 +2,10 @@
 "query:-- Blogs --:unread = \"yes\" and tags # \"blog\""
 https://lukesmith.xyz/rss.xml blog "~Luke Smith"
 https://denshi.org/index.xml blog "~Denshi"
+https://blog.bugswriter.com/atom.xml blog "~Bugs Writter"
+# News
+"query:-- News --:unread = \"yes\" and tags # \"news\""
+https://qcostarica.com/rss news "~Q Costa Rica"
 # Reddit
 "query:-- Reddit --:unread = \"yes\" and tags # \"reddit\""
 https://www.reddit.com/r/neovim.rss reddit "~r/neovim"
@@ -9,6 +13,9 @@ https://www.reddit.com/r/news.rss reddit "~r/news"
 https://www.reddit.com/r/ThePrimeagenReact.rss reddit "~r/ThePrimeagenReact"
 # Youtube
 "query:-- Youtube --:unread = \"yes\" and tags # \"youtube\""
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA youtube "~No BoilerPlate"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUyeluBRhGPCW4rPe_UvBZQ youtube "~The Primetime"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA youtube "~TJ DeVries"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA youtube "~Luke Smith"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbRP3c757lWg9M-U7TyEkXA youtube "~Theo"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCFTLh8uyAWmSGcV1bqsMeKQ youtube "~No Pasa Nada CR"
@@ -19,7 +26,5 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCoOjH8D2XAgjzQlneM2W0EQ you
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcvfHa-GHSOHFAjU0-Ie57A youtube "~Adam Something"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA youtube "~Brodie Robertson"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA youtube "~Mental Outlaw"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA youtube "~No BoilerPlate"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw youtube "~ThePrimeagen"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA youtube "~TJ DeVries"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg youtube "~DistroTube"
