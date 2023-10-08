@@ -14,6 +14,8 @@ https://www.reddit.com/r/ThePrimeagenReact.rss reddit "~r/ThePrimeagenReact"
 # Youtube
 "query:-- Youtube --:unread = \"yes\" and tags # \"youtube\""
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA youtube "~No BoilerPlate"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWQaM7SpSECp9FELz youtube "~Dreams of Code"
+https://www.youtube.com/channel/UCaSCt8s_4nfkRglWCvNSDrg youtube "~Code Aesthetics"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUyeluBRhGPCW4rPe_UvBZQ youtube "~The Primetime"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA youtube "~TJ DeVries"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA youtube "~Luke Smith"

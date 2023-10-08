@@ -12,6 +12,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local dbg = require("modules.helpers.debug")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -127,7 +128,7 @@ globalkeys = gears.table.join(
 
 	-- Finder
 	map.smap(nil, "p", function()
-		awful.keygrabber.run(function(_, key, event)
+		awful.keygrabber.run(function(mod, key, event)
 			if event == "release" then
 				return
 			end
@@ -136,11 +137,13 @@ globalkeys = gears.table.join(
 			elseif key == "Tab" then
 				awful.util.spawn("rofi -show window")
 			elseif key == "Return" then
-				awful.util.spawn("rofi -show run")
+				awful.spawn.with_shell('PATH="$HOME/.local/bin:$PATH" rofi -show run')
 			elseif key == "r" then
-				awful.util.spawn("/home/jeremy/.local/bin/rofi-pdf.sh")
+				awful.util.spawn("/home/jeremy/.local/bin/rofi-book-search.sh")
 			elseif key == "p" then
 				awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
+			elseif key == "b" then
+				awful.util.spawn("/home/jeremy/.local/bin/rofi-read-bookmarks.sh")
 			else
 				awful.keygrabber.stop()
 			end

@@ -6,6 +6,7 @@ reload-time 30
 reload-threads 100
 prepopulate-query-feeds yes
 cleanup-on-quit yes
+bookmark-cmd "echo $1 $2 $3 $4 >> ~/.local/share/newsboat-bookmarks.txt"
 # confirm-mark-feed-read no
 wrap-scroll yes
 # externel browser
