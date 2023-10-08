@@ -25,7 +25,7 @@ require("modules.error_handling")
 
 -- Theme
 local theming = require("modules.themes.init")
-local theme = theming.get_theme(theming.available_themes.catpuccin.name)
+local theme = theming.get_theme(theming.available_themes.black_white.name)
 beautiful.init(theme)
 Modkey = variables.mod_key
 
@@ -142,8 +142,8 @@ globalkeys = gears.table.join(
 				awful.util.spawn("/home/jeremy/.local/bin/rofi-book-search.sh")
 			elseif key == "p" then
 				awful.util.spawn("/home/jeremy/.local/bin/rofi-pass.sh")
-			elseif key == "b" then
-				awful.util.spawn("/home/jeremy/.local/bin/rofi-read-bookmarks.sh")
+			elseif key == "l" then
+				awful.util.spawn("/home/jeremy/.local/bin/rofi-reading-list.sh")
 			else
 				awful.keygrabber.stop()
 			end

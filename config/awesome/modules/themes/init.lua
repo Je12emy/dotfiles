@@ -113,6 +113,7 @@ local m = {}
 
 m.available_themes = {
     catpuccin = { name = "catpuccin", dir = "/catpuccin" },
+    black_white = { name = "black_white", dir = "/black_white" },
     default = { name = "default", dir = "/default" }
 }
 
