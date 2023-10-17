@@ -7,6 +7,7 @@ reload-threads 100
 prepopulate-query-feeds yes
 cleanup-on-quit yes
 bookmark-cmd "echo $1 $2 $3 $4 >> ~/.local/share/newsboat-bookmarks.txt"
+macro v set browser "mpv --no-terminal %u" ; open-in-browser ; set browser "elinks %u"
 # confirm-mark-feed-read no
 wrap-scroll yes
 # externel browser
@@ -27,29 +28,29 @@ bind-key h quit
 
 # podboat
 download-path "~/Downloads/%n"
-player "mpv"
+player "mpv --no-terminal -- %u"
 
 # Colors
 #     Item                fg        bg         att 
 color background          white     default
 color listnormal          default     default
-color listfocus           color232   blue        bold
-color listnormal_unread   default   default     dim
-color listfocus_unread    color232     blue        
-color title               color232     blue        bold
-color info                yellow    blue        bold
-color hint-key            black     blue        bold
-color hint-keys-delimiter black     blue
-color hint-separator      black     blue        bold
-color hint-description    black     blue        
+color listfocus           red   default        bold
+color listnormal_unread   default   default     invis
+color listfocus_unread    red     default        
+color title               red     default        bold
+color info                red    black        bold
+color hint-key            red     black        bold
+color hint-keys-delimiter red     black
+color hint-separator      red     black        bold
+color hint-description    red     black        
 color article             white     default
 
 # Highlights
 # highlight article "^(Feed|Title|Link|Date|Author):.*$" color12 color8
 # highlight article "https?://[^ ]+" color4 color8 protect
 # highlight feedlist ".*(0/0))" black
-highlight article "(^Feed:.*|^Title:.*|^Author:.*)" blue default bold
-highlight article "(^Link:.*|^Date:.*)" blue default
+highlight article "(^Feed:.*|^Title:.*|^Author:.*)" red default bold
+highlight article "(^Link:.*|^Date:.*)" magenta default
 # highlight article "https?://[^ ]+" green default
 # highlight article "^(Title):.*$" blue default
 # highlight article "\\[[0-9][0-9]*\\]" magenta default bold

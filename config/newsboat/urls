@@ -6,6 +6,7 @@ https://blog.bugswriter.com/atom.xml blog "~Bugs Writter"
 # News
 "query:-- News --:unread = \"yes\" and tags # \"news\""
 https://qcostarica.com/rss news "~Q Costa Rica"
+https://www.nacion.com/arc/outboundfeeds/rss/?outputType=xml news "~La Nación"
 # Reddit
 "query:-- Reddit --:unread = \"yes\" and tags # \"reddit\""
 https://www.reddit.com/r/neovim.rss reddit "~r/neovim"
