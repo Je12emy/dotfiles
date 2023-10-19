@@ -16,3 +16,5 @@ alias nuget="mono /usr/local/bin/nuget.exe"
 # Go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/jeremy/go/bin
+
+export PATH="/home/jeremy/.local/bin:$PATH"

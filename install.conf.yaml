@@ -10,7 +10,7 @@
       path: config/*
       glob: true
     ~/.local/bin:
-      path: scripts/*.sh
+      path: scripts/*
       glob: true
     ~/.zshenv: .zshenv
     ~/Pictures/wallpapers: ./wallpapers

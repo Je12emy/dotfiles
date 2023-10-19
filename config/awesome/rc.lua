@@ -25,7 +25,7 @@ require("modules.error_handling")
 
 -- Theme
 local theming = require("modules.themes.init")
-local theme = theming.get_theme(theming.available_themes.black_white.name)
+local theme = theming.get_theme(theming.available_themes.catpuccin.name)
 beautiful.init(theme)
 Modkey = variables.mod_key
 

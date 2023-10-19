@@ -115,5 +115,5 @@ function Noob_tab()
 	return table.concat(s)
 end
 
-vim.o.statusline = "%!luaeval('Noob_status()')"
-vim.o.tabline = "%!luaeval('Noob_tab()')"
+-- vim.o.statusline = "%!luaeval('Noob_status()')"
+-- vim.o.tabline = "%!luaeval('Noob_tab()')"
