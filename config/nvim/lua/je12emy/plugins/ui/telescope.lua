@@ -59,6 +59,12 @@ return {
 				mode = "n",
 				desc = "Find with grep",
 			},
+			{
+				"<leader>tt",
+				"<cmd>Telescope treesitter<cr>",
+				mode = "n",
+				desc = "Find with treesitter",
+			},
 		},
 	},
 }
