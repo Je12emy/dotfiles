@@ -5,6 +5,7 @@ https://lukesmith.xyz/rss.xml blog "~Luke Smith"
 https://denshi.org/index.xml blog "~Denshi"
 https://blog.bugswriter.com/atom.xml blog "~Bugs Writter"
 https://stephango.com/feed.xml blog "~Steph Ango"
+https://ferrous-systems.com/blog/feed.xml blog "~Ferrous Systems"
 # News
 "query:-- News --:unread = \"yes\" and tags # \"news\""
 https://qcostarica.com/rss news "~Q Costa Rica"
