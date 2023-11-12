@@ -61,8 +61,9 @@ keys = [
     Key([mod], "b", lazy.spawn("firefox"), desc="Open browser"),
     Key([mod], "e", lazy.spawn(terminal + " ranger"), desc="Open ranger"),
     Key([mod], "d", lazy.spawn(terminal + " nvim /home/jeremy/Shared/todo.txt"), desc="Edit todo.txt"),
+    Key([mod], "m", lazy.spawn(terminal + " neomutt"), desc="View email"),
     KeyChord([mod], "p", [
-        Key([], "d", lazy.spawn("dmenu_run")),
+        Key([], "r", lazy.spawn("dmenu_run")),
         Key([], "p", lazy.spawn("passmenu")),
         Key([], "d", lazy.spawn("dm-documents")),
         Key([], "k", lazy.spawn("dm-kill")),
@@ -139,14 +140,15 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+# screens = [Screen()]
 screens = [
     Screen(
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    active=colors[2],
+                    active=colors[3],
                     this_current_screen_border=colors[2],
-                    inactive=colors[3],
+                    inactive=colors[2],
                     hide_unused=True,
                     highlight_method="line",
                     highlight_color=[colors[0], colors[0]],
@@ -163,11 +165,34 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
+                # widget.Systray(),
+                widget.TextBox("|"),
+                widget.CPU(),
+                widget.TextBox("|"),
+                widget.Memory(),
+                widget.TextBox("|"),
+                widget.TextBox("Network"),
+                widget.Net(
+                    format='{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}'
+                ),
+                widget.TextBox("|"),
+                widget.TextBox("Volume"),
+                widget.PulseVolume(),
+                widget.TextBox("|"),
                 widget.CurrentLayout(),
+                widget.TextBox("|"),
+                widget.CapsNumLockIndicator(),
+                widget.TextBox("|"),
                 widget.KeyboardLayout(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.TextBox("|"),
+                widget.CheckUpdates(distro = "Arch_paru", no_update_string='No updates'),
+                widget.TextBox("|"),
+                widget.Clock(format="%Y-%m-%d %I:%M %p"),
+                widget.TextBox("|"),
                 widget.QuickExit(),
+                widget.Sep(padding = 1, background = colors[0], foreground = colors[0])
+                # widget.TextBox("|"),
+                # widget.QuickExit(),
             ],
             24,
             background=colors[0],
@@ -233,4 +258,9 @@ wmname = "LG3D"
 @hook.subscribe.startup
 def run_every_startup():
     script = os.path.expanduser("/home/jeremy/.config/qtile/autostart.sh")
+    subprocess.run([script])
+
+@hook.subscribe.startup_once
+def autostart():
+    script = os.path.expanduser("/home/jeremy/.config/qtile/startup.sh")
     subprocess.run([script])
