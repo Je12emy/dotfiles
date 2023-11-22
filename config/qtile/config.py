@@ -62,6 +62,7 @@ keys = [
     Key([mod], "e", lazy.spawn(terminal + " ranger"), desc="Open ranger"),
     Key([mod], "d", lazy.spawn(terminal + " nvim /home/jeremy/Shared/todo.txt"), desc="Edit todo.txt"),
     Key([mod], "m", lazy.spawn(terminal + " neomutt"), desc="View email"),
+    Key([mod], "Print", lazy.spawn("flameshot gui"), desc="Take screenshot"),
     KeyChord([mod], "p", [
         Key([], "r", lazy.spawn("dmenu_run")),
         Key([], "p", lazy.spawn("passmenu")),
@@ -113,7 +114,7 @@ load_colors(cache)
 layout_theme = {
     "border_width": 3,
     "margin": 4,
-    "border_focus": colors[5],
+    "border_focus": colors[3],
     "border_normal": colors[6]
 }
 
