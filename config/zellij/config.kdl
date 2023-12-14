@@ -1,5 +1,28 @@
 mouse_mode true
 copy_on_select true
-default_shell "nu"
+default_shell "zsh"
 scrollback_editor "/usr/bin/nvim"
-theme "catppuccin-mocha"
+theme "default"
+simplified_ui true
+pane_frames true
+styled_underlines true
+
+// source: https://shoukoo.github.io/blog/zellij-love-neovim/
+keybinds {
+    normal clear-defaults=true {
+        bind "Ctrl a" { SwitchToMode "Tmux"; }
+        unbind "Ctrl b"
+    }
+    tmux clear-defaults=true {
+        bind "Ctrl f" { Write 2; SwitchToMode "Normal"; }
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "g" { SwitchToMode "Locked"; }
+        bind "p" { SwitchToMode "Pane"; }
+        bind "t" { SwitchToMode "Tab"; }
+        bind "n" { SwitchToMode "Resize"; }
+        bind "h" { SwitchToMode "Move"; }
+        bind "s" { SwitchToMode "Scroll"; }
+        bind "o" { SwitchToMode "Session"; }
+        bind "q" { Quit; }
+    }
+}
