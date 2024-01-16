@@ -1,62 +1,59 @@
 {
   // Modules configuration
-  "clock": {
-    "format": "<span color=\"#7aa2f7\">  </span>{:%H:%M:%S}",
-    "format-alt": "<span color=\"#7aa2f7\">󰃭 </span>{:%d-%m-%Y}",
-    "interval": 1
+  "wlr/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate"
   },
-
-  "cpu": {
-    "format": "<span color=\"#7aa2f7\"> </span>{usage}%",
-    "interval": 2
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
   },
-
-  "memory": {
-    "format": "<span color=\"#7aa2f7\">󰄦 </span>{used}GiB",
-    "interval": 2
-  },
-
-  "pulseaudio": {
-    "scroll-step": 5, // %, can be a float
-    "format": "<span color=\"#7aa2f7\">{icon} </span>{volume}%",
-    "format-muted": "<span color=\"#f7768e\">󰖁 </span>Muted",
-    "format-icons": ["", "", ""],
-    // "on-click": "pavucontrol"
-  },
-
   "hyprland/window": {
     "max-length": 48
   },
-
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 2
+  },
+  "memory": {
+    "format": "󰄦 {used}GiB",
+    "interval": 2
+  },
+  "pulseaudio": {
+    "scroll-step": 5, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 Muted",
+    "format-icons": ["", "", ""],
+    "on-click": "pavucontrol"
+  },
   "custom/kernel": {
     "exec": "uname -r | cut -d '-' -f1",
     "interval": "once",
     "format": "<span color=\"#7aa2f7\"> </span>{}"
   },
-
-  // "custom/pacman": {
-  //   "exec": "~/.config/waybar/scripts/package-updates.sh",
-  //   "format": "<span color=\"#7aa2f7\"> </span>{}",
-  //   "interval": 600,
-  //   "signal": 1
-  // },
-
-  "tray": {
-    "icon-size": 18,
-    "spacing": 8
+  "clock": {
+      "interval": 60,
+      "format": " {:%Y-%m-%d %H:%M}",
+      "max-length": 25
   },
-
-  "wlr/workspaces": {
-    "disable-scroll": true,
-    "on-click": "activate"
+  "hyprland/submap": {
+      "format": "✌️ {}",
+      "max-length": 8,
+      "tooltip": false
   },
-
-  // "mpd": {
-  //   "format": "<span color=\"#7aa2f7\">{stateIcon} </span>{artist} - {title}",
-  //   "format-paused": "",
-  //   "state-icons": {
-  //     "paused": "",
-  //     "playing": ""
-  //   }
-  // }
+  "disk": {
+      "interval": 30,
+      "format": " {percentage_free}%",
+      "path": "/"
+  },
+ "custom/updates": {
+     "format": "{icon} {} ",
+     "return-type": "json",
+     "format-icons": {
+         "has-updates": "󱍷",
+         "updated": "󰂪"
+     },
+     "exec-if": "which waybar-module-pacman-updates",
+     "exec": "waybar-module-pacman-updates"
+ },
 }

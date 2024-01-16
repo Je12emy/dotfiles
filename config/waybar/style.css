@@ -1,18 +1,20 @@
+ @import '../../.cache/wal/colors-waybar.css';
+
 * {
   font-family: JetBrainsMono Nerd Font;
   font-weight: 900;
   font-size: 14px;
-  color: #c0caf5;
+  color: @foreground;
 }
 
 /* Set background color of main waybar window */
 window#waybar {
-  background: rgba(21, 22, 30, 1);
+  background: @background;
 }
 
 /* Set background color of tooltips */
 tooltip {
-  background: #1e1e2e;
+  background: @background;
 }
 
 /* Set workspace text color and padding */
@@ -22,70 +24,35 @@ tooltip {
 
 /* Sets active workspace to have a solid line on the bottom */
 #workspaces button.active {
-  border-bottom: 2px solid #7aa2f7;
-  border-radius: 0;
-  margin-bottom: 2px;
+  border-bottom: 2px solid @color1;
 }
 
 /* More workspace stuff for highlighting on hover */
 #workspaces button.focused {
-  color: #a6adc8;
+  color: @color1;
 }
 
 #workspaces button.urgent {
-  color: #f7768e;
-}
-
-#workspaces button:hover {
-  background: #11111b;
-  color: #cdd6f4;
+  color: @color2;
 }
 
 /* Sets background, padding, margins, and borders for (all) modules */
-#custom-kernel,
-#custom-pacman,
+#custom-updates,
 #workspaces,
 #clock,
 #window,
-#temperature,
 #cpu,
 #memory,
 #pulseaudio,
 #tray,
-#mpd {
-  background: rgba(21, 22, 30, 0.7);
-  padding: 0 10px;
-  margin: 3px 0;
+#disk
+{
+  background: @background;
+  margin: 0px 8px 0px 8px;
   border: 0;
 }
 
 #window.empty {
-  background: rgba(0, 0, 0, 0);
-}
-
-/* Set up rounding to make these modules look like separate pills */
-#mpd {
-  border-radius: 8px;
-  margin-left: 4px;
-}
-
-#tray {
-  border-radius: 8px;
-  margin-right: 4px;
-}
-
-#window {
-  border-radius: 8px;
-}
-
-/* Rounding only on left of module */
-#temperature {
-  border-radius: 8px 0 0 8px;
-}
-
-/* Rounding only on right of module(s) */
-#custom-pacman,
-#custom-kernel {
-  border-radius: 0 8px 8px 0;
+  background: @background;
 }
 
