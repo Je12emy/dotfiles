@@ -3,7 +3,7 @@
 # Aliases
 alias v='nvim'
 alias za='zathura --fork'
-alias jo='~/.cargo/bin/joshuto'
+alias z='zellij'
 
 # Enable Completition
 autoload -Uz compinit

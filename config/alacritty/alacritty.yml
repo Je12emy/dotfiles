@@ -1,10 +1,7 @@
-import:
-  - ~/.config/alacritty/catppuccin-mocha.yml
-
 window:
   title: Terminal
   dynamic_title: true
-
+  opacity: 0.9
 font:
   normal:
     family: JetBrainsMono Nerd Font
@@ -18,6 +15,3 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
-  offset:
-    x: 0
-    y: 4

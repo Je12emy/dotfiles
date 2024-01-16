@@ -1,7 +1,5 @@
 # vim: filetype=neomuttrc
 source /usr/local/share/mutt-wizard/mutt-wizard.muttrc
-source /home/jeremy/.config/mutt/accounts/jeremy@je12emy.com.muttrc
-macro index,pager i1 '<sync-mailbox><enter-command>source /home/jeremy/.config/mutt/accounts/jeremy@je12emy.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to jeremy@je12emy.com"
 
 # mutt-wizard overrrides
 # Settings
@@ -15,3 +13,4 @@ color sidebar_divider default default
 color status black white
 color sidebar_new green default
 color sidebar_flagged red default
+macro index,pager i1 '<sync-mailbox><enter-command>source /home/jeremy/.config/mutt/accounts/jeremyzelaya@hotmail.es.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to jeremyzelaya@hotmail.es"

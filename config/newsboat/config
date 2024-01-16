@@ -8,6 +8,7 @@ prepopulate-query-feeds yes
 cleanup-on-quit yes
 bookmark-cmd "echo $1 $2 $3 $4 >> ~/.local/share/newsboat-bookmarks.txt"
 macro v set browser "mpv --no-terminal %u" ; open-in-browser ; set browser "elinks %u"
+macro w set browser w3m
 # confirm-mark-feed-read no
 wrap-scroll yes
 # externel browser
