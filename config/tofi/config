@@ -17,4 +17,4 @@ padding-left = 8
 padding-right = 8
 
 # https://github.com/philj56/tofi/issues/139
-include =  ../../.cache/wal/colors-tofi
+include =  /home/jeremy/.cache/wal/colors-tofi
