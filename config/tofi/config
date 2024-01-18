@@ -6,9 +6,6 @@ font-size = 14
 font = JetBrainsMono Nerd Font
 outline-width = 0
 border-width = 0
-# text-color = #FFFFFF
-# background-color = #000000
-# selection-color = #242424
 min-input-width = 120
 result-spacing = 12
 padding-top = 8
@@ -16,5 +13,11 @@ padding-bottom = 8
 padding-left = 8
 padding-right = 8
 
+# Default theme
+text-color = #FFFFFF
+background-color = #000000
+selection-color = #242424
+
+# Pywal theme
 # https://github.com/philj56/tofi/issues/139
 include =  /home/jeremy/.cache/wal/colors-tofi
