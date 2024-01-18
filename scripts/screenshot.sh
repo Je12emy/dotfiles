@@ -21,7 +21,7 @@ get_output() {
 }
 
 take_screenshot() {
-	grimshot --notify $1 $2 | xargs feh
+	grimshot --notify --wait 1000 $1 $2 | xargs feh
 }
 
 source=$(printf '%s\n' \
