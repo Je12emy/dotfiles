@@ -21,7 +21,12 @@ get_output() {
 }
 
 take_screenshot() {
-	grimshot --notify --wait 1000 $1 $2 | xargs feh
+	if [["$2" == "screen"]]; then
+		$(grimshot --notify --wait 1000 $1 $2 | xargs feh)
+		return 0
+	fi
+	$(grimshot --notify $1 $2 | xargs feh)
+	return 0
 }
 
 source=$(printf '%s\n' \
