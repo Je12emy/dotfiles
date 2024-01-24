@@ -1,6 +1,7 @@
 return
 {
     "strash/everybody-wants-that-line.nvim",
+    enabled = false,
     config = function()
         require("everybody-wants-that-line").setup({
             buffer = {
