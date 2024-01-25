@@ -1,24 +1,52 @@
 return {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-        require("telescope").load_extension('harpoon')
+        local harpoon = require('harpoon')
+        harpoon:setup({})
     end,
     keys = function()
+        local harpoon = require('harpoon')
+        harpoon:setup({})
+
+        local conf = require("telescope.config").values
+        local function toggle_telescope(harpoon_files)
+            local file_paths = {}
+            for _, item in ipairs(harpoon_files.items) do
+                table.insert(file_paths, item.value)
+            end
+
+            require("telescope.pickers").new({}, {
+                prompt_title = "Harpoon",
+                finder = require("telescope.finders").new_table({
+                    results = file_paths,
+                }),
+                previewer = conf.file_previewer({}),
+                sorter = conf.generic_sorter({}),
+            }):find()
+        end
         return {
             {
                 "<leader>m",
                 function()
-                    local mark = require('harpoon.mark')
-                    local i = mark.get_current_index()
-                    mark.toggle_file(i)
+                    harpoon:list():append()
                 end,
-                desc = "Toggle grapple mark",
+                desc = "Append harpoon mark",
+            },
+            {
+                "<leader>mc",
+                function()
+                    harpoon:list():clear()
+                end,
+                desc = "Clear marks",
             },
             {
                 "<leader>tm",
-                "<cmd>Telescope harpoon marks theme=dropdown previewer=false<cr>",
-                desc = "Open grappgle marks"
+                function()
+                    toggle_telescope(harpoon:list())
+                end,
+                desc = "Open harpoon marks"
             },
         }
     end
