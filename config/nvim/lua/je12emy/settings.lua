@@ -2,7 +2,7 @@ local set = vim.opt
 local bo = vim.bo
 local o = vim.o
 
-require("je12emy.utils.noobline")
+-- require("je12emy.utils.noobline")
 local cmd = require("je12emy.utils.autocmd")
 
 set.syntax = "on"

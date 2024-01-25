@@ -10,5 +10,5 @@ keymap.nmap('<Leader>tn', '<cmd>tabnew<CR>', { desc = "Create new tab" })
 keymap.nmap('<Leader>tx', '<cmd>tabclose<CR>', { desc = "Close tab" })
 keymap.nmap('<F8>', ':setlocal spell!<CR>', { desc = "Toggle spell check" })
 
-local todo_file = os.getenv("todo_path") or "~/todo.txt"
-keymap.nmap('<a-t>', ':tab e' .. todo_file .. '<CR>', { desc = "Edit todo list" })
+-- local todo_file = os.getenv("todo_path") or "~/todo.txt"
+-- keymap.nmap('<a-t>', ':tab e' .. todo_file .. '<CR>', { desc = "Edit todo list" })
