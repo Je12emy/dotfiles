@@ -32,7 +32,7 @@ set.wrapscan = true
 set.spelllang = { "en", "es" }
 -- set.colorcolumn = '80'
 -- set.winbar = '%=%m %t'
-set.undodir = os.getenv("HOME") .. "/.undodir"
+set.undodir = os.getenv("HOME") or os.getenv("USERPROFILE") .. ".undodir"
 set.undofile = true
 -- Remove space under the statusline
 set.cmdheight = 0
