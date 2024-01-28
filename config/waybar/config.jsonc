@@ -6,6 +6,7 @@
     "modules-left": ["hyprland/workspaces"], // Sets modules for the left of the bar
     "modules-center": ["hyprland/window"], // Set modules for the center of the bar
     "modules-right": ["tray", "hyprland/submap", "clock", "cpu", "memory", "disk", "pulseaudio", "custom/updates"], // Set modules for the right of the bar
-    "include": ["~/.config/waybar/modules.jsonc"], // Include the module config
+    "include": ["~/.config/waybar/modules.jsonc"], // Default colors
+    "include": ["~/.cache/wal/modules.jsonc"], // Riced version with colors defined by wal
   }
 ]
