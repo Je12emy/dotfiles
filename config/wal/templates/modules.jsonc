@@ -1,0 +1,54 @@
+{{
+  // Modules configuration
+  "wlr/workspaces": {{
+    "disable-scroll": true,
+    "on-click": "activate"
+  }},
+  "tray": {{
+    "icon-size": 16,
+    "spacing": 8
+  }},
+  "hyprland/window": {{
+    "max-length": 48
+  }},
+  "cpu": {{
+    "format": "<span color='{color1}'></span> {{usage}}%",
+    "interval": 2
+  }},
+  "memory": {{
+    "format": "<span color='{color1}'>󰄦</span> {{used}}GiB",
+    "interval": 2
+  }},
+  "pulseaudio": {{
+    "scroll-step": 5, // %, can be a float
+    "format": "<span color='{color1}'>{{icon}}</span> {{volume}}%",
+    "format-muted": "󰖁 Muted",
+    "format-icons": ["", "", ""],
+    "on-click": "pavucontrol"
+  }},
+  "clock": {{
+      "interval": 60,
+      "format": "<span color='{color1}'></span> {{:%Y-%m-%d %H:%M}}",
+      "max-length": 25
+  }},
+  "hyprland/submap": {{
+      "format": "<span color='{color1}'>✌️</span> {{}}",
+      "max-length": 8,
+      "tooltip": false
+  }},
+  "disk": {{
+      "interval": 30,
+      "format": "<span color='{color1}'></span> {{percentage_free}}%",
+      "path": "/"
+  }},
+ "custom/updates": {{
+     "format": "<span color='{color1}'>{{icon}}</span> {{}} ",
+     "return-type": "json",
+     "format-icons": {{
+         "has-updates": "󱍷",
+         "updated": "󰂪"
+     }},
+     "exec-if": "which waybar-module-pacman-updates",
+     "exec": "waybar-module-pacman-updates"
+ }},
+}}

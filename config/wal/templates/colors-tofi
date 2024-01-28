@@ -1,0 +1,6 @@
+background-color = {background}
+text-color = {foreground}
+
+border-color = {color2}
+selection-color = {color1}
+selection-background = {background}
