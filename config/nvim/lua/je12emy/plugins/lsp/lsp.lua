@@ -30,16 +30,22 @@ return {
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 			require("mason").setup()
-			require("mason-lspconfig").setup()
-
-			require("mason-lspconfig").setup_handlers {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup {
-						on_attach = on_attach,
-						capabilities = capabilities,
-					}
-				end,
-			}
+			require("mason-lspconfig").setup({
+				handlers = {
+					function(server_name) -- default handler (optional)
+						require("lspconfig")[server_name].setup {}
+					end,
+					csharp_ls = function()
+						require 'lspconfig'.csharp_ls.setup {
+							on_attach = on_attach,
+							handlers = {
+								["textDocument/definition"] = require('csharpls_extended').handler,
+								["textDocument/typeDefinition"] = require('csharpls_extended').handler,
+							},
+						}
+					end,
+				}
+			})
 		end,
 		dependencies = {
 			'neovim/nvim-lspconfig',
