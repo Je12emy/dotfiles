@@ -2,48 +2,58 @@
 # A simple tofi script to take a screenshot with grimshot
 
 get_output() {
-	destination=$(printf "%s\n" \
+	output=$(printf "%s\n" \
 	"Save" \
 	"Copy" \
+	"Edit" \
 	| tofi --prompt="Output: ")
 
-	case $destination in
+	case $output in
 		"Save")
-			destination="save"
+			output="save"
 			;;
 		"Copy")
-			destination="copy"
+			output="copy"
+			;;
+		"Edit")
+			output="edit"
 			;;
 		*)
-			destination="copy"
+			output="copy"
 			;;
 	esac
 }
 
 take_screenshot() {
-	if [["$2" == "screen"]]; then
-		$(grimshot --notify --wait 1000 $1 $2 | xargs feh)
-		return 0
-	fi
-	$(grimshot --notify $1 $2 | xargs feh)
+	case "$1" in
+		"screen")
+			$(grimshot --notify --wait 1000 $1 $2 | xargs feh)
+		;;
+		"edit")
+			$(grimshot --notify "save" $2 | xargs gimp)
+		;;
+		*)
+			$(grimshot --notify $1 $2 | xargs feh)
+		;;
+	esac
 	return 0
 }
 
 source=$(printf '%s\n' \
-	"Full Screen Capture" \
-	"Area Capture" \
-	| tofi --horizontal=false --prompt="Screenshot: ")
+	"Full Screen" \
+	"Area" \
+	| tofi --horizontal=false --prompt="Source: ")
 
 get_output
 
 case "$source" in
-	"Full Screen Capture")
-		take_screenshot "$destination"  "screen"
+	"Full Screen")
+		take_screenshot "$output" "screen"
 	;;
-	"Area Capture")
-		take_screenshot "$destination" "area"
+	"Area")
+		take_screenshot "$output" "area"
 	;;
 	*)
-		take_screenshot "$destination" "area"
+		take_screenshot "$output" "area"
 	;;
 esac
