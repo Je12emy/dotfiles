@@ -33,7 +33,10 @@ return {
 			require("mason-lspconfig").setup({
 				handlers = {
 					function(server_name) -- default handler (optional)
-						require("lspconfig")[server_name].setup {}
+						require("lspconfig")[server_name].setup {
+							on_attach = on_attach,
+							capabilities = capabilities
+						}
 					end,
 					csharp_ls = function()
 						require 'lspconfig'.csharp_ls.setup {
