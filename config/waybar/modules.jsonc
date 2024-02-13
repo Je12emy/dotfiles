@@ -12,42 +12,37 @@
     "max-length": 48
   },
   "cpu": {
-    "format": " {usage}%",
+    "format": "<span color='#75A42F'></span> {usage}%",
     "interval": 2
   },
   "memory": {
-    "format": "󰄦 {used}GiB",
+    "format": "<span color='#75A42F'>󰄦</span> {used}GiB",
     "interval": 2
   },
   "pulseaudio": {
     "scroll-step": 5, // %, can be a float
-    "format": "{icon} {volume}%",
+    "format": "<span color='#75A42F'>{icon}</span> {volume}%",
     "format-muted": "󰖁 Muted",
     "format-icons": ["", "", ""],
     "on-click": "pavucontrol"
   },
-  "custom/kernel": {
-    "exec": "uname -r | cut -d '-' -f1",
-    "interval": "once",
-    "format": "<span color=\"#7aa2f7\"> </span>{}"
-  },
   "clock": {
       "interval": 60,
-      "format": " {:%Y-%m-%d %H:%M}",
+      "format": "<span color='#75A42F'></span> {:%Y-%m-%d %H:%M}",
       "max-length": 25
   },
   "hyprland/submap": {
-      "format": "✌️ {}",
+      "format": "<span color='#75A42F'>✌️</span> {}",
       "max-length": 8,
       "tooltip": false
   },
   "disk": {
       "interval": 30,
-      "format": " {percentage_free}%",
+      "format": "<span color='#75A42F'></span> {percentage_free}%",
       "path": "/"
   },
  "custom/updates": {
-     "format": "{icon} {} ",
+     "format": "<span color='#75A42F'>{icon}</span> {} ",
      "return-type": "json",
      "format-icons": {
          "has-updates": "󱍷",
