@@ -1,3 +1,6 @@
+-- TODO https://wezfurlong.org/wezterm/config/lua/keyassignment/PopKeyTable.html
+-- TODO https://wezfurlong.org/wezterm/config/lua/keyassignment/ActivateKeyTable.html?h=key_table
+
 local wezterm = require("wezterm")
 
 local colors = require("colors")
@@ -9,14 +12,14 @@ local config = {}
 local operating_system = env.getOS()
 
 config.status_update_interval = 1000
-wezterm.on("update-right-status", function(window, pane)
+wezterm.on("update-right-status", function(window, _)
   local leader = ""
   local mode = ""
   if window:leader_is_active() then
     leader = " LDR"
   end
   if window:active_key_table() then
-    mode = window:active_key_table()
+    mode = string.upper(window:active_key_table())
   end
   window:set_right_status(wezterm.format {
     { Background = { Color = colors.color1 } },
@@ -46,7 +49,7 @@ end
 
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 
 config.command_palette_bg_color = colors.background_color
 config.command_palette_fg_color = colors.text_color
