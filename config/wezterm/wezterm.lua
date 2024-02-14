@@ -19,7 +19,7 @@ wezterm.on("update-right-status", function(window, _)
     leader = " LDR"
   end
   if window:active_key_table() then
-    mode = string.upper(window:active_key_table())
+    mode = " " .. string.upper(window:active_key_table())
   end
   window:set_right_status(wezterm.format {
     { Background = { Color = colors.color1 } },
