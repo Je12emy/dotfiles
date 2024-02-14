@@ -163,7 +163,7 @@ M.maps = {
   },
   {
     mods = "LEADER",
-    key = "r",
+    key = "F5",
     action = wezterm.action.ReloadConfiguration
   },
 }
