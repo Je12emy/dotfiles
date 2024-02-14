@@ -14,20 +14,12 @@ M.key_tables = {
       action = wezterm.action.SpawnTab "DefaultDomain"
     },
     {
-      key = ".",
+      key = "}",
       action = wezterm.action.ActivateTabRelative(1)
     },
     {
-      key = ",",
-      action = wezterm.action.ActivateTabRelative(-1)
-    },
-    {
-      key = "}",
-      action = wezterm.action.MoveTabRelative(1)
-    },
-    {
       key = "{",
-      action = wezterm.action.MoveTabRelative(-1)
+      action = wezterm.action.ActivateTabRelative(-1)
     },
     {
       key = "x",
@@ -92,22 +84,42 @@ M.key_tables = {
       action = wezterm.action.AdjustPaneSize { "Up", 5 },
     }
   },
+  move_mode = {
+    {
+      key = "g",
+      action = wezterm.action.PaneSelect {}
+    },
+    {
+      key = "s",
+      action = wezterm.action.PaneSelect {
+        mode = 'SwapWithActive',
+      }
+    },
+    {
+      key = "}",
+      action = wezterm.action.MoveTabRelative(1)
+    },
+    {
+      key = "{",
+      action = wezterm.action.MoveTabRelative(-1)
+    },
+  },
   search_mode = {
     {
       key = "j",
-      action = wezterm.action.ScrollByLine(-1),
-    },
-    {
-      key = "k",
       action = wezterm.action.ScrollByLine(1),
     },
     {
+      key = "k",
+      action = wezterm.action.ScrollByLine(-1),
+    },
+    {
       key = "u",
-      action = wezterm.action.ScrollByPage(1),
+      action = wezterm.action.ScrollByPage(-1),
     },
     {
       key = "d",
-      action = wezterm.action.ScrollByPage(-1),
+      action = wezterm.action.ScrollByPage(1),
     },
   }
 }
@@ -136,6 +148,11 @@ M.maps = {
   },
   {
     mods = "LEADER",
+    key = "m",
+    action = wezterm.action.ActivateKeyTable { name = "move_mode", timeout_milliseconds = mode_timeout },
+  },
+  {
+    mods = "LEADER",
     key = "s",
     action = wezterm.action.ActivateKeyTable { name = "search_mode", timeout_milliseconds = mode_timeout },
   },
@@ -143,6 +160,11 @@ M.maps = {
     mods = "LEADER",
     key = "q",
     action = wezterm.action.QuickSelect
+  },
+  {
+    mods = "LEADER",
+    key = "r",
+    action = wezterm.action.ReloadConfiguration
   },
 }
 

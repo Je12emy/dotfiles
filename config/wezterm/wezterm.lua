@@ -8,6 +8,30 @@ local env = require("env")
 local config = {}
 local operating_system = env.getOS()
 
+config.status_update_interval = 1000
+wezterm.on("update-right-status", function(window, pane)
+  local leader = ""
+  local mode = ""
+  if window:leader_is_active() then
+    leader = " LDR"
+  end
+  if window:active_key_table() then
+    mode = window:active_key_table()
+  end
+  window:set_right_status(wezterm.format {
+    { Background = { Color = colors.color1 } },
+    { Foreground = { Color = colors.background_color } },
+    { Text = leader },
+    { Background = { Color = colors.color1 } },
+    { Foreground = { Color = colors.background_color } },
+    { Text = mode }
+  })
+end);
+
+-- wezterm.on('window-config-reloaded', function(window, pane)
+--   window:toast_notification('Wezterm', 'Configuration Reloaded!', nil, 4000)
+-- end)
+
 config.font = wezterm.font 'JetBrains Mono'
 config.font_size = 14.0
 config.line_height = 1.25
@@ -31,7 +55,7 @@ config.scrollback_lines = 3500
 config.enable_scroll_bar = false
 
 config.colors = {
-  tab_bar = tab_bar
+  tab_bar = tab_bar,
 }
 
 config.leader = keys.leader
