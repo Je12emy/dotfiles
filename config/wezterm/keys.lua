@@ -5,6 +5,9 @@ local M = {}
 local mode_timeout = 3000
 local leader_timeout = 2000
 
+local escape_pop_key = { key = "Escape", action = 'PopKeyTable' }
+local enter_pop_key = { key = "Enter", action = 'PopKeyTable' }
+
 M.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = leader_timeout }
 
 M.key_tables = {
@@ -82,7 +85,9 @@ M.key_tables = {
     {
       key = "k",
       action = wezterm.action.AdjustPaneSize { "Up", 5 },
-    }
+    },
+    escape_pop_key,
+    enter_pop_key
   },
   move_mode = {
     {
@@ -103,6 +108,8 @@ M.key_tables = {
       key = "{",
       action = wezterm.action.MoveTabRelative(-1)
     },
+    escape_pop_key,
+    enter_pop_key
   },
   search_mode = {
     {
@@ -121,6 +128,8 @@ M.key_tables = {
       key = "d",
       action = wezterm.action.ScrollByPage(1),
     },
+    escape_pop_key,
+    enter_pop_key
   }
 }
 
@@ -144,17 +153,17 @@ M.maps = {
   {
     mods = "LEADER",
     key = "r",
-    action = wezterm.action.ActivateKeyTable { name = "resize_mode", timeout_milliseconds = mode_timeout },
+    action = wezterm.action.ActivateKeyTable { name = "resize_mode", timeout_milliseconds = mode_timeout, one_shot = false },
   },
   {
     mods = "LEADER",
     key = "m",
-    action = wezterm.action.ActivateKeyTable { name = "move_mode", timeout_milliseconds = mode_timeout },
+    action = wezterm.action.ActivateKeyTable { name = "move_mode", timeout_milliseconds = mode_timeout, one_shot = false },
   },
   {
     mods = "LEADER",
     key = "s",
-    action = wezterm.action.ActivateKeyTable { name = "search_mode", timeout_milliseconds = mode_timeout },
+    action = wezterm.action.ActivateKeyTable { name = "search_mode", timeout_milliseconds = mode_timeout, one_shot = false },
   },
   {
     mods = "LEADER",

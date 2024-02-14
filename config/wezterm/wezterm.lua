@@ -1,6 +1,3 @@
--- TODO https://wezfurlong.org/wezterm/config/lua/keyassignment/PopKeyTable.html
--- TODO https://wezfurlong.org/wezterm/config/lua/keyassignment/ActivateKeyTable.html?h=key_table
-
 local wezterm = require("wezterm")
 
 local colors = require("colors")
@@ -61,6 +58,7 @@ config.colors = {
   tab_bar = tab_bar,
 }
 
+config.disable_default_key_bindings = true
 config.leader = keys.leader
 config.key_tables = keys.key_tables
 config.keys = keys.maps
