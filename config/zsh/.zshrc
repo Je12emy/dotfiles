@@ -3,12 +3,13 @@
 # Aliases
 alias v='nvim'
 alias za='zathura --fork'
-alias z='zellij'
+alias zl='zellij'
+alias netcoredbg='/usr/local/netcoredbg'
 
 # Enable Completition
 autoload -Uz compinit
 compinit
-zstyle ':completion:*' menu select # Press tab twice and navigate with arrow keys
+# zstyle ':completion:*' menu select # Press tab twice and navigate with arrow keys
 
 # Plugins, I use zap: https://github.com/zap-zsh/zap/tree/master
 plug "zsh-users/zsh-autosuggestions"
@@ -16,5 +17,6 @@ plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 
 (cat ~/.cache/wal/sequences &)
+eval "$(zoxide init --cmd cd zsh)"
 # Initialize starship
 eval "$(starship init zsh)"
