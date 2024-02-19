@@ -4,6 +4,7 @@ local o = vim.o
 
 -- require("je12emy.utils.noobline")
 local cmd = require("je12emy.utils.autocmd")
+local env = require("je12emy.utils.env")
 
 set.syntax = "on"
 set.mouse = "a"
@@ -32,7 +33,12 @@ set.wrapscan = true
 set.spelllang = { "en", "es" }
 -- set.colorcolumn = '80'
 -- set.winbar = '%=%m %t'
-set.undodir = os.getenv("HOME") or os.getenv("USERPROFILE") .. ".undodir"
+local env = env.getOS()
+if env == "Windows" then
+    set.undodir = os.getenv("USERPROFILE") .. "\\.undodir"
+else
+    set.undodir = os.getenv("HOME") .. "/.undodir"
+end
 set.undofile = true
 -- Remove space under the statusline
 set.cmdheight = 0
