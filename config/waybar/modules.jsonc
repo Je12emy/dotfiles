@@ -19,6 +19,12 @@
     "format": "<span color='#75A42F'>󰄦</span> {used}GiB",
     "interval": 2
   },
+  "battery": {
+    "interval": 60,
+    "format": "<span color='#75A42F'>{icon}</span> {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true
+  },
   "pulseaudio": {
     "scroll-step": 5, // %, can be a float
     "format": "<span color='#75A42F'>{icon}</span> {volume}%",
