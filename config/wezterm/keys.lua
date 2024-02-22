@@ -175,6 +175,16 @@ M.maps = {
     key = "F5",
     action = wezterm.action.ReloadConfiguration
   },
+  {
+    mods = "CTRL",
+    key = "V",
+    action = wezterm.action.PasteFrom "Clipboard"
+  },
+  {
+    mods = "CTRL",
+    key = "C",
+    action = wezterm.action.CopyTo "Clipboard"
+  }
 }
 
 return M
