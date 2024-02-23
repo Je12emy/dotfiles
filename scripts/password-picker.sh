@@ -9,4 +9,4 @@ password=$(printf '%s\n' "${password_files[@]}" | tofi "$@")
 
 [[ -n $password ]] || exit
 
-pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | xargs ydotool type
+pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | wl-copy
