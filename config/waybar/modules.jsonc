@@ -21,7 +21,7 @@
   },
   "battery": {
     "interval": 60,
-    "format": "<span color='#75A42F'>{icon}</span> {capacity}%",
+    "format": "<span color='#75A42F'>{icon} </span>{capacity}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip": true
   },

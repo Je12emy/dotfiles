@@ -21,7 +21,7 @@
   }},
   "battery": {{
     "interval": 60,
-    "format": "<span color='{color1}'>{icon}</span> {capacity}%",
+    "format": "<span color='{color1}'>{{icon}} </span>{{capacity}}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip": true
   }},
