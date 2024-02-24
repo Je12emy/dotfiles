@@ -3,13 +3,12 @@
 # Aliases
 alias v='nvim'
 alias za='zathura --fork'
-alias zl='zellij'
-alias netcoredbg='/usr/local/netcoredbg'
+# alias zl='zellij'
 
 # Enable Completition
 autoload -Uz compinit
 compinit
-# zstyle ':completion:*' menu select # Press tab twice and navigate with arrow keys
+zstyle ':completion:*' menu select # Press tab twice and navigate with arrow keys
 
 # Plugins, I use zap: https://github.com/zap-zsh/zap/tree/master
 plug "zsh-users/zsh-autosuggestions"
