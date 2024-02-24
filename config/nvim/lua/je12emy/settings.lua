@@ -33,8 +33,8 @@ set.wrapscan = true
 set.spelllang = { "en", "es" }
 -- set.colorcolumn = '80'
 -- set.winbar = '%=%m %t'
-local env = env.getOS()
-if env == "Windows" then
+local host = env.getOS()
+if host == "Windows" then
     set.undodir = os.getenv("USERPROFILE") .. "\\.undodir"
 else
     set.undodir = os.getenv("HOME") .. "/.undodir"
