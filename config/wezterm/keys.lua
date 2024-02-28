@@ -128,7 +128,7 @@ M.key_tables = {
   workspace_mode = {
     {
       key = "f",
-      action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' },
+      action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
     },
     {
       key = "s",
