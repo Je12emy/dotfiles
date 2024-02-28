@@ -24,7 +24,10 @@ wezterm.on("update-right-status", function(window, _)
     { Text = leader },
     { Background = { Color = colors.color1 } },
     { Foreground = { Color = colors.background_color } },
-    { Text = mode }
+    { Text = mode },
+    { Background = { Color = colors.color1 } },
+    { Foreground = { Color = colors.background_color } },
+    { Text =  " " .. window:active_workspace()}
   })
 end);
 
