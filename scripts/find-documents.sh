@@ -8,7 +8,6 @@ choice=$(printf '%s\n' "${files[@]}" \
         | tofi --prompt-text="File: " --horizontal=false) || exit 1
 
 if [ "$choice" ]; then
-        "zathura" "~/${choice}"
-    else
-        echo "Program Terminated." && exit 0
+    $PDF_VIEWER "$HOME/${choice}"
+    notify-send "Opened $choice"
 fi
