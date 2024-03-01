@@ -106,7 +106,13 @@ return {
 					)
 				end,
 			})
-			-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+			-- NOTE: See all the available LSP client configurations here
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
+			-- Install instructions here: https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
+			-- In Linux, just add rust-analyzer yo your local binaries
+			-- $ curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+			-- $ chmod +x ~/.local/bin/rust-analyzer
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				settings = {
@@ -117,15 +123,24 @@ return {
 					},
 				},
 			})
+			-- Installable through go's module system
+			-- see: go install golang.org/x/tools/gopls@latest
+			-- $ go install golang.org/x/tools/gopls@latesto
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
+			-- Available through npm
+			-- $ npm install -g typescript typescript-language-server
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
+			-- Mostly available through package managers.
+			-- see: https://luals.github.io/#neovim-install
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+			-- see: https://github.com/razzmatazz/csharp-language-server
+			-- $ dotnet tool install --global csharp-ls
 			lspconfig.csharp_ls.setup({
 				capabilities = capabilities,
 				handlers = {
@@ -133,6 +148,8 @@ return {
 					["textDocument/typeDefinition"] = pcall(require("csharpls_extended").handler),
 				},
 			})
+			-- Available through npm
+			-- $ npm install -g @astrojs/language-server
 			lspconfig.astro.setup({
 				capabilities = capabilities,
 			})
