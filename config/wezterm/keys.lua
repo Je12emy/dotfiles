@@ -83,6 +83,16 @@ M.maps = {
     mods = "CTRL",
     key = "C",
     action = wezterm.action.CopyTo "Clipboard"
+  },
+  {
+    mods = "CTRL",
+    key = "+",
+    action = wezterm.action.IncreaseFontSize
+  },
+  {
+    mods = "CTRL",
+    key = "-",
+    action = wezterm.action.DecreaseFontSize
   }
 }
 
