@@ -106,7 +106,17 @@ return {
 					)
 				end,
 			})
-
+			-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						diagnostics = {
+							enable = false,
+						},
+					},
+				},
+			})
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
