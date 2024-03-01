@@ -14,11 +14,11 @@ return {
 	},
 	config = function(_, opts)
 		require("tokyonight").setup(opts)
-		require('lualine').setup {
-			options = {
-				theme = 'tokyonight'
-			}
-		}
+		-- require('lualine').setup {
+		-- 	options = {
+		-- 		theme = 'tokyonight'
+		-- 	}
+		-- }
 		vim.cmd [[colorscheme tokyonight]]
 	end
 }

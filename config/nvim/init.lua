@@ -1,4 +1,6 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.opt.signcolumn = 'yes'
 require('je12emy')
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
