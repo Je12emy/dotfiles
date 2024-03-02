@@ -54,49 +54,49 @@ return {
 						"n",
 						"<leader>cr",
 						vim.lsp.buf.rename,
-						{ buffer = event.buf, desc = "[C]ode [R]ename symbol" }
+						{ buffer = event.buf, desc = "[c]ode [r]ename symbol" }
 					)
 					vim.keymap.set(
 						"n",
 						"<leader>ca",
 						vim.lsp.buf.code_action,
-						{ buffer = event.buf, desc = "[C]ode [A]ction" }
+						{ buffer = event.buf, desc = "[c]ode [a]ction" }
 					)
 					vim.keymap.set(
 						"n",
 						"gi",
 						require("telescope.builtin").lsp_implementations,
-						{ buffer = event.buf, desc = "[G]oto [I]implementation" }
+						{ buffer = event.buf, desc = "[g]oto [i]implementation" }
 					)
 					vim.keymap.set(
 						"n",
 						"gr",
 						require("telescope.builtin").lsp_references,
-						{ buffer = event.buf, desc = "[G]oto [R]eferences" }
+						{ buffer = event.buf, desc = "[g]oto [r]eferences" }
 					)
 					vim.keymap.set(
 						"n",
 						"gd",
 						require("telescope.builtin").lsp_definitions,
-						{ buffer = event.buf, desc = "[G]oto [D]efinition" }
+						{ buffer = event.buf, desc = "[g]oto [d]efinition" }
 					)
 					vim.keymap.set(
 						"n",
 						"[d",
 						vim.diagnostic.goto_prev,
-						{ buffer = event.buf, desc = "Prev [D]iagnostic" }
+						{ buffer = event.buf, desc = "prev [D]iagnostic" }
 					)
 					vim.keymap.set(
 						"n",
 						"]d",
 						vim.diagnostic.goto_next,
-						{ buffer = event.buf, desc = "Next [D]iagnostic" }
+						{ buffer = event.buf, desc = "next [d]iagnostic" }
 					)
 					vim.keymap.set(
 						"n",
 						"<leader>f",
 						vim.lsp.buf.format,
-						{ buffer = event.buf, desc = "[F]ormat buffer" }
+						{ buffer = event.buf, desc = "[f]ormat buffer" }
 					)
 					vim.keymap.set(
 						"n",

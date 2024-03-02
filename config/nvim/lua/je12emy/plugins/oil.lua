@@ -2,7 +2,7 @@ return {
 	{
 		"stevearc/oil.nvim",
 		config = function()
-			require("oil").setup {
+			require("oil").setup({
 				keymaps = {
 					["g?"] = "actions.show_help",
 					["<CR>"] = "actions.select",
@@ -20,10 +20,10 @@ return {
 				use_default_keymaps = false,
 				default_file_explorer = true,
 				view_options = {
-					show_hidden = true
-				}
-			}
-			vim.keymap.set("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "[O]pen [O]il" })
+					show_hidden = true,
+				},
+			})
+			vim.keymap.set("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "[o]pen [o]il" })
 			-- Disable netrw
 			---@diagnostic disable-next-line: undefined-global
 			vim.g.loaded_netrw = 1
