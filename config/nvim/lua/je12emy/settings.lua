@@ -31,13 +31,13 @@ o.timeoutlen = 3000
 set.cursorline = true
 set.wrapscan = true
 set.spelllang = { "en", "es" }
--- set.colorcolumn = '80'
--- set.winbar = '%=%m %t'
+set.colorcolumn = "80"
+-- set.winbar = "%=%m %t"
 local host = env.getOS()
 if host == "Windows" then
-    set.undodir = os.getenv("USERPROFILE") .. "\\.undodir"
+	set.undodir = os.getenv("USERPROFILE") .. "\\.undodir"
 else
-    set.undodir = os.getenv("HOME") .. "/.undodir"
+	set.undodir = os.getenv("HOME") .. "/.undodir"
 end
 set.undofile = true
 -- Remove space under the statusline
