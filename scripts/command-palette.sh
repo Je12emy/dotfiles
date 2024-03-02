@@ -1,6 +1,6 @@
 #! /bin/bash
-declare -A commands=(["Quick note"]="quick-note.sh" \
-    ["Find note"]="find-note.sh" \ 
+declare -A commands=(\
+    ["Open notes"]="open-notes.sh" \ 
     ["Password picker"]="password-picker.sh" \
     ["Find document"]="find-documents.sh" \ 
     ["Take screenshot"]="screenshot.sh" \
@@ -8,7 +8,7 @@ declare -A commands=(["Quick note"]="quick-note.sh" \
     ["Change wallpaper"]="wallpaper-picker.sh" \ 
     ["Exit"]="power-menu.sh")
 
-choice=$(printf "%s\n" "${!commands[@]}" | tofi --prompt-text="Command Palete: ")
+choice=$(printf "%s\n" "${!commands[@]}" | $MENU --prompt-text="Command Palete: ")
 
 [[ -n $choice ]] || exit
 
