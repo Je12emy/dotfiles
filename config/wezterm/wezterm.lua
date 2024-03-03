@@ -26,6 +26,8 @@ config.tab_max_width = 32
 -- Scollbar
 config.scrollback_lines = 3500
 config.enable_scroll_bar = false
+-- Solve ugly issues when zooming in
+config.adjust_window_size_when_changing_font_size = false
 -- Theming
 config.command_palette_bg_color = colors.background_color
 config.command_palette_fg_color = colors.text_color
