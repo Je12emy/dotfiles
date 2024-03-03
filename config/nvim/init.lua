@@ -1,4 +1,14 @@
--- SETTINGS
+--
+-- ▐▓█▀▀▀▀▀▀▀▀▀█▓▌░▄▄▄▄▄░
+-- ▐▓█░░▀░░▀▄░░█▓▌░█▄▄▄█░
+-- ▐▓█░░▄░░▄▀░░█▓▌░█▄▄▄█░
+-- ▐▓█▄▄▄▄▄▄▄▄▄█▓▌░█████░
+-- ░░░░▄▄███▄▄░░░░░█████░
+-- Single file neovim configuration, recently written based on
+-- kickstart: https://github.com/nvim-lua/kickstart.nvim/tree/master
+--
+--
+-- Settings
 -- <Space> as my leader modifier key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -35,7 +45,7 @@ vim.opt.errorbells = false
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 -- When pressing <Tab> shift by 4 spaces
-vim.opt.shiftwidth = 8
+vim.opt.shiftwidth = 4
 -- Enable vim's basic syntax highlights
 vim.opt.syntax = "on"
 -- Ignore casing when searching
@@ -84,6 +94,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+-- Plugins
 require("lazy").setup({
 	{
 		-- Fuzzy Finder
@@ -186,6 +197,11 @@ require("lazy").setup({
 			vim.g.loaded_netrwPlugin = 1
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		-- Commenting shortcuts
+		"numToStr/Comment.nvim",
+		opts = {},
 	},
 	{
 		-- Highlight TODO coments
