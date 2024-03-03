@@ -92,12 +92,9 @@ return {
 						vim.diagnostic.goto_next,
 						{ buffer = event.buf, desc = "next [d]iagnostic" }
 					)
-					vim.keymap.set(
-						"n",
-						"<leader>f",
-						vim.lsp.buf.format,
-						{ buffer = event.buf, desc = "[f]ormat buffer" }
-					)
+					vim.keymap.set("n", "<leader>f", function()
+						require("conform").format({ bufnr = event.buf })
+					end, { buffer = event.buf, desc = "[f]ormat buffer" })
 					vim.keymap.set(
 						"n",
 						"<c-k>",
@@ -151,6 +148,11 @@ return {
 			-- Available through npm
 			-- $ npm install -g @astrojs/language-server
 			lspconfig.astro.setup({
+				capabilities = capabilities,
+			})
+			-- Available through your package manager or see the pre-built binaries
+			-- see: https://github.com/artempyanykh/marksman/blob/main/docs/install.md
+			lspconfig.marksman.setup({
 				capabilities = capabilities,
 			})
 		end,
