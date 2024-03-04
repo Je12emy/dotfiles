@@ -337,6 +337,9 @@ require("lazy").setup({
 			buffer = {
 				enabled = false,
 			},
+			filename = {
+				enabled = false,
+			},
 			separator = "",
 		},
 	},
