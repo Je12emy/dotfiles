@@ -239,7 +239,7 @@ require("lazy").setup({
 				-- C Sharpier can be installed with dotnet
 				-- $ dotnet tool install csharpier -g
 				-- see: https://github.com/belav/csharpier
-				csharp = { { "csharpier", format_on_save = false } },
+				csharp = { { "csharpier" } },
 
 				-- Gofmt should be included with your go installation, make sure "go/bin" is in your path
 				go = { { "gofmt" } },
@@ -318,30 +318,6 @@ require("lazy").setup({
 			-- 	["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
 			-- })
 		end,
-	},
-	{
-		-- Cool status line
-		"strash/everybody-wants-that-line.nvim",
-		opts = {
-			filepath = {
-				enabled = true,
-				-- `path` can be one of these:
-				-- "tail" - file name only
-				-- "relative" - relative to working directory
-				-- "full" - full path to the file
-				path = "relative",
-				-- If `true` a path will be shortened, e.g. "/a/b/c/filename.lua".
-				-- It only works if `path` is "relative" or "full".
-				shorten = true,
-			},
-			buffer = {
-				enabled = false,
-			},
-			filename = {
-				enabled = false,
-			},
-			separator = "",
-		},
 	},
 	{
 		-- Git signs in the column + other Git utils
@@ -433,16 +409,16 @@ require("lazy").setup({
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			-- local statusline = require 'mini.statusline'
-			-- statusline.setup()
+			local statusline = require("mini.statusline")
+			statusline.setup()
 
 			-- You can confiure sections in the statusline by overriding their
 			-- default behavior. For example, here we disable the section for
 			-- cursor information because line numbers are already enabled
 			---@diagnostic disable-next-line: duplicate-set-field
-			-- statusline.section_location = function()
-			--     return ''
-			-- end
+			statusline.section_location = function()
+				return ""
+			end
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
