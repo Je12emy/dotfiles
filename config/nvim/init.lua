@@ -355,24 +355,29 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {
-			transparent = true,
-			styles = {
+		config = function()
+			require("tokyonight").setup({
 				style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-				sidebars = "transparent",
-				floats = "transparent",
-			},
-			terminal_colors = true,
-			lualine_bold = false,
-		},
-		config = function(_, opts)
-			require("tokyonight").setup(opts)
-			-- require('lualine').setup {
-			-- 	options = {
-			-- 		theme = 'tokyonight'
-			-- 	}
-			-- }
-			vim.cmd([[colorscheme tokyonight]])
+				transparent = true,
+				styles = {
+					sidebars = "transparent",
+					floats = "transparent",
+				},
+				terminal_colors = true,
+				lualine_bold = false,
+				-- NOTE: Highlight groups here: https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_night.lua
+				on_highlights = function(hl, c)
+					hl.MiniStatuslineFilename = {
+						bg = "#0f1119",
+						fg = c.fg_dark,
+					}
+					hl.MiniTablineFill = {
+						bg = "#000000",
+						fg = c.fg_dark,
+					}
+				end,
+			})
+			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 	{
@@ -429,6 +434,8 @@ require("lazy").setup({
 				WARN = { duration = 4000 },
 				INFO = { duration = 3000 },
 			})
+
+			require("mini.tabline").setup()
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
