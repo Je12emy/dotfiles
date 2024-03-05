@@ -420,6 +420,16 @@ require("lazy").setup({
 				return ""
 			end
 
+			-- Simple notifications
+			local notify = require("mini.notify")
+			notify.setup()
+			-- Wrap vim.notify with mini.notify and set some log leves
+			vim.notify = notify.make_notify({
+				ERROR = { duration = 5000 },
+				WARN = { duration = 4000 },
+				INFO = { duration = 3000 },
+			})
+
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
@@ -478,6 +488,7 @@ require("lazy").setup({
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 				callback = function(event)
+					vim.notify("LSP client attached")
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Show documentation" })
 					vim.keymap.set(
 						"n",
@@ -521,9 +532,11 @@ require("lazy").setup({
 						vim.diagnostic.goto_next,
 						{ buffer = event.buf, desc = "next [d]iagnostic" }
 					)
-					vim.keymap.set("n", "<leader>f", function()
+					vim.keymap.set({ "n", "v" }, "<leader>f", function()
 						require("conform").format({ bufnr = event.buf })
-					end, { buffer = event.buf, desc = "[f]ormat buffer" })
+						vim.notify("Formated buffer")
+					end, { buffer = event.buf, desc = "[f]ormat buffer or range" })
+
 					vim.keymap.set(
 						"n",
 						"<c-k>",
