@@ -372,7 +372,7 @@ require("lazy").setup({
 						fg = c.fg_dark,
 					}
 					hl.MiniTablineFill = {
-						bg = "#000000",
+						bg = "NONE",
 						fg = c.fg_dark,
 					}
 				end,
