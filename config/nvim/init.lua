@@ -498,6 +498,7 @@ require("lazy").setup({
 		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
@@ -576,6 +577,16 @@ require("lazy").setup({
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
+			-- Available through npm
+			-- $ npm i -g vscode-langservers-extracted
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
+			-- Available through npm
+			-- $ npm install -g @astrojs/language-server
+			lspconfig.astro.setup({
+				capabilities = capabilities,
+			})
 			-- Mostly available through package managers.
 			-- see: https://luals.github.io/#neovim-install
 			lspconfig.lua_ls.setup({
@@ -589,11 +600,6 @@ require("lazy").setup({
 					["textDocument/definition"] = pcall(require("csharpls_extended").handler),
 					["textDocument/typeDefinition"] = pcall(require("csharpls_extended").handler),
 				},
-			})
-			-- Available through npm
-			-- $ npm install -g @astrojs/language-server
-			lspconfig.astro.setup({
-				capabilities = capabilities,
 			})
 			-- Available through your package manager or see the pre-built binaries
 			-- see: https://github.com/artempyanykh/marksman/blob/main/docs/install.md
