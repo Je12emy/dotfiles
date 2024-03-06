@@ -55,7 +55,7 @@ vim.opt.wrapscan = true
 -- Control the space under the statusline, option are.
 -- 0 hidden
 -- 1 >= some height
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 -- Enable file type detection
 vim.opt.filetype = "on"
 -- How much time should pass to register keymaps
