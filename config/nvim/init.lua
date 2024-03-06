@@ -80,6 +80,10 @@ vim.keymap.set("n", "<Leader>j", ':exe "resize -" .5<CR>', { desc = "-5 on horiz
 vim.keymap.set("n", "<Leader>k", ':exe "resize +" .5<CR>', { desc = "+5 on horizontal split" })
 vim.keymap.set("n", "<Leader>tn", "<cmd>tabnew<CR>", { desc = "[T]ab [n]ew" })
 vim.keymap.set("n", "<Leader>tx", "<cmd>tabclose<CR>", { desc = "[T]ab close [x]" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -527,18 +531,7 @@ require("lazy").setup({
 						require("telescope.builtin").lsp_definitions,
 						{ buffer = event.buf, desc = "[g]oto [d]efinition" }
 					)
-					vim.keymap.set(
-						"n",
-						"[d",
-						vim.diagnostic.goto_prev,
-						{ buffer = event.buf, desc = "prev [D]iagnostic" }
-					)
-					vim.keymap.set(
-						"n",
-						"]d",
-						vim.diagnostic.goto_next,
-						{ buffer = event.buf, desc = "next [d]iagnostic" }
-					)
+
 					vim.keymap.set({ "n", "v" }, "<leader>f", function()
 						require("conform").format({ bufnr = event.buf })
 						vim.notify("Formated buffer")
