@@ -166,6 +166,7 @@ require("lazy").setup({
 				{ desc = "[s]earch in current buffer" }
 			)
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch by [g]rep" })
+			vim.keymap.set("n", "z=", builtin.spell_suggest, { desc = "search spell suggestions" })
 		end,
 	},
 	{
