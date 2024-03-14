@@ -536,10 +536,16 @@ require("lazy").setup({
 						{ buffer = event.buf, desc = "[g]oto [d]efinition" }
 					)
 
-					vim.keymap.set({ "n", "v" }, "<leader>f", function()
-						require("conform").format({ bufnr = event.buf })
-						vim.notify("Formated buffer")
-					end, { buffer = event.buf, desc = "[f]ormat buffer or range" })
+					vim.keymap.set({ "v", "n" }, "<leader>f", function()
+						require("conform").format({
+							bufnr = event.buf,
+							lsp_fallback = true,
+						}, function(_, did_edit)
+							if did_edit then
+								vim.notify("Formated buffer")
+							end
+						end)
+					end, { desc = { "[f]ormat buffer" } })
 
 					vim.keymap.set(
 						"n",
