@@ -548,7 +548,7 @@ require("lazy").setup({
 					end, { desc = { "[f]ormat buffer" } })
 
 					vim.keymap.set(
-						"n",
+						{ "i", "v" },
 						"<c-k>",
 						vim.lsp.buf.signature_help,
 						{ buffer = event.buf, desc = "Show signature" }
