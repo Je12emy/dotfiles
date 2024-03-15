@@ -295,6 +295,7 @@ require("lazy").setup({
 
 			vim.keymap.set("n", "<leader>ha", function()
 				harpoon:list():append()
+				vim.notify("Harpoon mark added")
 			end, { desc = "[h]arpoon [a]ppend mark" })
 			vim.keymap.set("n", "<leader>h}", function()
 				harpoon:list():next()
@@ -304,6 +305,7 @@ require("lazy").setup({
 			end, { desc = "[h]arpoon { prev mark" })
 			vim.keymap.set("n", "<leader>hc", function()
 				harpoon:list():clear()
+				vim.notify("Harpoon marks cleared")
 			end, { desc = "[h]arpoon [c]lean marks" })
 			vim.keymap.set("n", "<leader>sm", function()
 				toggle_telescope(harpoon:list())

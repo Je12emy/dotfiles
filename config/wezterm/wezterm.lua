@@ -35,7 +35,7 @@ config.colors = {
 	tab_bar = {
 		-- The color of the strip that goes along the top of the window
 		-- (does not apply when fancy tab bar is in use)
-		background = colors.background_color,
+		background = 'none',
 
 		-- The active tab is the one that has focus in the window
 		active_tab = {

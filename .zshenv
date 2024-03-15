@@ -1,5 +1,6 @@
 ZDOTDIR=$HOME/.config/zsh
 
+export GTK_THEME='Adwaita:dark'
 export EDITOR='nvim'
 export TERMINAL='wezterm'
 export BROWSER='firefox'
