@@ -376,6 +376,14 @@ require("lazy").setup({
 				lualine_bold = false,
 				-- NOTE: Highlight groups here: https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_night.lua
 				on_highlights = function(hl, c)
+					hl.TabLine = {
+						bg = "NONE",
+						fg = c.fg_dark,
+					}
+					hl.TabLineFill = {
+						bg = "NONE",
+						fg = c.fg_dark,
+					}
 					hl.MiniStatuslineFilename = {
 						bg = "#0f1119",
 						fg = c.fg_dark,
@@ -444,7 +452,7 @@ require("lazy").setup({
 				INFO = { duration = 3000 },
 			})
 
-			require("mini.tabline").setup()
+			-- require("mini.tabline").setup()
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
