@@ -34,7 +34,7 @@
   },
   "clock": {
       "interval": 60,
-      "format": "<span color='#75A42F'></span> {:%Y-%m-%d %H:%M}",
+      "format": "<span color='#75A42F'></span> {:%Y-%m-%d %OI:%M %p}",
       "max-length": 25
   },
   "hyprland/submap": {
