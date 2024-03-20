@@ -12,43 +12,43 @@
     "max-length": 48
   }},
   "cpu": {{
-    "format": "<span color='{color1}'></span> {{usage}}%",
+    "format": "<span color='{color1}'>CPU</span> {{usage}}%",
     "interval": 2
   }},
   "memory": {{
-    "format": "<span color='{color1}'>󰄦</span> {{used}}GiB",
+    "format": "<span color='{color1}'>DISK</span> {{used}}GiB",
     "interval": 2
   }},
   "battery": {{
     "interval": 60,
-    "format": "<span color='{color1}'>{{icon}} </span>{{capacity}}%",
+    "format": "<span color='{color1}'>BAT</span> {{capacity}}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip": true
   }},
   "pulseaudio": {{
     "scroll-step": 5, // %, can be a float
-    "format": "<span color='{color1}'>{{icon}}</span> {{volume}}%",
+    "format": "<span color='{color1}'>VOL</span> {{volume}}%",
     "format-muted": "󰖁 Muted",
     "format-icons": ["", "", ""],
     "on-click": "pavucontrol"
   }},
   "clock": {{
       "interval": 60,
-      "format": "<span color='{color1}'></span> {{:%Y-%m-%d %OI:%M %p}}",
+      "format": "<span color='{color1}'>DATE</span> {{:%Y-%m-%d %OI:%M %p}}",
       "max-length": 25
   }},
-  "hyprland/submap": {{
-      "format": "<span color='{color1}'>✌️</span> {{}}",
-      "max-length": 8,
-      "tooltip": false
-  }},
+  // "hyprland/submap": {{
+  //     "format": "<span color='{color1}'>✌️</span> {{}}",
+  //     "max-length": 8,
+  //     "tooltip": false
+  // }},
   "disk": {{
       "interval": 30,
-      "format": "<span color='{color1}'></span> {{percentage_free}}%",
+      "format": "<span color='{color1}'>DISK</span> {{percentage_free}}%",
       "path": "/"
   }},
  "custom/updates": {{
-     "format": "<span color='{color1}'>{{icon}}</span> {{}} ",
+     "format": "<span color='{color1}'>UPDATES</span> {{}} ",
      "return-type": "json",
      "format-icons": {{
          "has-updates": "󱍷",
@@ -57,4 +57,7 @@
      "exec-if": "which waybar-module-pacman-updates",
      "exec": "waybar-module-pacman-updates"
  }},
+  "custom/separator":{{
+		"format": "<span color='{color2}'>|</span>",
+  }},
 }}

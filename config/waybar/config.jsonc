@@ -5,7 +5,22 @@
     "height": 36, // Set height to avoid jumping due to active workspace indicator
     "modules-left": ["hyprland/workspaces"], // Sets modules for the left of the bar
     "modules-center": ["hyprland/window"], // Set modules for the center of the bar
-    "modules-right": ["tray", "hyprland/submap", "clock", "battery", "cpu", "memory", "disk", "pulseaudio", "custom/updates"], // Set modules for the right of the bar
-    "include": ["~/.config/waybar/modules.jsonc"],
+    "modules-right": [
+      "tray",
+      "hyprland/submap",
+      "battery",
+      "cpu",
+      "custom/separator",
+      "memory",
+      "custom/separator",
+      "disk",
+      "custom/separator",
+      "pulseaudio",
+      "custom/separator",
+      "custom/updates",
+      "custom/separator",
+      "clock"
+    ], // Set modules for the right of the bar
+    "include": ["~/.config/waybar/modules.jsonc"]
   }
 ]
