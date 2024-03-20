@@ -48,7 +48,7 @@
       "path": "/"
   }},
  "custom/updates": {{
-     "format": "<span color='{color1}'>UPDATES</span> {{}} ",
+     "format": "<span color='{color1}'>UPDATES</span> {{}}",
      "return-type": "json",
      "format-icons": {{
          "has-updates": "󱍷",
