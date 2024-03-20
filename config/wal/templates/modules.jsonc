@@ -16,7 +16,7 @@
     "interval": 2
   }},
   "memory": {{
-    "format": "<span color='{color1}'>DISK</span> {{used}}GiB",
+    "format": "<span color='{color1}'>RAM</span> {{used}}GiB",
     "interval": 2
   }},
   "battery": {{
