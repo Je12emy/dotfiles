@@ -385,7 +385,7 @@ require("lazy").setup({
 						fg = c.fg_dark,
 					}
 					hl.MiniStatuslineFilename = {
-						bg = "#0f1119",
+						bg = "NONE",
 						fg = c.fg_dark,
 					}
 					hl.MiniTablineFill = {
@@ -432,7 +432,9 @@ require("lazy").setup({
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
 			local statusline = require("mini.statusline")
-			statusline.setup()
+			statusline.setup {
+				set_vim_settings = false,
+			}
 
 			-- You can confiure sections in the statusline by overriding their
 			-- default behavior. For example, here we disable the section for
