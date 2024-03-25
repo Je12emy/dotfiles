@@ -84,7 +84,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previous [D]
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
+vim.keymap.set({ "v", "n" }, "<leader>f", "<cmd>Format<CR> ", { desc = { "[f]ormat buffer" } })
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -257,6 +257,25 @@ require("lazy").setup({
 				rust = { { "rustfmt" } },
 			},
 		},
+		config = function(_, opts)
+			require("conform").setup(opts)
+			-- see: https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#format-command
+			vim.api.nvim_create_user_command("Format", function(args)
+				local range = nil
+				if args.count ~= -1 then
+					local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+					range = {
+						start = { args.line1, 0 },
+						["end"] = { args.line2, end_line:len() },
+					}
+				end
+				require("conform").format({ async = true, lsp_fallback = true, range = range }, function(_, did_edit)
+					if did_edit then
+						vim.notify("Formated buffer")
+					end
+				end)
+			end, { range = true })
+		end,
 	},
 	{
 		-- Git client
@@ -432,9 +451,9 @@ require("lazy").setup({
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
 			local statusline = require("mini.statusline")
-			statusline.setup {
+			statusline.setup({
 				set_vim_settings = false,
-			}
+			})
 
 			-- You can confiure sections in the statusline by overriding their
 			-- default behavior. For example, here we disable the section for
@@ -547,17 +566,6 @@ require("lazy").setup({
 						require("telescope.builtin").lsp_definitions,
 						{ buffer = event.buf, desc = "[g]oto [d]efinition" }
 					)
-
-					vim.keymap.set({ "v", "n" }, "<leader>f", function()
-						require("conform").format({
-							bufnr = event.buf,
-							lsp_fallback = true,
-						}, function(_, did_edit)
-							if did_edit then
-								vim.notify("Formated buffer")
-							end
-						end)
-					end, { desc = { "[f]ormat buffer" } })
 
 					vim.keymap.set(
 						{ "i", "v" },
