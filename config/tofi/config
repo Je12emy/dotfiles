@@ -1,6 +1,5 @@
 anchor = top
 width = 100%
-height = 25%
 num-results = 5
 font-size = 14
 font = JetBrainsMono Nerd Font

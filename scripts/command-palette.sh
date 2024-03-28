@@ -1,6 +1,6 @@
 #! /bin/bash
 declare -A commands=(\
-    ["Open notes"]="open-notes.sh" \ 
+    # ["Open notes"]="open-notes.sh" \ 
     ["Password picker"]="password-picker.sh" \
     ["Find document"]="find-documents.sh" \ 
     ["Take screenshot"]="screenshot.sh" \
