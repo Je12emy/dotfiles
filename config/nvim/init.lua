@@ -70,6 +70,8 @@ vim.o.whichwrap = "b,s,<,>,[,],h,l"
 -- Options for insert mode completition
 -- see: "help cot"
 vim.o.completeopt = "menu,menuone,noselect"
+-- I hate the warning I get due to swap files
+vim.opt.swapfile = false
 -- cmd.auto_hide_status()
 -- Base keymaps
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
@@ -560,12 +562,24 @@ require("lazy").setup({
 						require("telescope.builtin").lsp_references,
 						{ buffer = event.buf, desc = "[g]oto [r]eferences" }
 					)
-					vim.keymap.set(
-						"n",
-						"gd",
-						require("telescope.builtin").lsp_definitions,
-						{ buffer = event.buf, desc = "[g]oto [d]efinition" }
-					)
+
+					local clients = vim.lsp.get_active_clients()
+					local is_csharp = false
+					for _, client in ipairs(clients) do
+						if client.name == "csharp_ls" then
+							is_csharp = true
+							break
+						end
+					end
+					-- csharpls_extended does not support Telescope yet,
+					-- see: https://github.com/Decodetalkers/csharpls-extended-lsp.nvim/pull/11
+					vim.keymap.set("n", "gd", function()
+						if is_csharp then
+							vim.lsp.buf.definition()
+							return
+						end
+						require("telescope.builtin").lsp_definitions()
+					end, { buffer = event.buf, desc = "[g]oto [d]efinition" })
 
 					vim.keymap.set(
 						{ "i", "v" },
@@ -620,11 +634,12 @@ require("lazy").setup({
 			})
 			-- see: https://github.com/razzmatazz/csharp-language-server
 			-- $ dotnet tool install --global csharp-ls
+			local pid = vim.fn.getpid()
 			lspconfig.csharp_ls.setup({
 				capabilities = capabilities,
 				handlers = {
-					["textDocument/definition"] = pcall(require("csharpls_extended").handler),
-					["textDocument/typeDefinition"] = pcall(require("csharpls_extended").handler),
+					["textDocument/definition"] = require("csharpls_extended").handler,
+					["textDocument/typeDefinition"] = require("csharpls_extended").handler,
 				},
 			})
 			-- Available through your package manager or see the pre-built binaries
