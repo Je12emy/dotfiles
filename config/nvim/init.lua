@@ -86,7 +86,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previous [D]
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-vim.keymap.set({ "v", "n" }, "<leader>f", "<cmd>Format<CR> ", { desc = { "[f]ormat buffer" } })
+vim.keymap.set({ "v", "n" }, "<leader>f", "<cmd>Format<CR> ", { desc = "[f]ormat buffer" })
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -100,6 +100,19 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Connect to godot's LSP server when a .gd file is opened
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.gd",
+  callback = function ()
+	 if not vim.g.server_started then
+		vim.fn.serverstart("127.0.0.1:55432")
+		vim.g.server_started = true
+		vim.notify("GDScript server attached")
+	end
+  end
+})
+
 -- Plugins
 require("lazy").setup({
 	{
@@ -244,6 +257,10 @@ require("lazy").setup({
 				astro = { { "prettierd", "prettier" } },
 				markdown = { { "prettierd", "prettier" } },
 				css = { { "prettierd", "prettier" } },
+
+				-- GDFormat is part of a godot toolkit
+				-- $ paru python-gdtoolkit
+				gdscript = { "gdformat" },
 
 				-- C Sharpier can be installed with dotnet
 				-- $ dotnet tool install csharpier -g
@@ -630,6 +647,10 @@ require("lazy").setup({
 			-- Mostly available through package managers.
 			-- see: https://luals.github.io/#neovim-install
 			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			-- Check this guide: https://mb-izzo.github.io/nvim-godot-solution/
+			require'lspconfig'.gdscript.setup({
 				capabilities = capabilities,
 			})
 			-- see: https://github.com/razzmatazz/csharp-language-server
