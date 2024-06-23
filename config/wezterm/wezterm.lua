@@ -4,7 +4,7 @@ local env = require("env")
 
 local config = {}
 
-config.enable_wayland = false
+config.enable_wayland = true
 -- Font
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14.0
@@ -22,6 +22,7 @@ end
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
+config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 32
 -- Scollbar
 config.scrollback_lines = 3500
@@ -40,14 +41,14 @@ config.colors = {
 		-- The active tab is the one that has focus in the window
 		active_tab = {
 			-- The color of the background area for the tab
-			bg_color = colors.color1,
+			bg_color = colors.background_color,
 			-- The color of the text for the tab
-			fg_color = colors.background_color,
+			fg_color = colors.text_color,
 
 			-- Specify whether you want "Half", "Normal" or "Bold" intensity for the
 			-- label shown for this tab.
 			-- The default is "Normal"
-			intensity = "Normal",
+			intensity = "Bold",
 
 			-- Specify whether you want "None", "Single" or "Double" underline for
 			-- label shown for this tab.
@@ -67,7 +68,10 @@ config.colors = {
 		inactive_tab = {
 			bg_color = colors.background_color,
 			fg_color = colors.text_color,
-
+			-- Specify whether you want "Half", "Normal" or "Bold" intensity for the
+			-- label shown for this tab.
+			-- The default is "Normal"
+			intensity = "Half",
 			-- The same options that were listed under the `active_tab` section above
 			-- can also be used for `inactive_tab`.
 		},
@@ -249,109 +253,109 @@ config.key_tables = {
 		escape_pop_key,
 		enter_pop_key,
 	},
-	workspace_mode = {
-		{
-			key = "w",
-			action = wezterm.action_callback(function(window, pane)
-				-- Here you can dynamically construct a longer list if needed
-				local home = wezterm.home_dir
-				local workspaces = {
-					{ id = home .. "/default", label = "default" },
-					{ id = home .. "/notes", label = "notes" },
-					{ id = home .. "/work", label = "work" },
-					{ id = home .. "/personal", label = "personal" },
-					{ id = home .. "/.config", label = "config" },
-				}
-
-				window:perform_action(
-					wezterm.action.InputSelector({
-						action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
-							if not id and not label then
-								wezterm.log_info("cancelled")
-							else
-								wezterm.log_info("id = " .. id)
-								wezterm.log_info("label = " .. label)
-								inner_window:perform_action(
-									wezterm.action.SwitchToWorkspace({
-										name = label,
-										spawn = {
-											label = "Workspace: " .. label,
-											cwd = id,
-										},
-									}),
-									inner_pane
-								)
-							end
-						end),
-						title = "Choose Workspace",
-						choices = workspaces,
-						fuzzy = true,
-						fuzzy_description = "Fuzzy find and/or make a workspace",
-					}),
-					pane
-				)
-			end),
-		},
-		{
-			key = "f",
-			action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-		},
-		{
-			key = "s",
-			action = wezterm.action.PromptInputLine({
-				description = wezterm.format({
-					{ Attribute = { Intensity = "Bold" } },
-					{ Foreground = { AnsiColor = "Fuchsia" } },
-					{ Text = "Enter name for new workspace" },
-				}),
-				action = wezterm.action_callback(function(window, pane, line)
-					-- line will be `nil` if they hit escape without entering anything
-					-- An empty string if they just hit enter
-					-- Or the actual line of text they wrote
-					if line then
-						if line ~= "" then
-							window:perform_action(
-								wezterm.action.SwitchToWorkspace({
-									name = line,
-								}),
-								pane
-							)
-						else
-							window:perform_action(
-								wezterm.action.SwitchToWorkspace({
-									name = "default",
-								}),
-								pane
-							)
-						end
-					end
-				end),
-			}),
-		},
-		{
-			key = "n",
-			action = wezterm.action.PromptInputLine({
-				description = wezterm.format({
-					{ Attribute = { Intensity = "Bold" } },
-					{ Foreground = { AnsiColor = "Fuchsia" } },
-					{ Text = "Enter name for new workspace" },
-				}),
-				action = wezterm.action_callback(function(window, pane, line)
-					-- line will be `nil` if they hit escape without entering anything
-					-- An empty string if they just hit enter
-					-- Or the actual line of text they wrote
-					if line then
-						window:perform_action(
-							wezterm.action.SwitchToWorkspace({
-								name = line,
-							}),
-							pane
-						)
-					end
-				end),
-			}),
-		},
-	},
+	-- workspace_mode = {
+	-- 	{
+	-- 		key = "w",
+	-- 		action = wezterm.action_callback(function(window, pane)
+	-- 			-- Here you can dynamically construct a longer list if needed
+	-- 			local home = wezterm.home_dir
+	-- 			local workspaces = {
+	-- 				{ id = home .. "/default",  label = "default" },
+	-- 				{ id = home .. "/notes",    label = "notes" },
+	-- 				{ id = home .. "/work",     label = "work" },
+	-- 				{ id = home .. "/personal", label = "personal" },
+	-- 				{ id = home .. "/.config",  label = "config" },
+	-- 			}
+	--
+	-- 			window:perform_action(
+	-- 				wezterm.action.InputSelector({
+	-- 					action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
+	-- 						if not id and not label then
+	-- 							wezterm.log_info("cancelled")
+	-- 						else
+	-- 							wezterm.log_info("id = " .. id)
+	-- 							wezterm.log_info("label = " .. label)
+	-- 							inner_window:perform_action(
+	-- 								wezterm.action.SwitchToWorkspace({
+	-- 									name = label,
+	-- 									spawn = {
+	-- 										label = "Workspace: " .. label,
+	-- 										cwd = id,
+	-- 									},
+	-- 								}),
+	-- 								inner_pane
+	-- 							)
+	-- 						end
+	-- 					end),
+	-- 					title = "Choose Workspace",
+	-- 					choices = workspaces,
+	-- 					fuzzy = true,
+	-- 					fuzzy_description = "Fuzzy find and/or make a workspace",
+	-- 				}),
+	-- 				pane
+	-- 			)
+	-- 		end),
+	-- 	},
+	-- 	{
+	-- 		key = "f",
+	-- 		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+	-- 	},
+	-- 	{
+	-- 		key = "s",
+	-- 		action = wezterm.action.PromptInputLine({
+	-- 			description = wezterm.format({
+	-- 				{ Attribute = { Intensity = "Bold" } },
+	-- 				{ Foreground = { AnsiColor = "Fuchsia" } },
+	-- 				{ Text = "Enter name for new workspace" },
+	-- 			}),
+	-- 			action = wezterm.action_callback(function(window, pane, line)
+	-- 				-- line will be `nil` if they hit escape without entering anything
+	-- 				-- An empty string if they just hit enter
+	-- 				-- Or the actual line of text they wrote
+	-- 				if line then
+	-- 					if line ~= "" then
+	-- 						window:perform_action(
+	-- 							wezterm.action.SwitchToWorkspace({
+	-- 								name = line,
+	-- 							}),
+	-- 							pane
+	-- 						)
+	-- 					else
+	-- 						window:perform_action(
+	-- 							wezterm.action.SwitchToWorkspace({
+	-- 								name = "default",
+	-- 							}),
+	-- 							pane
+	-- 						)
+	-- 					end
+	-- 				end
+	-- 			end),
+	-- 		}),
+	-- 	},
+	-- 	{
+	-- 		key = "n",
+	-- 		action = wezterm.action.PromptInputLine({
+	-- 			description = wezterm.format({
+	-- 				{ Attribute = { Intensity = "Bold" } },
+	-- 				{ Foreground = { AnsiColor = "Fuchsia" } },
+	-- 				{ Text = "Enter name for new workspace" },
+	-- 			}),
+	-- 			action = wezterm.action_callback(function(window, pane, line)
+	-- 				-- line will be `nil` if they hit escape without entering anything
+	-- 				-- An empty string if they just hit enter
+	-- 				-- Or the actual line of text they wrote
+	-- 				if line then
+	-- 					window:perform_action(
+	-- 						wezterm.action.SwitchToWorkspace({
+	-- 							name = line,
+	-- 						}),
+	-- 						pane
+	-- 					)
+	-- 				end
+	-- 			end),
+	-- 		}),
+	-- 	},
+	-- },
 }
 -- Base keybinds
 config.keys = {
@@ -398,11 +402,11 @@ config.keys = {
 		key = "q",
 		action = wezterm.action.QuickSelect,
 	},
-	{
-		mods = "LEADER",
-		key = "w",
-		action = wezterm.action.ActivateKeyTable({ name = "workspace_mode", timeout_milliseconds = mode_timeout }),
-	},
+	-- {
+	-- 	mods = "LEADER",
+	-- 	key = "w",
+	-- 	action = wezterm.action.ActivateKeyTable({ name = "workspace_mode", timeout_milliseconds = mode_timeout }),
+	-- },
 	{
 		mods = "LEADER",
 		key = "F5",
@@ -436,21 +440,21 @@ wezterm.on("update-right-status", function(window, _)
 	local leader = ""
 	local mode = ""
 	if window:leader_is_active() then
-		leader = " LDR"
+		leader = " LDR "
 	end
 	if window:active_key_table() then
 		mode = " " .. string.upper(window:active_key_table())
 	end
 	window:set_right_status(wezterm.format({
-		{ Background = { Color = colors.color1 } },
-		{ Foreground = { Color = colors.background_color } },
+		{ Background = { Color = colors.background_color } },
+		{ Foreground = { Color = colors.text_color } },
 		{ Text = leader },
-		{ Background = { Color = colors.color1 } },
-		{ Foreground = { Color = colors.background_color } },
+		{ Background = { Color = colors.background_color } },
+		{ Foreground = { Color = colors.text_color } },
 		{ Text = mode },
-		{ Background = { Color = colors.color1 } },
-		{ Foreground = { Color = colors.background_color } },
-		{ Text = " " .. window:active_workspace() },
+		-- { Background = { Color = colors.background_color } },
+		-- { Foreground = { Color = colors.text_color } },
+		-- { Text = " " .. window:active_workspace() },
 	}))
 end)
 
