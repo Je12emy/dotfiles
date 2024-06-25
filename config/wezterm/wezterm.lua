@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local colors = require("colors")
--- local env = require("env")
+local env = require("env")
 
 local config = {}
 
@@ -10,13 +10,13 @@ config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14.0
 config.line_height = 1.25
 config.warn_about_missing_glyphs = false
--- local operating_system = env.getOS()
--- if operating_system == "Windows" then
--- 	config.default_prog = { "powershell.exe" }
+local operating_system = env.getOS()
+if operating_system == "Windows" then
+	config.default_prog = { "powershell.exe" }
 -- 	config.window_background_opacity = 1
 -- else
 -- 	config.window_background_opacity = 0.9
--- end
+end
 -- Tab bar
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
