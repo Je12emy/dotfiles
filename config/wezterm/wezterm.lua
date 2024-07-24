@@ -249,11 +249,52 @@ config.key_tables = {
 			key = "s",
 			action = wezterm.action.Search("CurrentSelectionOrEmptyString")
 		},
+		{
+			key = "p",
+			action = wezterm.action.ActivateCopyMode
+		},
 	}),
 	search_mode = {
 		{ key = 'Escape', mods = 'NONE', action = wezterm.action.CopyMode 'Close' },
 		{ key = 'n',      mods = 'CTRL', action = wezterm.action.CopyMode 'NextMatch' },
 		{ key = 'p',      mods = 'CTRL', action = wezterm.action.CopyMode 'PriorMatch' },
+	},
+	copy_mode = {
+		{ key = 'h', mods = 'NONE', action = wezterm.action.CopyMode 'MoveLeft' },
+		{ key = 'j', mods = 'NONE', action = wezterm.action.CopyMode 'MoveDown' },
+		{ key = 'k', mods = 'NONE', action = wezterm.action.CopyMode 'MoveUp' },
+		{ key = 'l', mods = 'NONE', action = wezterm.action.CopyMode 'MoveRight' },
+		{ key = 'w', mods = 'NONE', action = wezterm.action.CopyMode 'MoveForwardWord' },
+		{
+			key = 'b',
+			action = wezterm.action.CopyMode 'MoveBackwardWord',
+		},
+		{
+			key = 'd',
+			mods = 'CTRL',
+			action = wezterm.action.CopyMode { MoveByPage = 0.5 },
+		},
+		{
+			key = 'u',
+			mods = 'CTRL',
+			action = wezterm.action.CopyMode { MoveByPage = -0.5 },
+		},
+		{
+			key = 'y',
+			mods = 'NONE',
+			action = wezterm.action.CopyTo 'ClipboardAndPrimarySelection',
+		},
+		{
+			key = 'v',
+			mods = 'NONE',
+			action = wezterm.action.CopyMode { SetSelectionMode = 'Cell' },
+		},
+		{
+			key = 'v',
+			mods = 'CTRL',
+			action = wezterm.action.CopyMode { SetSelectionMode = 'Block' },
+		},
+		{ key = 'Escape', mods = 'NONE', action = wezterm.action.CopyMode 'Close' },
 	},
 	["Move"] = append_escape_keys({
 		{
