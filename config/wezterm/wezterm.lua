@@ -326,8 +326,8 @@ wezterm.on("update-right-status", function(window, _)
 	}))
 end)
 
-wezterm.on('format-window-title', function()
-	return ""
-end)
+config.window_frame = {
+	font_size = 10.0,
+}
 
 return config
