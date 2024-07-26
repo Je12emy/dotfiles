@@ -42,40 +42,49 @@ local function append_escape_keys(mode)
 	return mode
 end
 
+local tab_mode = {
+	{
+		key = "n",
+		action = wezterm.action.SpawnTab("DefaultDomain"),
+	},
+	{
+		key = "}",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		key = "{",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "x",
+		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		key = "r",
+		action = wezterm.action.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, _, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	}
+}
+
+for i = 1, 9 do
+	table.insert(tab_mode, {
+		key = tostring(i),
+		action = wezterm.action.ActivateTab(i - 1)
+	})
+end
+
 -- Modes
 config.key_tables = {
-	["Tab"] = append_escape_keys({
-		{
-			key = "n",
-			action = wezterm.action.SpawnTab("DefaultDomain"),
-		},
-		{
-			key = "}",
-			action = wezterm.action.ActivateTabRelative(1),
-		},
-		{
-			key = "{",
-			action = wezterm.action.ActivateTabRelative(-1),
-		},
-		{
-			key = "x",
-			action = wezterm.action.CloseCurrentTab({ confirm = true }),
-		},
-		{
-			key = "r",
-			action = wezterm.action.PromptInputLine({
-				description = "Enter new name for tab",
-				action = wezterm.action_callback(function(window, _, line)
-					-- line will be `nil` if they hit escape without entering anything
-					-- An empty string if they just hit enter
-					-- Or the actual line of text they wrote
-					if line then
-						window:active_tab():set_title(line)
-					end
-				end),
-			}),
-		},
-	}),
+	["Tab"] = append_escape_keys(tab_mode),
 	["Pane"] = append_escape_keys({
 		{
 			key = "j",
