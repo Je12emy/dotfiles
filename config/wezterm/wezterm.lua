@@ -22,8 +22,24 @@ config.tab_max_width = 32
 config.scrollback_lines = 3500
 -- Solve ugly issues when zooming in
 config.adjust_window_size_when_changing_font_size = false
-local theme_name = 'Clasic Dark (base16)'
+local theme_name = 'Retro'
 config.color_scheme = theme_name
+local theme = wezterm.color.get_builtin_schemes()[theme_name]
+-- NOTE: see https://wezfurlong.org/wezterm/config/appearance.html#defining-your-own-colors
+config.colors = {
+	tab_bar = {
+		background = theme.background,
+		active_tab = {
+			bg_color = theme.cursor_bg,
+			fg_color = theme.background
+		},
+		inactive_tab = {
+			bg_color = theme.background,
+			fg_color = theme.foreground
+		},
+
+	}
+}
 -- Keybinds
 local mode_timeout = 3000
 local leader_timeout = 2000
