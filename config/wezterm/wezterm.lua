@@ -314,12 +314,21 @@ config.status_update_interval = 1000
 wezterm.on("update-right-status", function(window, _)
 	local leader = ""
 	local mode = ""
+	-- Show this simbol when LEADER is pressed
 	if window:leader_is_active() then
 		leader = " ☗ "
 	end
+	-- Prepend this simbol to the keytable
 	if window:active_key_table() then
-		mode = "▶ " .. string.upper(window:active_key_table()) .. " "
+		local key_table = string.upper(window:active_key_table())
+		if key_table == "SEARCH_MODE" then
+			key_table = "SEARCH"
+		elseif key_table == "COPY_MODE" then
+			key_table = "COPY"
+		end
+		mode = "▶ " .. key_table .. " "
 	end
+	-- Display the content
 	window:set_right_status(wezterm.format({
 		{ Text = leader },
 		{ Text = mode },
