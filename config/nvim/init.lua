@@ -520,6 +520,7 @@ require("lazy").setup({
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "copilot" },
 				}, {
 					{ name = "buffer" },
 					{ name = "path" },
@@ -811,4 +812,21 @@ require("lazy").setup({
 		lazy = true,
 		cmd = "DiffviewOpen",
 	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end
+	}
 })
