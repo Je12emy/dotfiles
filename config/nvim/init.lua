@@ -561,6 +561,9 @@ require("lazy").setup({
 						{ buffer = event.buf, desc = "[g]oto [r]eferences" }
 					)
 
+					local dap = require("dap")
+					vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, { desc = "[D]ebug [t]oggle breakpoint" })
+
 					local clients = vim.lsp.get_active_clients()
 					local is_csharp = false
 					for _, client in ipairs(clients) do
@@ -659,87 +662,19 @@ require("lazy").setup({
 			vim.keymap.set("n", "<Leader>d<Space>", dap.continue, { desc = "[D]ebug launch/continue" })
 
 			-- NOTE: See all available DAP adapters here: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-			dap.adapters.gdb = {
-				type = "executable",
-				command = "gdb",
-				args = { "-i", "dap" },
-			}
 
-			dap.adapters.coreclr = {
-				type = "executable",
-				command = "netcoredbg",
-				args = { "--interpreter=vscode" },
-			}
+			-- dap.adapters.gdb = {
+			-- 	type = "executable",
+			-- 	command = "gdb",
+			-- 	args = { "-i", "dap" },
+			-- }
+			--
+			-- dap.adapters.coreclr = {
+			-- 	type = "executable",
+			-- 	command = "netcoredbg",
+			-- 	args = { "--interpreter=vscode" },
+			-- }
 
-			dap.configurations.c = {
-				{
-					name = "Launch",
-					type = "gdb",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
-				},
-			}
-
-			-- source: https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#making-debugging-net-easier
-			vim.g.dotnet_build_project = function()
-				local default_path = vim.fn.getcwd() .. "/"
-				if vim.g["dotnet_last_proj_path"] ~= nil then
-					default_path = vim.g["dotnet_last_proj_path"]
-				end
-				local path = vim.fn.input("Path to your *proj file", default_path, "file")
-				vim.g["dotnet_last_proj_path"] = path
-				local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
-				print("")
-				print("Cmd to execute: " .. cmd)
-				local f = os.execute(cmd)
-				if f == 0 then
-					print("\nBuild: ✔️ ")
-				else
-					print("\nBuild: ❌ (code: " .. f .. ")")
-				end
-			end
-
-			vim.g.dotnet_get_dll_path = function()
-				local request = function()
-					return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-				end
-
-				if vim.g["dotnet_last_dll_path"] == nil then
-					vim.g["dotnet_last_dll_path"] = request()
-				else
-					if
-						vim.fn.confirm(
-							"Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"],
-							"&yes\n&no",
-							2
-						) == 1
-					then
-						vim.g["dotnet_last_dll_path"] = request()
-					end
-				end
-
-				return vim.g["dotnet_last_dll_path"]
-			end
-
-			local config = {
-				{
-					type = "coreclr",
-					name = "launch - netcoredbg",
-					request = "launch",
-					program = function()
-						if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
-							vim.g.dotnet_build_project()
-						end
-			dap.adapters.godot = {
-				type = "server",
-				host = '127.0.0.1',
-				port = 6006,
-			}
-
-			dap.configurations.cs = config
 			-- dap.adapters.godot = {
 			-- 	type = "server",
 			-- 	host = '127.0.0.1',
@@ -754,6 +689,75 @@ require("lazy").setup({
 			-- 		project = "${workspaceFolder}",
 			-- 	}
 			-- }
+
+			-- dap.configurations.c = {
+			-- 	{
+			-- 		name = "Launch",
+			-- 		type = "gdb",
+			-- 		request = "launch",
+			-- 		program = function()
+			-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+			-- 		end,
+			-- 		cwd = "${workspaceFolder}",
+			-- 	},
+			-- }
+
+			-- -- source: https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#making-debugging-net-easier
+			-- vim.g.dotnet_build_project = function()
+			-- 	local default_path = vim.fn.getcwd() .. "/"
+			-- 	if vim.g["dotnet_last_proj_path"] ~= nil then
+			-- 		default_path = vim.g["dotnet_last_proj_path"]
+			-- 	end
+			-- 	local path = vim.fn.input("Path to your *proj file", default_path, "file")
+			-- 	vim.g["dotnet_last_proj_path"] = path
+			-- 	local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
+			-- 	print("")
+			-- 	print("Cmd to execute: " .. cmd)
+			-- 	local f = os.execute(cmd)
+			-- 	if f == 0 then
+			-- 		print("\nBuild: ✔️ ")
+			-- 	else
+			-- 		print("\nBuild: ❌ (code: " .. f .. ")")
+			-- 	end
+			-- end
+			--
+			-- vim.g.dotnet_get_dll_path = function()
+			-- 	local request = function()
+			-- 		return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+			-- 	end
+			--
+			-- 	if vim.g["dotnet_last_dll_path"] == nil then
+			-- 		vim.g["dotnet_last_dll_path"] = request()
+			-- 	else
+			-- 		if
+			-- 			vim.fn.confirm(
+			-- 				"Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"],
+			-- 				"&yes\n&no",
+			-- 				2
+			-- 			) == 1
+			-- 		then
+			-- 			vim.g["dotnet_last_dll_path"] = request()
+			-- 		end
+			-- 	end
+			--
+			-- 	return vim.g["dotnet_last_dll_path"]
+			-- end
+			--
+			-- local config = {
+			-- 	{
+			-- 		type = "coreclr",
+			-- 		name = "launch - netcoredbg",
+			-- 		request = "launch",
+			-- 		program = function()
+			-- 			if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+			-- 				vim.g.dotnet_build_project()
+			-- 			end
+			-- 			return vim.g.dotnet_get_dll_path()
+			-- 		end,
+			-- 	},
+			-- }
+			--
+			-- dap.configurations.cs = config
 		end,
 	},
 	{
@@ -764,7 +768,7 @@ require("lazy").setup({
 
 			dapui.setup()
 			dap.listeners.before.attach.dapui_config = function()
-				-- vim.notify("Attaching to debugger")
+				vim.notify("Attaching to debugger")
 			end
 
 			dap.listeners.before.launch.dapui_config = function()
