@@ -274,6 +274,12 @@ require("lazy").setup({
 				-- $ rustup component add rustfmt
 				-- see: https://github.com/rust-lang/rustfmt?tab=readme-ov-file#quick-start
 				rust = { { "rustfmt" } },
+
+				-- DJLint provies support for templating languages like Go's templating
+				-- $ pip install djlint
+				-- $ npm i djlint #requires pip and python still
+				-- see: https://github.com/djlint/djLint?tab=readme-ov-file#-how
+				html = { "djLint" }
 			},
 		},
 		config = function(_, opts)
