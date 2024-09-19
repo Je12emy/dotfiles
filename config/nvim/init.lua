@@ -102,16 +102,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Connect to godot's LSP server when a .gd file is opened
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = "*.gd",
-  callback = function ()
-	 if not vim.g.server_started then
-		vim.fn.serverstart("127.0.0.1:55432")
-		vim.g.server_started = true
-		vim.notify("GDScript server attached")
-	end
-  end
-})
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+-- 	pattern = "*.gd",
+-- 	callback = function()
+-- 		if not vim.g.server_started then
+-- 			vim.fn.serverstart("127.0.0.1:55432")
+-- 			vim.g.server_started = true
+-- 			vim.notify("GDScript server attached")
+-- 		end
+-- 	end
+-- })
 
 -- Plugins
 require("lazy").setup({
@@ -631,9 +631,9 @@ require("lazy").setup({
 				capabilities = capabilities,
 			})
 			-- Check this guide: https://mb-izzo.github.io/nvim-godot-solution/
-			require'lspconfig'.gdscript.setup({
-				capabilities = capabilities,
-			})
+			-- require 'lspconfig'.gdscript.setup({
+			-- 	capabilities = capabilities,
+			-- })
 			-- see: https://github.com/razzmatazz/csharp-language-server
 			-- $ dotnet tool install --global csharp-ls
 			local pid = vim.fn.getpid()
@@ -733,12 +733,27 @@ require("lazy").setup({
 						if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
 							vim.g.dotnet_build_project()
 						end
-						return vim.g.dotnet_get_dll_path()
-					end,
-				},
+			dap.adapters.godot = {
+				type = "server",
+				host = '127.0.0.1',
+				port = 6006,
 			}
 
 			dap.configurations.cs = config
+			-- dap.adapters.godot = {
+			-- 	type = "server",
+			-- 	host = '127.0.0.1',
+			-- 	port = 6006,
+			-- }
+
+			-- dap.configurations.gdscript = {
+			-- 	{
+			-- 		type = "godot",
+			-- 		request = "launch",
+			-- 		name = "Launch scene",
+			-- 		project = "${workspaceFolder}",
+			-- 	}
+			-- }
 		end,
 	},
 	{
