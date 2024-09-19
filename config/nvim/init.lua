@@ -182,6 +182,7 @@ require("lazy").setup({
 			)
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch by [g]rep" })
 			vim.keymap.set("n", "z=", builtin.spell_suggest, { desc = "search spell suggestions" })
+			vim.keymap.set("n", "<leader>st", builtin.treesitter, { desc = "[s]earch [t]reesitter" })
 		end,
 	},
 	{
