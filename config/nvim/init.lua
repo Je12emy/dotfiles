@@ -280,7 +280,12 @@ require("lazy").setup({
 				-- $ pip install djlint
 				-- $ npm i djlint #requires pip and python still
 				-- see: https://github.com/djlint/djLint?tab=readme-ov-file#-how
-				html = { "djLint" }
+				html = { "djLint" },
+
+				-- Basic SQL formatter.
+				-- $ npm install sql-formatter
+				-- see: https://github.com/sql-formatter-org/sql-formatter?tab=readme-ov-file#install
+				sql = {"sql_formatter"},
 			},
 		},
 		config = function(_, opts)
@@ -507,8 +512,8 @@ require("lazy").setup({
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					{ name = "copilot" },
 				}, {
+					{ name = "copilot" },
 					{ name = "buffer" },
 					{ name = "path" },
 				}),
