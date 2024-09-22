@@ -183,6 +183,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch by [g]rep" })
 			vim.keymap.set("n", "z=", builtin.spell_suggest, { desc = "search spell suggestions" })
 			vim.keymap.set("n", "<leader>st", builtin.treesitter, { desc = "[s]earch [t]reesitter" })
+			vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[s]earch [c]commands" })
 		end,
 	},
 	{
@@ -285,7 +286,7 @@ require("lazy").setup({
 				-- Basic SQL formatter.
 				-- $ npm install sql-formatter
 				-- see: https://github.com/sql-formatter-org/sql-formatter?tab=readme-ov-file#install
-				sql = {"sql_formatter"},
+				sql = { "sql_formatter" },
 			},
 		},
 		config = function(_, opts)
@@ -675,6 +676,7 @@ require("lazy").setup({
 
 			-- NOTE: See all available DAP adapters here: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 
+			require('dap-go').setup()
 			-- dap.adapters.gdb = {
 			-- 	type = "executable",
 			-- 	command = "gdb",
@@ -771,6 +773,11 @@ require("lazy").setup({
 			--
 			-- dap.configurations.cs = config
 		end,
+		dependencies = {
+			{
+				"leoluz/nvim-dap-go",
+			}
+		}
 	},
 	{
 		"rcarriga/nvim-dap-ui",
@@ -778,7 +785,65 @@ require("lazy").setup({
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			dapui.setup()
+			dapui.setup {
+				controls = {
+					element = "scopes",
+					enabled = true,
+					icons = {
+						disconnect = "",
+						pause = "",
+						play = "",
+						run_last = "",
+						step_back = "",
+						step_into = "",
+						step_out = "",
+						step_over = "",
+						terminate = ""
+					}
+				},
+				element_mappings = {},
+				expand_lines = true,
+				floating = {
+					border = "single",
+					mappings = {
+						close = { "q", "<Esc>" }
+					}
+				},
+				force_buffers = true,
+				icons = {
+					collapsed = "",
+					current_frame = "",
+					expanded = ""
+				},
+				layouts = { {
+					elements = { {
+						id = "scopes",
+						size = 0.3
+					}, {
+						id = "breakpoints",
+						size = 0.3
+					}, {
+						id = "repl",
+						size = 0.3
+					}
+					},
+					position = "right",
+					size = 40
+				} },
+				mappings = {
+					edit = "e",
+					expand = { "<CR>", "<2-LeftMouse>" },
+					open = "o",
+					remove = "d",
+					repl = "r",
+					toggle = "t"
+				},
+				render = {
+					indent = 1,
+					max_value_lines = 100
+				}
+			}
+
 			dap.listeners.before.attach.dapui_config = function()
 				vim.notify("Attaching to debugger")
 			end
