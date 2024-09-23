@@ -15,18 +15,25 @@ end
 -- Tab bar
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 32
 -- Scollbar
 config.scrollback_lines = 3500
 -- Solve ugly issues when zooming in
 config.adjust_window_size_when_changing_font_size = false
-local theme_name = 'Retro'
+config.inactive_pane_hsb = {
+  saturation = 1,
+  brightness = 1,
+}
+local theme_name = 'Tokyo Night'
 config.color_scheme = theme_name
 local theme = wezterm.color.get_builtin_schemes()[theme_name]
--- NOTE: see https://wezfurlong.org/wezterm/config/appearance.html#defining-your-own-colors
+-- NOTE: 
+-- see https://wezfurlong.org/wezterm/config/appearance.html#defining-your-own-colors
+-- see: https://wezfurlong.org/wezterm/config/lua/wezterm.color/load_base16_scheme.html
 config.colors = {
+	split = theme.ansi[5],
 	tab_bar = {
 		background = theme.background,
 		active_tab = {
