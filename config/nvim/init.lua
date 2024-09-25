@@ -281,7 +281,7 @@ require("lazy").setup({
 				-- $ pip install djlint
 				-- $ npm i djlint #requires pip and python still
 				-- see: https://github.com/djlint/djLint?tab=readme-ov-file#-how
-				html = { "djLint" },
+				html = { "djlint" },
 
 				-- Basic SQL formatter.
 				-- $ npm install sql-formatter
