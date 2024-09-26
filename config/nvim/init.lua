@@ -547,7 +547,8 @@ require("lazy").setup({
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 				callback = function(event)
-					vim.notify("LSP client attached")
+					local client = vim.lsp.get_client_by_id(event.data.client_id)
+					vim.notify(client.name .." LSP client ready" )
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Show documentation" })
 					vim.keymap.set(
 						"n",
