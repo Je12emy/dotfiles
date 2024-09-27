@@ -23,13 +23,14 @@ config.scrollback_lines = 3500
 -- Solve ugly issues when zooming in
 config.adjust_window_size_when_changing_font_size = false
 config.inactive_pane_hsb = {
-  saturation = 1,
-  brightness = 1,
+	saturation = 1,
+	brightness = 1,
 }
 local theme_name = 'Tokyo Night'
 config.color_scheme = theme_name
 local theme = wezterm.color.get_builtin_schemes()[theme_name]
--- NOTE: 
+local random_theme_accent = theme.ansi[math.random(1, #theme.ansi)]
+-- NOTE:
 -- see https://wezfurlong.org/wezterm/config/appearance.html#defining-your-own-colors
 -- see: https://wezfurlong.org/wezterm/config/lua/wezterm.color/load_base16_scheme.html
 config.colors = {
@@ -37,7 +38,7 @@ config.colors = {
 	tab_bar = {
 		background = theme.background,
 		active_tab = {
-			bg_color = theme.cursor_bg,
+			bg_color = random_theme_accent,
 			fg_color = theme.background
 		},
 		inactive_tab = {
