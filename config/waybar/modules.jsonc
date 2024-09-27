@@ -12,43 +12,43 @@
     "max-length": 48
   },
   "cpu": {
-    "format": "<span color='#757387'>CPU</span> {usage}%",
+    "format": "<span color='#7dcfff'>CPU</span> {usage}%",
     "interval": 2
   },
   "memory": {
-    "format": "<span color='#757387'>RAM</span> {used}GiB",
+    "format": "<span color='#9ece6a'>RAM</span> {used}GiB",
     "interval": 2
   },
   "battery": {
     "interval": 60,
-    "format": "<span color='#757387'>BAT</span> {capacity}%",
+    "format": "<span color='#e0af68'>BAT</span> {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip": true
   },
   "pulseaudio": {
     "scroll-step": 5, // %, can be a float
-    "format": "<span color='#757387'>VOL</span> {volume}%",
+    "format": "<span color='#ff9e64'>VOL</span> {volume}%",
     "format-muted": "󰖁 Muted",
     "format-icons": ["", "", ""],
     "on-click": "pavucontrol"
   },
   "clock": {
       "interval": 60,
-      "format": "<span color='#757387'>DATE</span> {:%Y-%m-%d %OI:%M %p}",
+      "format": "<span color='#bb9af7'>DATE</span> {:%Y-%m-%d %OI:%M %p}",
       "max-length": 25
   },
   // "hyprland/submap": {
-  //     "format": "<span color='#757387'>✌️</span> {}",
+  //     "format": "<span color='#6B4697'>✌️</span> {}",
   //     "max-length": 8,
   //     "tooltip": false
   // },
   "disk": {
       "interval": 30,
-      "format": "<span color='#757387'>DISK</span> {percentage_free}%",
+      "format": "<span color='#6B4697'>DISK</span> {percentage_free}%",
       "path": "/"
   },
  "custom/updates": {
-     "format": "<span color='#757387'>UPDATES</span> {}",
+     "format": "<span color='#1abc9c'>UPDATES</span> {}",
      "return-type": "json",
      "format-icons": {
          "has-updates": "󱍷",
@@ -58,6 +58,6 @@
      "exec": "waybar-module-pacman-updates"
  },
   "custom/separator":{
-		"format": "<span color='#8C7895'>|</span>",
-  },
+		"format": "<span color='#3b4261'>|</span>"
+  }
 }

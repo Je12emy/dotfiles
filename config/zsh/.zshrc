@@ -15,7 +15,6 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 
-(cat ~/.cache/wal/sequences &)
 eval "$(zoxide init --cmd cd zsh)"
 # Initialize starship
 eval "$(starship init zsh)"

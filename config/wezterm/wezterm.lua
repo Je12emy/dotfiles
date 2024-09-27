@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local env = require("env")
 local config = {}
 
-config.enable_wayland = true
+config.enable_wayland = false
 -- Font
 config.font = wezterm.font "JetBrains Mono"
 config.font_size = 14.0

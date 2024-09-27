@@ -1,8 +1,8 @@
 local M = {}
 
-M.background_color = "#000000"
-M.text_color = "#e8e8e5"
-M.color1 = "#757387"
-M.color2 = "#8C7895"
+M.background_color = "#0D1119"
+M.text_color = "#a2d9dd"
+M.color1 = "#6B4697"
+M.color2 = "#A1169E"
 
 return M

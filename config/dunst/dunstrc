@@ -95,7 +95,7 @@
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#757387"
+    # frame_color = "#6B4697"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -206,7 +206,7 @@
     # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
-    icon_position = left
+    icon_position = off
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
@@ -313,26 +313,29 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#000000"
-    foreground = "#e8e8e5"
-    frame_color = "#757387"
+    background = "#0D1119"
+    foreground = "#a2d9dd"
+    frame_color = "#6B4697"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
+# TokyoNight colors for dunst
+# For more configuration options see https://github.com/dunst-project/dunst/blob/master/dunstrc
+
+[urgency_low]
+    background = "#16161e"
+    foreground = "#c0caf5"
+    frame_color = "#c0caf5"
 
 [urgency_normal]
-    background = "#000000"
-    foreground = "#e8e8e5"
-    frame_color = "#757387"
-    timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#c0caf5"
 
 [urgency_critical]
-    background = "#000000"
-    foreground = "#e8e8e5"
-    frame_color = "#757387"
-    timeout = 0
+    background = "#292e42"
+    foreground = "#db4b4b"
+    frame_color = "#db4b4b"
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 

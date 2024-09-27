@@ -1,20 +1,18 @@
- @import '../../.cache/wal/colors-waybar.css';
-
 * {
   font-family: JetBrainsMono Nerd Font;
   font-weight: 900;
   font-size: 14px;
-  color: @foreground;
+  color: #c0caf5;
 }
 
 /* Set background color of main waybar window */
 window#waybar {
-  background: @background;
+  background: #1a1b26;
 }
 
 /* Set background color of tooltips */
 tooltip {
-  background: @background;
+  background: #1a1b26;
 }
 
 /* Set workspace text color and padding */
@@ -24,16 +22,16 @@ tooltip {
 
 /* Sets active workspace to have a solid line on the bottom */
 #workspaces button.active {
-  border-bottom: 2px solid @color1;
+  border-bottom: 2px solid #7aa2f7;
 }
 
 /* More workspace stuff for highlighting on hover */
 #workspaces button.focused {
-  color: @color1;
+  color: #394b70;
 }
 
 #workspaces button.urgent {
-  color: @color2;
+  color: #f7768e;
 }
 
 /* Sets background, padding, margins, and borders for (all) modules */
@@ -47,12 +45,12 @@ tooltip {
 #tray,
 #disk
 {
-  background: @background;
+  background: #1a1b26;
   margin: 0px 8px 0px 8px;
   border: 0;
 }
 
 #window.empty {
-  background: @background;
+  background: #1a1b26;
 }
 

@@ -13,10 +13,10 @@ padding-left = 8
 padding-right = 8
 
 # Default theme
-text-color = #FFFFFF
-background-color = #000000
-selection-color = #242424
+text-color = #c0caf5
+background-color = #16161e
+selection-color = #7aa2f7
 
 # Pywal theme
 # https://github.com/philj56/tofi/issues/139
-include =  /home/jeremy/.cache/wal/colors-tofi
+# include =  /home/jeremy/.cache/wal/colors-tofi
