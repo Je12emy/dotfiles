@@ -1,16 +1,16 @@
-anchor = top
+anchor = bottom
 width = 100%
-num-results = 5
+height = 20%
 font-size = 14
 font = JetBrainsMono Nerd Font
 outline-width = 0
 border-width = 0
 min-input-width = 120
 result-spacing = 12
-padding-top = 8
-padding-bottom = 8
+padding-top = 0
+padding-bottom = 0
 padding-left = 8
-padding-right = 8
+padding-right = 0
 
 # Default theme
 text-color = #c0caf5
