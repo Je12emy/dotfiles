@@ -13,11 +13,13 @@
   },
   "cpu": {
     "format": "<span color='#7dcfff'>CPU</span> {usage}%",
-    "interval": 2
+    "interval": 2,
+    "on-click": "wezterm --config hide_tab_bar_if_only_one_tab=true -e btop"
   },
   "memory": {
     "format": "<span color='#9ece6a'>RAM</span> {used}GiB",
-    "interval": 2
+    "interval": 2,
+    "on-click": "wezterm --config hide_tab_bar_if_only_one_tab=true -e btop"
   },
   "battery": {
     "interval": 60,
