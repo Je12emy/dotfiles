@@ -2,7 +2,7 @@
 
 case $(printf "%s\n" "Lock" "Suspend" "Log out" "Reboot" "Shut down" | tofi $@ --prompt-text "Power") in
 	"Lock")
-		swaylock
+		hyprlock
 		;;
 	"Suspend")
 		case $(printf '%s\n' "Yes" "No" | tofi $@ --prompt-text "Are you sure?") in

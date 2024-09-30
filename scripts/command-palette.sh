@@ -1,14 +1,10 @@
-#! /bin/bash
+#!/bin/bash
 declare -A commands=(\
-    # ["Open notes"]="open-notes.sh" \ 
-    ["Password picker"]="password-picker.sh" \
-    ["Find document"]="find-documents.sh" \ 
-    ["Take screenshot"]="screenshot.sh" \
-    ["Change screen temperature"]="screen-temp.sh" \
-    ["Change wallpaper"]="wallpaper-picker.sh" \ 
+    ["Password picker"]="password-picker.sh"\
+    ["Pick wallpaper"]="change-wallpaper.sh"\ 
     ["Exit"]="power-menu.sh")
 
-choice=$(printf "%s\n" "${!commands[@]}" | $MENU --prompt-text="Command Palete: ")
+choice=$(printf "%s\n" "${!commands[@]}" | tofi --prompt-text="Command Palete: ")
 
 [[ -n $choice ]] || exit
 
