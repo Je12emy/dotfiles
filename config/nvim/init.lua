@@ -407,6 +407,9 @@ require("lazy").setup({
 					:find()
 			end
 
+			vim.keymap.set("n", "<leader>hm", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end, { desc = "[h]arpoon [m]enu" })
 			vim.keymap.set("n", "<leader>ha", function()
 				harpoon:list():add()
 				vim.notify("Harpoon mark added")
