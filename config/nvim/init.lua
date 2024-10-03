@@ -112,7 +112,6 @@ vim.opt.rtp:prepend(lazypath)
 -- 		end
 -- 	end
 -- })
-
 -- Plugins
 require("lazy").setup({
 	{
@@ -137,6 +136,7 @@ require("lazy").setup({
 					"dist/*",
 					"node_modules/*",
 					"target/*",
+					"tmp",
 					"*.png",
 					"*.svg",
 				},
@@ -190,6 +190,54 @@ require("lazy").setup({
 		-- Tree explorer like a buffer
 		"stevearc/oil.nvim",
 		config = function()
+			-- helper function to parse output
+			local function parse_output(proc)
+				local result = proc:wait()
+				local ret = {}
+				if result.code == 0 then
+					for line in vim.gsplit(result.stdout, "\n", { plain = true, trimempty = true }) do
+						-- Remove trailing slash
+						line = line:gsub("/$", "")
+						ret[line] = true
+					end
+				end
+				return ret
+			end
+
+			-- build git status cache
+			local function new_git_status()
+				return setmetatable({}, {
+					__index = function(self, key)
+						local ignore_proc = vim.system(
+							{ "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" },
+							{
+								cwd = key,
+								text = true,
+							}
+						)
+						local tracked_proc = vim.system({ "git", "ls-tree", "HEAD", "--name-only" }, {
+							cwd = key,
+							text = true,
+						})
+						local ret = {
+							ignored = parse_output(ignore_proc),
+							tracked = parse_output(tracked_proc),
+						}
+
+						rawset(self, key, ret)
+						return ret
+					end,
+				})
+			end
+			local git_status = new_git_status()
+
+			-- Clear git status cache on refresh
+			local refresh = require("oil.actions").refresh
+			local orig_refresh = refresh.callback
+			refresh.callback = function(...)
+				git_status = new_git_status()
+				orig_refresh(...)
+			end
 			require("oil").setup({
 				keymaps = {
 					["g?"] = "actions.show_help",
@@ -208,7 +256,22 @@ require("lazy").setup({
 				use_default_keymaps = false,
 				default_file_explorer = true,
 				view_options = {
-					show_hidden = true,
+					show_hidden = false,
+					is_hidden_file = function(name, bufnr)
+						local dir = require("oil").get_current_dir(bufnr)
+						local is_dotfile = vim.startswith(name, ".") and name ~= ".."
+						-- if no local directory (e.g. for ssh connections), just hide dotfiles
+						if not dir then
+							return is_dotfile
+						end
+						-- dotfiles are considered hidden unless tracked
+						if is_dotfile then
+							return not git_status[dir].tracked[name]
+						else
+							-- Check if file is gitignored
+							return git_status[dir].ignored[name]
+						end
+					end,
 				},
 			})
 			vim.keymap.set("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "[o]pen [o]il" })
@@ -345,15 +408,15 @@ require("lazy").setup({
 			end
 
 			vim.keymap.set("n", "<leader>ha", function()
-				harpoon:list():append()
+				harpoon:list():add()
 				vim.notify("Harpoon mark added")
 			end, { desc = "[h]arpoon [a]ppend mark" })
 			vim.keymap.set("n", "<leader>h}", function()
 				harpoon:list():next()
-			end, { desc = "[h]arpoon } next mark" })
+			end, { desc = "[h]arpoon next mark" })
 			vim.keymap.set("n", "<leader>h{", function()
 				harpoon:list():prev()
-			end, { desc = "[h]arpoon { prev mark" })
+			end, { desc = "[h]arpoon previous mark" })
 			vim.keymap.set("n", "<leader>hc", function()
 				harpoon:list():clear()
 				vim.notify("Harpoon marks cleared")
@@ -548,7 +611,7 @@ require("lazy").setup({
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 				callback = function(event)
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					vim.notify(client.name .." LSP client ready" )
+					vim.notify(client.name .. " LSP client ready")
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Show documentation" })
 					vim.keymap.set(
 						"n",
@@ -905,5 +968,6 @@ require("lazy").setup({
 		config = function()
 			require("copilot_cmp").setup()
 		end
-	}
+	},
+	{ "norcalli/nvim-colorizer.lua" }
 })
