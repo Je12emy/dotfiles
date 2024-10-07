@@ -318,10 +318,11 @@ require("lazy").setup({
 
 				-- Prettier can be installed with npm:
 				-- $ npm install -g prettier
-				javascript = { { "prettierd", "prettier" } },
-				astro = { { "prettierd", "prettier" } },
-				markdown = { { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
+				javascript = { "prettierd", "prettier" },
+				astro = { "prettierd", "prettier" },
+				markdown = { "prettierd", "prettier" },
+				css = { "prettierd", "prettier" },
+				typescriptreact = { "prettierd", "prettier" },
 
 				-- GDFormat is part of a godot toolkit
 				-- $ paru python-gdtoolkit
