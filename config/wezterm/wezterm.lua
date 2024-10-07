@@ -29,7 +29,9 @@ config.inactive_pane_hsb = {
 local theme_name = 'Tokyo Night'
 config.color_scheme = theme_name
 local theme = wezterm.color.get_builtin_schemes()[theme_name]
-local random_theme_accent = theme.ansi[math.random(1, #theme.ansi)]
+-- First color is the same as the BG color
+-- see: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/wezterm/tokyonight.toml
+local random_theme_accent = theme.ansi[math.random(2, #theme.ansi)]
 -- NOTE:
 -- see https://wezfurlong.org/wezterm/config/appearance.html#defining-your-own-colors
 -- see: https://wezfurlong.org/wezterm/config/lua/wezterm.color/load_base16_scheme.html
