@@ -64,7 +64,7 @@ local escape_keybinds = {
 	{ key = "Enter",  action = "PopKeyTable" }
 }
 
-local function append_escape_keys(mode)
+local function with_escape_keys(mode)
 	for i = 1, #escape_keybinds do
 		mode[#mode + 1] = escape_keybinds[i]
 	end
@@ -113,8 +113,8 @@ end
 
 -- Modes
 config.key_tables = {
-	["Tab"] = append_escape_keys(tab_mode),
-	["Pane"] = append_escape_keys({
+	["Tab"] = with_escape_keys(tab_mode),
+	["Pane"] = with_escape_keys({
 		{
 			key = "j",
 			action = wezterm.action.ActivatePaneDirection("Down"),
@@ -154,7 +154,7 @@ config.key_tables = {
 			}),
 		},
 	}),
-	["Resize"] = append_escape_keys({
+	["Resize"] = with_escape_keys({
 		{
 			key = "h",
 			action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
@@ -172,7 +172,7 @@ config.key_tables = {
 			action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
 		},
 	}),
-	["Scroll"] = append_escape_keys({
+	["Scroll"] = with_escape_keys({
 		{
 			key = "j",
 			action = wezterm.action.ScrollByLine(1),
@@ -240,7 +240,7 @@ config.key_tables = {
 		},
 		{ key = 'Escape', mods = 'NONE', action = wezterm.action.CopyMode 'Close' },
 	},
-	["Move"] = append_escape_keys({
+	["Move"] = with_escape_keys({
 		{
 			key = "g",
 			action = wezterm.action.PaneSelect({}),
@@ -260,7 +260,7 @@ config.key_tables = {
 			action = wezterm.action.MoveTabRelative(-1),
 		}
 	}),
-	["Workspace"] = append_escape_keys({
+	["Workspace"] = with_escape_keys({
 
 		{ key = 'n', action = wezterm.action.SwitchToWorkspace },
 		{
