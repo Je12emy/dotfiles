@@ -294,12 +294,12 @@ config.key_tables = {
 
 		},
 		{
-			key = "r",
+			key = "l",
 			action = wezterm.action.PromptInputLine {
 				description = wezterm.format {
 					{ Attribute = { Intensity = 'Bold' } },
 					{ Foreground = { AnsiColor = 'Fuchsia' } },
-					{ Text = 'Enter a new name for current workspace' },
+					{ Text = 'Enter a new label for current workspace' },
 				},
 				action = wezterm.action_callback(function(_, _, line)
 					if line then
