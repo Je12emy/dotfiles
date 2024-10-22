@@ -75,13 +75,13 @@ vim.opt.swapfile = false
 -- cmd.auto_hide_status()
 -- Base keymaps
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
-vim.keymap.set("n", "<Leader>s", ":%s//g<Left><Left>", { desc = "[s]ed command" })
-vim.keymap.set("n", "<Leader>h", ':exe "vertical resize -" .5<CR>', { desc = "-5 on vertical split" })
-vim.keymap.set("n", "<Leader>l", ':exe "vertical resize +" .5<CR>', { desc = "+5 on vertical split" })
-vim.keymap.set("n", "<Leader>j", ':exe "resize -" .5<CR>', { desc = "-5 on horizontal split" })
-vim.keymap.set("n", "<Leader>k", ':exe "resize +" .5<CR>', { desc = "+5 on horizontal split" })
-vim.keymap.set("n", "<Leader>tn", "<cmd>tabnew<CR>", { desc = "[T]ab [n]ew" })
-vim.keymap.set("n", "<Leader>tx", "<cmd>tabclose<CR>", { desc = "[T]ab close [x]" })
+vim.keymap.set("n", "<leader>s", ":%s//g<Left><Left>", { desc = "[s]ed command" })
+vim.keymap.set("n", "<leader>h", ':exe "vertical resize -" .5<CR>', { desc = "-5 on vertical split" })
+vim.keymap.set("n", "<leader>l", ':exe "vertical resize +" .5<CR>', { desc = "+5 on vertical split" })
+vim.keymap.set("n", "<leader>j", ':exe "resize -" .5<CR>', { desc = "-5 on horizontal split" })
+vim.keymap.set("n", "<leader>k", ':exe "resize +" .5<CR>', { desc = "+5 on horizontal split" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "[T]ab [n]ew" })
+vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "[T]ab close [x]" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
@@ -581,7 +581,6 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 				}, {
-					{ name = "copilot" },
 					{ name = "buffer" },
 					{ name = "path" },
 				}),
@@ -955,23 +954,6 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		lazy = true,
 		cmd = "DiffviewOpen",
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup()
-		end
 	},
 	{ "norcalli/nvim-colorizer.lua" }
 })
