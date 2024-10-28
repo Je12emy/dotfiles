@@ -724,7 +724,7 @@ require("lazy").setup({
 			lspconfig.gopls.setup{}
 			-- Available through npm
 			-- $ npm install -g typescript typescript-language-server
-			lspconfig.tsserver.setup{}
+			lspconfig.ts_ls.setup{}
 			-- Available through npm
 			-- $ npm i -g vscode-langservers-extracted
 			lspconfig.cssls.setup({
