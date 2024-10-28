@@ -710,7 +710,6 @@ require("lazy").setup({
 			-- $ curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
 			-- $ chmod +x ~/.local/bin/rust-analyzer
 			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
 				settings = {
 					["rust-analyzer"] = {
 						diagnostics = {
@@ -722,29 +721,20 @@ require("lazy").setup({
 			-- Installable through go's module system
 			-- see: go install golang.org/x/tools/gopls@latest
 			-- $ go install golang.org/x/tools/gopls@latesto
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-			})
+			lspconfig.gopls.setup{}
 			-- Available through npm
 			-- $ npm install -g typescript typescript-language-server
-			lspconfig.tsserver.setup({
-				capabilities = capabilities,
-			})
+			lspconfig.tsserver.setup{}
 			-- Available through npm
 			-- $ npm i -g vscode-langservers-extracted
 			lspconfig.cssls.setup({
-				capabilities = capabilities,
 			})
 			-- Available through npm
 			-- $ npm install -g @astrojs/language-server
-			lspconfig.astro.setup({
-				capabilities = capabilities,
-			})
+			lspconfig.astro.setup{}
 			-- Mostly available through package managers.
 			-- see: https://luals.github.io/#neovim-install
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
+			lspconfig.lua_ls.setup{}
 			-- Check this guide: https://mb-izzo.github.io/nvim-godot-solution/
 			-- require 'lspconfig'.gdscript.setup({
 			-- 	capabilities = capabilities,
@@ -753,7 +743,6 @@ require("lazy").setup({
 			-- $ dotnet tool install --global csharp-ls
 			local pid = vim.fn.getpid()
 			lspconfig.csharp_ls.setup({
-				capabilities = capabilities,
 				handlers = {
 					["textDocument/definition"] = require("csharpls_extended").handler,
 					["textDocument/typeDefinition"] = require("csharpls_extended").handler,
@@ -761,9 +750,7 @@ require("lazy").setup({
 			})
 			-- Available through your package manager or see the pre-built binaries
 			-- see: https://github.com/artempyanykh/marksman/blob/main/docs/install.md
-			lspconfig.marksman.setup({
-				capabilities = capabilities,
-			})
+			lspconfig.marksman.setup{}
 		end,
 	},
 	{
