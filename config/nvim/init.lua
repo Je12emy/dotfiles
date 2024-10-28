@@ -331,15 +331,15 @@ require("lazy").setup({
 				-- C Sharpier can be installed with dotnet
 				-- $ dotnet tool install csharpier -g
 				-- see: https://github.com/belav/csharpier
-				csharp = { { "csharpier" } },
+				csharp = { "csharpier" },
 
 				-- Gofmt should be included with your go installation, make sure "go/bin" is in your path
-				go = { { "gofmt" } },
+				go = { "gofmt" },
 
 				-- Rustfmt  can be installed it with rustup
 				-- $ rustup component add rustfmt
 				-- see: https://github.com/rust-lang/rustfmt?tab=readme-ov-file#quick-start
-				rust = { { "rustfmt" } },
+				rust = { "rustfmt" },
 
 				-- DJLint provies support for templating languages like Go's templating
 				-- $ pip install djlint
