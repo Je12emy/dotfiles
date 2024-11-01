@@ -26,7 +26,7 @@ config.inactive_pane_hsb = {
 	saturation = 1,
 	brightness = 1,
 }
-local theme_name = 'Tokyo Night'
+local theme_name = 'Catppuccin Mocha'
 config.color_scheme = theme_name
 local theme = wezterm.color.get_builtin_schemes()[theme_name]
 -- First color is the same as the BG color

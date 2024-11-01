@@ -12,12 +12,12 @@
     "max-length": 48
   },
   "cpu": {
-    "format": "<span color='#7dcfff'>CPU</span> {usage}%",
+    "format": "<span color='#b4befe'>CPU</span> {usage}%",
     "interval": 2,
     "on-click": "wezterm --config hide_tab_bar_if_only_one_tab=true -e btop"
   },
   "memory": {
-    "format": "<span color='#9ece6a'>RAM</span> {used}GiB",
+    "format": "<span color='#f5e0dc'>RAM</span> {used}GiB",
     "interval": 2,
     "on-click": "wezterm --config hide_tab_bar_if_only_one_tab=true -e btop"
   },
@@ -29,14 +29,14 @@
   },
   "pulseaudio": {
     "scroll-step": 5, // %, can be a float
-    "format": "<span color='#ff9e64'>VOL</span> {volume}%",
+    "format": "<span color='#89dceb'>VOL</span> {volume}%",
     "format-muted": "󰖁 Muted",
     "format-icons": ["", "", ""],
     "on-click": "pavucontrol"
   },
   "clock": {
       "interval": 60,
-      "format": "<span color='#bb9af7'>DATE</span> {:%Y-%m-%d %OI:%M %p}",
+      "format": "<span color='#cba6f7'>DATE</span> {:%Y-%m-%d %OI:%M %p}",
       "max-length": 25
   },
   // "hyprland/submap": {
@@ -46,11 +46,11 @@
   // },
   "disk": {
       "interval": 30,
-      "format": "<span color='#6B4697'>DISK</span> {percentage_free}%",
+      "format": "<span color='#a6e3a1'>DISK</span> {percentage_free}%",
       "path": "/"
   },
  "custom/updates": {
-     "format": "<span color='#1abc9c'>UPDATES</span> {}",
+     "format": "<span color='#fab387'>UPDATES</span> {}",
      "return-type": "json",
      "format-icons": {
          "has-updates": "󱍷",
@@ -60,6 +60,6 @@
      "exec": "waybar-module-pacman-updates"
  },
   "custom/separator":{
-		"format": "<span color='#3b4261'>|</span>"
+		"format": "<span color='#bac2de'>|</span>"
   }
 }

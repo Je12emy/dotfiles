@@ -462,8 +462,20 @@ require("lazy").setup({
 		},
 	},
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha", -- latte, frappe, macchiato, mocha
+			})
+			vim.cmd.colorscheme("catppuccin")
+		end
+	},
+	{
 		-- Theme
 		"folke/tokyonight.nvim",
+		enable = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -496,7 +508,7 @@ require("lazy").setup({
 					}
 				end,
 			})
-			vim.cmd.colorscheme("tokyonight")
+			-- vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 	{
@@ -721,20 +733,20 @@ require("lazy").setup({
 			-- Installable through go's module system
 			-- see: go install golang.org/x/tools/gopls@latest
 			-- $ go install golang.org/x/tools/gopls@latesto
-			lspconfig.gopls.setup{}
+			lspconfig.gopls.setup {}
 			-- Available through npm
 			-- $ npm install -g typescript typescript-language-server
-			lspconfig.ts_ls.setup{}
+			lspconfig.ts_ls.setup {}
 			-- Available through npm
 			-- $ npm i -g vscode-langservers-extracted
 			lspconfig.cssls.setup({
 			})
 			-- Available through npm
 			-- $ npm install -g @astrojs/language-server
-			lspconfig.astro.setup{}
+			lspconfig.astro.setup {}
 			-- Mostly available through package managers.
 			-- see: https://luals.github.io/#neovim-install
-			lspconfig.lua_ls.setup{}
+			lspconfig.lua_ls.setup {}
 			-- Check this guide: https://mb-izzo.github.io/nvim-godot-solution/
 			-- require 'lspconfig'.gdscript.setup({
 			-- 	capabilities = capabilities,
@@ -750,7 +762,9 @@ require("lazy").setup({
 			})
 			-- Available through your package manager or see the pre-built binaries
 			-- see: https://github.com/artempyanykh/marksman/blob/main/docs/install.md
-			lspconfig.marksman.setup{}
+			lspconfig.marksman.setup {}
+			-- $ npm install -g intelephense
+			lspconfig.intelephense.setup {}
 		end,
 	},
 	{
