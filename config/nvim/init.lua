@@ -516,6 +516,31 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			local treesiter = require("nvim-treesitter.configs")
+			local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+			-- Taken from: https://github.com/EmranMR/tree-sitter-blade/discussions/19#discussioncomment-8541804
+			parser_config.blade = {
+				install_info = {
+					url = "https://github.com/EmranMR/tree-sitter-blade",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "blade"
+			}
+
+			vim.filetype.add({
+				pattern = {
+					['.*%.blade%.php'] = 'blade',
+				}
+			})
+			local bladeGrp
+			vim.api.nvim_create_augroup("BladeFiltypeRelated", { clear = true })
+			vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+				pattern = "*.blade.php",
+				group = bladeGrp,
+				callback = function()
+					vim.opt.filetype = "blade"
+				end,
+			})
 			treesiter.setup({
 				highlight = {
 					enable = true,
@@ -763,8 +788,8 @@ require("lazy").setup({
 			-- Available through your package manager or see the pre-built binaries
 			-- see: https://github.com/artempyanykh/marksman/blob/main/docs/install.md
 			lspconfig.marksman.setup {}
-			-- $ npm install -g intelephense
-			lspconfig.intelephense.setup {}
+			-- see: https://phpactor.readthedocs.io/en/master/usage/standalone.html#phar-installation
+			lspconfig.phpactor.setup {}
 		end,
 	},
 	{
