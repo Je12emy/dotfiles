@@ -351,6 +351,10 @@ require("lazy").setup({
 				-- $ npm install sql-formatter
 				-- see: https://github.com/sql-formatter-org/sql-formatter?tab=readme-ov-file#install
 				sql = { "sql_formatter" },
+
+				-- Laravel's Formatter
+				-- See: https://github.com/laravel/pint
+				php = { "pint" },
 			},
 		},
 		config = function(_, opts)
