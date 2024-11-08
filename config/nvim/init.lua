@@ -794,6 +794,9 @@ require("lazy").setup({
 			lspconfig.marksman.setup {}
 			-- see: https://phpactor.readthedocs.io/en/master/usage/standalone.html#phar-installation
 			lspconfig.phpactor.setup {}
+			-- See: https://github.com/tailwindlabs/tailwindcss-intellisense
+			-- $ npm install -g @tailwindcss/language-server
+			lspconfig.tailwindcss.setup{}
 		end,
 	},
 	{
