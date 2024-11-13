@@ -796,7 +796,23 @@ require("lazy").setup({
 			lspconfig.phpactor.setup {}
 			-- See: https://github.com/tailwindlabs/tailwindcss-intellisense
 			-- $ npm install -g @tailwindcss/language-server
-			lspconfig.tailwindcss.setup{}
+			lspconfig.tailwindcss.setup {}
+			-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#html
+			-- $ npm install -g vscode-langservers-extracted
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			lspconfig.html.setup {
+				capabilities = capabilities,
+				filetypes = { "html", "blade" },
+				init_options = {
+					configurationSection = { "html", "css", "javascript" },
+					embeddedLanguages = {
+						css = true,
+						javascript = true
+					},
+					provideFormatter = true
+				}
+			}
 		end,
 	},
 	{
