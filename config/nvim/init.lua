@@ -793,7 +793,10 @@ require("lazy").setup({
 			-- see: https://github.com/artempyanykh/marksman/blob/main/docs/install.md
 			lspconfig.marksman.setup {}
 			-- see: https://phpactor.readthedocs.io/en/master/usage/standalone.html#phar-installation
-			lspconfig.phpactor.setup {}
+			-- lspconfig.phpactor.setup {}
+			-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#intelephense
+			-- $ npm install -g intelephense
+			require'lspconfig'.intelephense.setup{}
 			-- See: https://github.com/tailwindlabs/tailwindcss-intellisense
 			-- $ npm install -g @tailwindcss/language-server
 			lspconfig.tailwindcss.setup {}
