@@ -768,6 +768,10 @@ require("lazy").setup({
 			lspconfig.ts_ls.setup {}
 			-- Available through npm
 			-- $ npm i -g vscode-langservers-extracted
+			-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#eslint
+			lspconfig.eslint.setup {}
+			-- Available through npm
+			-- $ npm i -g vscode-langservers-extracted
 			lspconfig.cssls.setup({
 			})
 			-- Available through npm
@@ -796,7 +800,7 @@ require("lazy").setup({
 			-- lspconfig.phpactor.setup {}
 			-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#intelephense
 			-- $ npm install -g intelephense
-			require'lspconfig'.intelephense.setup{}
+			require 'lspconfig'.intelephense.setup {}
 			-- See: https://github.com/tailwindlabs/tailwindcss-intellisense
 			-- $ npm install -g @tailwindcss/language-server
 			lspconfig.tailwindcss.setup {}
