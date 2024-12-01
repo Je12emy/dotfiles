@@ -14,6 +14,7 @@ function y() {
 # Aliases
 alias v='nvim'
 alias z='zellij'
+alias lg='lazygit'
 
 # Enable Completition
 # autoload -Uz compinit
