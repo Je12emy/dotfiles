@@ -17,8 +17,8 @@ keybinds {
         bind "g" { SwitchToMode "Locked"; }
         bind "p" { SwitchToMode "Pane"; }
         bind "t" { SwitchToMode "Tab"; }
-        bind "n" { SwitchToMode "Resize"; }
-        bind "h" { SwitchToMode "Move"; }
+        bind "r" { SwitchToMode "Resize"; }
+        bind "m" { SwitchToMode "Move"; }
         bind "s" { SwitchToMode "Scroll"; }
         bind "o" { SwitchToMode "Session"; }
         bind "q" { Quit; }
