@@ -659,11 +659,14 @@ require("lazy").setup({
 		-- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
 
 		opts = {
-			highlight = {
-				-- sets the fallback highlight groups to nvim-cmp's highlight groups
-				-- useful for when your theme doesn't support blink.cmp
-				-- will be removed in a future release, assuming themes add support
+			appearance = {
+				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
+				-- Useful for when your theme doesn't support blink.cmp
+				-- will be removed in a future release
 				use_nvim_cmp_as_default = false,
+				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+				-- Adjusts spacing to ensure icons are aligned
+				nerd_font_variant = 'mono'
 			},
 			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- adjusts spacing to ensure icons are aligned
