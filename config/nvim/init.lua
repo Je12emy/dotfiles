@@ -573,6 +573,7 @@ require("lazy").setup({
 			local statusline = require("mini.statusline")
 			statusline.setup({
 				set_vim_settings = false,
+				use_icons = false,
 			})
 
 			-- You can confiure sections in the statusline by overriding their
