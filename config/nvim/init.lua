@@ -298,7 +298,13 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		opts = {
 			notify_on_error = true,
-			format_on_save = false,
+			format_on_save = function(bufnr)
+				-- Disable with a global or buffer-local variable
+				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return
+				end
+				return { timeout_ms = 500, lsp_format = "fallback" }
+			end,
 			-- NOTE: You can enable outformat if you want to with this
 			-- format_on_save = {
 			-- 	timeout_ms = 500,
@@ -369,6 +375,25 @@ require("lazy").setup({
 						["end"] = { args.line2, end_line:len() },
 					}
 				end
+
+				vim.api.nvim_create_user_command("FormatDisable", function(args)
+					if args.bang then
+						-- FormatDisable! will disable formatting just for this buffer
+						vim.b.disable_autoformat = true
+					else
+						vim.g.disable_autoformat = true
+					end
+				end, {
+					desc = "Disable autoformat-on-save",
+					bang = true,
+				})
+				vim.api.nvim_create_user_command("FormatEnable", function()
+					vim.b.disable_autoformat = false
+					vim.g.disable_autoformat = false
+				end, {
+					desc = "Re-enable autoformat-on-save",
+				})
+
 				require("conform").format({ async = true, lsp_fallback = true, range = range }, function(_, did_edit)
 					if did_edit then
 						vim.notify("Formated buffer")
@@ -573,7 +598,7 @@ require("lazy").setup({
 			local statusline = require("mini.statusline")
 			statusline.setup({
 				set_vim_settings = false,
-				use_icons = false,
+				use_icons = true,
 			})
 
 			-- You can confiure sections in the statusline by overriding their
@@ -1047,5 +1072,16 @@ require("lazy").setup({
 		lazy = true,
 		cmd = "DiffviewOpen",
 	},
-	{ "norcalli/nvim-colorizer.lua" }
+	{ "norcalli/nvim-colorizer.lua" },
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		dependencies = {
+			{ "github/copilot.vim" },              -- or zbirenbaum/copilot.lua
+			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+		},
+		build = "make tiktoken",                   -- Only on MacOS or Linux
+		opts = {
+			-- See Configuration section for options
+		},
+	}
 })
