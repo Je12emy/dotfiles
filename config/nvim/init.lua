@@ -361,6 +361,9 @@ require("lazy").setup({
 				-- Laravel's Formatter
 				-- See: https://github.com/laravel/pint
 				php = { "pint" },
+
+				-- For C/C++
+				cpp = { "clang-format" }
 			},
 		},
 		config = function(_, opts)
