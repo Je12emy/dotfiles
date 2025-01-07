@@ -87,6 +87,21 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set({ "v", "n" }, "<leader>f", "<cmd>Format<CR> ", { desc = "[f]ormat buffer" })
+
+vim.keymap.set({ "n", "v" }, "<leader>ot", function()
+	vim.cmd.vnew()
+	vim.cmd.term()
+	vim.cmd.wincmd('J')
+	vim.api.nvim_win_set_height(0, 5)
+end, { desc = "[o]pen [t]erminal" })
+vim.api.nvim_create_autocmd('TermOpen', {
+	group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+	callback = function()
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end
+})
+
 -- Plugins setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
