@@ -816,7 +816,16 @@ require("lazy").setup({
 			lspconfig.astro.setup {}
 			-- Mostly available through package managers.
 			-- see: https://luals.github.io/#neovim-install
-			lspconfig.lua_ls.setup {}
+			lspconfig.lua_ls.setup {
+				settings = {
+					Lua = {
+						workspace = {
+							userThirdParty = { os.getenv("HOME") .. ".local/share/LuaAddons" },
+							checkThirdParty = "Apply"
+						}
+					}
+				}
+			}
 			-- Check this guide: https://mb-izzo.github.io/nvim-godot-solution/
 			-- require 'lspconfig'.gdscript.setup({
 			-- 	capabilities = capabilities,
