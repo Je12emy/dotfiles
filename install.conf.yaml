@@ -3,24 +3,14 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.config', '~/.local/bin']
+- clean: ["~", "~/.config"]
 
 - link:
-    ~/.config/: 
+    ~/.config/:
       path: config/*
       glob: true
-    ~/.local/bin:
-      path: scripts/*
-      glob: true
-    ~/.zshenv: .zshenv
-    ~/Pictures/wallpapers:
-      path: ./wallpapers/*
-      create: true
-      glob: true
-    ~/.local/bin:
-      path: ./scripts/*
-      create: true
-      glob: true
+    ~/.tmux.conf: .tmux.conf
+    ~/.bashrc: .bashrc
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
